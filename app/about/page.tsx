@@ -77,7 +77,6 @@ export default function AboutPage() {
                   ["대표자", "박현수"],
                   ["사업자등록번호", "799-67-00516"],
                   ["소재지", "서울특별시 강남구 테헤란로70길 12"],
-                  ["연락처", "010-2055-3958"],
                   ["이메일", "egfilter@naver.com"],
                   ["업종", "산업용 에어필터 도·소매"],
                   ["주요 취급 품목", "프리필터, 헤파필터, 미듐필터, 부직포롤필터"],
@@ -141,12 +140,6 @@ export default function AboutPage() {
             >
               견적 요청하기
             </Link>
-            <a
-              href="tel:010-2055-3958"
-              className="bg-white border border-gray-200 text-gray-700 font-bold text-base px-8 py-4 rounded-xl hover:border-primary/30 transition-colors"
-            >
-              전화 상담: 010-2055-3958
-            </a>
           </div>
         </div>
       </section>

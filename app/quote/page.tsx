@@ -20,14 +20,7 @@ export default function QuotePage() {
         </div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <h3 className="font-bold text-gray-900 mb-2">전화 상담</h3>
-              <a href="tel:010-2055-3958" className="text-2xl font-black text-primary hover:underline">
-                010-2055-3958
-              </a>
-              <p className="text-sm text-gray-500 mt-2">평일 09:00 - 18:00 (주말/공휴일 휴무)</p>
-            </div>
+          <div className="grid grid-cols-1 gap-8 mb-12">
             <div className="bg-gray-50 rounded-2xl p-6">
               <h3 className="font-bold text-gray-900 mb-2">이메일 문의</h3>
               <a href="mailto:egfilter@naver.com" className="text-xl font-bold text-gray-700 hover:text-primary transition-colors">
