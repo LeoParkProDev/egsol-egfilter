@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/15 rounded-lg px-5 py-2 mb-10 animate-fade-in-up">
-          <span className="w-2 h-2 bg-accent rounded-full" />
+          <span className="w-2 h-2 bg-brand-green rounded-full" />
           <span className="text-white/90 text-sm font-bold tracking-wide">
             병원 · 크린룸 · 수술실 · 공장 에어필터 특화
           </span>

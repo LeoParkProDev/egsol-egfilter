@@ -36,37 +36,37 @@ export default function Advantages() {
     <section id="advantages" className="py-24 bg-surface-dark">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-black text-sm tracking-widest uppercase">
-            Why Us
+          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
+            Why Choose Us
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-3 mb-4">
-            에버그린필터를 선택하는 이유
+          <h2 className="text-3xl md:text-4xl font-black text-white mt-3">
+            왜 에버그린필터인가요?
           </h2>
-          <div className="w-16 h-1 bg-accent rounded-full mx-auto mt-6" />
-        </div>
+          <div className="w-16 h-1 bg-brand-green rounded-full mx-auto mt-6" />
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {advantages.map((item) => (
+          <div className="grid md:grid-cols-3 gap-8">
+          {advantages.map((adv) => (
             <div
-              key={item.number}
-              className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-accent/30 hover:bg-white/8 transition-all"
+              key={adv.number}
+              className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-brand-green/30 hover:bg-white/8 transition-all"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center text-accent">
+              <div className="flex flex-col h-full">
+                <div className="w-12 h-12 rounded-xl bg-brand-green/15 flex items-center justify-center text-brand-green">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    {item.icon}
+                    {adv.icon}
                   </svg>
                 </div>
                 <span className="text-4xl font-black text-white/10">
-                  {item.number}
+                  {adv.number}
                 </span>
-              </div>
-              <h3 className="text-xl font-black text-white mb-3">
-                {item.title}
-              </h3>
-              <p className="text-base text-white/70 leading-relaxed">
-                {item.description}
-              </p>
+                </div>
+                <h3 className="text-xl font-black text-white mb-3">
+                {adv.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed text-base">
+                {adv.description}
+                </p>
             </div>
           ))}
         </div>

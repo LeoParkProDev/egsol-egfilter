@@ -13,7 +13,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-surface-dark text-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="text-accent font-black text-sm tracking-widest uppercase">
+          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
             About Us
           </span>
           <h1 className="text-3xl md:text-5xl font-black mt-3 mb-6">
