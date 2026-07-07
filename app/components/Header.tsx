@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "제품", href: "/products/pre-filter" },
+  { label: "병원·의료용", href: "/medical" },
   { label: "필터 가이드", href: "/guide" },
   { label: "회사소개", href: "/about" },
   { label: "FAQ", href: "/faq" },
