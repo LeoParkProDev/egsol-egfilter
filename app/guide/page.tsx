@@ -1,13 +1,19 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { guides } from "../data/guides";
 
 export const metadata: Metadata = {
-  title: "필터 가이드",
-  description: "현장에 맞는 최적의 필터 선택 가이드",
+  title: "필터 가이드 | 교체주기·등급·의료시설 기준 총정리",
+  description:
+    "헤파필터 교체주기, H13 vs H14 등급 차이, 수술실·음압병실 필터 기준까지. 현장에서 바로 쓰는 에어필터 선택·관리 가이드 모음.",
+  keywords:
+    "필터 가이드,헤파필터 교체주기,에어필터 등급,H13 H14,수술실 필터 기준,음압병실 필터,필터 선택",
+  alternates: { canonical: "/guide" },
 };
 
 export default function GuidePage() {
   return (
-    <main className="min-h-screen bg-surface py-16 md:py-24">
+    <main className="min-h-screen bg-surface py-16 md:py-24 break-keep">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-primary font-black text-sm tracking-widest uppercase">Guide</span>
@@ -15,8 +21,38 @@ export default function GuidePage() {
             필터 선택 가이드
           </h1>
           <p className="text-lg text-gray-600">
-            우리 공장에 어떤 필터가 필요한지 확인해보세요.
+            교체주기부터 등급 선택, 의료시설 기준까지 — 현장에서 바로 쓰는 가이드입니다.
           </p>
+        </div>
+
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">주제별 심화 가이드</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {guides.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/guide/${g.slug}`}
+                className="group bg-white border border-gray-200 rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand-green/45"
+              >
+                <div className="flex items-center gap-3 text-xs font-extrabold">
+                  <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+                    {g.category}
+                  </span>
+                  <span className="text-gray-400">읽는 시간 {g.readTime}</span>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-gray-900 leading-snug">
+                  {g.title}
+                </h3>
+                <p className="mt-3 text-sm text-gray-500 leading-relaxed line-clamp-2">
+                  {g.description}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#0b9e6e]">
+                  자세히 보기
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AirParticles from "./AirParticles";
+import { specialties } from "../data/specialties";
 
 export const metadata: Metadata = {
   title: "병원·수술실 헤파필터 | 안과·피부과 의료시설 전문",
@@ -371,6 +372,29 @@ export default function MedicalPage() {
                 </dl>
               </div>
             ))}
+          </div>
+
+          <div className="mt-10">
+            <p className="text-sm font-bold text-gray-400">
+              개원가 진료과목별 전문 안내 페이지도 준비되어 있습니다
+            </p>
+            <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {specialties.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/medical/${s.slug}`}
+                  className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
+                >
+                  <span className="block text-xs font-bold text-gray-400">{s.nameEn}</span>
+                  <span className="mt-1 flex items-center justify-between font-extrabold text-gray-900">
+                    {s.name} 필터
+                    <span className="text-[#0b9e6e] group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -13,17 +13,29 @@ export async function generateStaticParams() {
   }));
 }
 
+const BASE_URL = "https://evergreen-filter.vercel.app";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const product = products.find((p) => p.slug === resolvedParams.category);
-  
+
   if (!product) {
     return { title: "제품을 찾을 수 없습니다" };
   }
 
   return {
-    title: `${product.name} | 에버그린필터`,
-    description: product.shortDesc,
+    title: `${product.name}(${product.nameEn}) | 규격·등급·교체주기`,
+    description: `${product.shortDesc} ${product.applications.join(", ")} 적용. 규격 맞춤 제작, 당일 견적, 전국 배송.`,
+    keywords: `${product.name},${product.nameEn},${product.name} 가격,${product.name} 규격,${product.name} 교체주기,${product.applications.join(",")}`,
+    alternates: { canonical: `/products/${product.slug}` },
+    openGraph: {
+      title: `${product.name}(${product.nameEn}) | 에버그린필터`,
+      description: product.shortDesc,
+      url: `${BASE_URL}/products/${product.slug}`,
+      siteName: "에버그린필터",
+      locale: "ko_KR",
+      type: "website",
+    },
   };
 }
 
@@ -37,8 +49,45 @@ export default async function ProductPage({ params }: Props) {
 
   const colors = colorMap[product.color];
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${product.name} (${product.nameEn})`,
+    description: product.description,
+    brand: { "@type": "Brand", name: "에버그린필터" },
+    url: `${BASE_URL}/products/${product.slug}`,
+    category: "에어필터",
+    additionalProperty: product.specs.map((spec) => ({
+      "@type": "PropertyValue",
+      name: spec.label,
+      value: spec.value,
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.name,
+        item: `${BASE_URL}/products/${product.slug}`,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-surface py-16 md:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-6">
         <Link href="/" className="inline-flex items-center text-sm font-bold text-gray-500 hover:text-primary mb-8 transition-colors">
           <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

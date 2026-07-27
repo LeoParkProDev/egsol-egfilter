@@ -31,6 +31,7 @@ export default function Home() {
               addressCountry: "KR",
             },
             url: "https://evergreen-filter.vercel.app",
+            sameAs: ["https://smartstore.naver.com/egfilter"],
             openingHours: "Mo-Fr 09:00-18:00",
             areaServed: {
               "@type": "GeoCircle",
