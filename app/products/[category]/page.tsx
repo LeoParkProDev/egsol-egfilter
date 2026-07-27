@@ -1,7 +1,15 @@
 import { notFound } from "next/navigation";
 import { products, colorMap } from "../../data/products";
+import { guides } from "../../data/guides";
 import Link from "next/link";
 import { Metadata } from "next";
+
+const relatedGuideSlugs: Record<string, string[]> = {
+  "pre-filter": ["hepa-filter-replacement-cycle", "air-filter-grade-guide"],
+  "hepa-filter": ["h13-vs-h14", "hepa-filter-size-guide", "hepa-filter-replacement-cycle"],
+  "medium-filter": ["air-filter-grade-guide", "hepa-filter-replacement-cycle"],
+  "roll-filter": ["air-filter-grade-guide"],
+};
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -205,6 +213,25 @@ export default async function ProductPage({ params }: Props) {
                       <p className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
                     </details>
                   ))}
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">관련 가이드</h2>
+                <div className="flex flex-col gap-2.5">
+                  {(relatedGuideSlugs[product.slug] ?? [])
+                    .map((slug) => guides.find((g) => g.slug === slug))
+                    .filter((g) => g !== undefined)
+                    .map((g) => (
+                      <Link
+                        key={g.slug}
+                        href={`/guide/${g.slug}`}
+                        className="group flex items-center justify-between gap-4 bg-gray-50 border border-gray-100 rounded-xl px-5 py-3.5 text-sm font-bold text-gray-700 hover:text-gray-900 hover:border-gray-300 transition-colors"
+                      >
+                        {g.title.split(" — ")[0]}
+                        <span className={`shrink-0 ${colors.text} group-hover:translate-x-1 transition-transform`}>→</span>
+                      </Link>
+                    ))}
                 </div>
               </div>
 

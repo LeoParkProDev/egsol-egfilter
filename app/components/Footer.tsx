@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-surface-dark border-t border-white/10 text-white/60 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Company */}
           <div className="lg:col-span-2">
             <p className="text-white font-black text-lg mb-1">에버그린필터</p>
@@ -28,6 +28,17 @@ export default function Footer() {
               <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
               <Link href="/quote" className="hover:text-white transition-colors">견적 요청</Link>
               <Link href="/faq" className="hover:text-white transition-colors">자주 묻는 질문</Link>
+            </div>
+          </div>
+
+          {/* Industry */}
+          <div>
+            <p className="text-white font-bold text-sm mb-4">산업 분야</p>
+            <div className="flex flex-col gap-2 text-sm">
+              <Link href="/industry/paint-booth" className="hover:text-white transition-colors">도장부스 필터</Link>
+              <Link href="/industry/cleanroom" className="hover:text-white transition-colors">클린룸 필터</Link>
+              <Link href="/industry/food-factory" className="hover:text-white transition-colors">식품공장 필터</Link>
+              <Link href="/industry/hvac" className="hover:text-white transition-colors">빌딩·공조기 필터</Link>
             </div>
           </div>
 

@@ -1,10 +1,14 @@
+import Link from "next/link";
+
 const industries = [
-  { icon: "🏭", name: "반도체·디스플레이" },
-  { icon: "🚗", name: "자동차 도장" },
-  { icon: "🍳", name: "식품 제조" },
-  { icon: "💊", name: "제약·바이오" },
-  { icon: "🏗️", name: "일반 제조" },
-  { icon: "🏢", name: "빌딩 공조" },
+  { icon: "🏥", name: "병원·의료", href: "/medical" },
+  { icon: "🏭", name: "반도체·디스플레이", href: "/industry/cleanroom" },
+  { icon: "💊", name: "제약·바이오", href: "/industry/cleanroom" },
+  { icon: "🚗", name: "자동차 도장", href: "/industry/paint-booth" },
+  { icon: "🍳", name: "식품 제조", href: "/industry/food-factory" },
+  { icon: "🏢", name: "빌딩 공조", href: "/industry/hvac" },
+  { icon: "🏗️", name: "일반 제조", href: "/industry/hvac" },
+  { icon: "🐕", name: "동물병원", href: "/medical/animal" },
 ];
 
 export default function Industries() {
@@ -19,19 +23,22 @@ export default function Industries() {
             납품 분야
           </h2>
           <p className="text-gray-500 text-lg">
-            다양한 산업 현장에 에어필터를 공급하고 있습니다
+            분야를 선택하시면 현장별 권장 필터 구성을 확인하실 수 있습니다
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {industries.map((industry) => (
-            <div
+            <Link
               key={industry.name}
-              className="bg-white rounded-xl p-6 text-center border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all"
+              href={industry.href}
+              className="group bg-white rounded-xl p-6 text-center border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all"
             >
               <span className="text-3xl block mb-3">{industry.icon}</span>
-              <p className="text-sm font-bold text-gray-700">{industry.name}</p>
-            </div>
+              <p className="text-sm font-bold text-gray-700 group-hover:text-primary transition-colors">
+                {industry.name}
+              </p>
+            </Link>
           ))}
         </div>
       </div>

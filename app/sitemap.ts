@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { products } from "./data/products";
 import { specialties } from "./data/specialties";
 import { guides } from "./data/guides";
+import { industries } from "./data/industries";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 
@@ -27,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const industryPages: MetadataRoute.Sitemap = industries.map((i) => ({
+    url: `${BASE_URL}/industry/${i.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   return [
     {
       url: BASE_URL,
@@ -41,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...specialtyPages,
+    ...industryPages,
     ...productPages,
     ...guidePages,
     {

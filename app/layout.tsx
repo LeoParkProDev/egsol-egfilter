@@ -19,7 +19,23 @@ export const metadata: Metadata = {
   keywords:
     "병원 에어필터,수술실 필터,크린룸 필터,공장 에어필터,도장부스 필터,관리실 필터,헤파필터,프리필터,미듐필터,에버그린필터",
   metadataBase: new URL("https://evergreen-filter.vercel.app"),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/feed.xml" },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  authors: [{ name: "에버그린필터" }],
+  publisher: "에버그린필터",
+  formatDetection: { telephone: false },
   verification: {
     other: {
       "naver-site-verification": "0914a5e09de7ec433d381f1847fe109d4d674f55",
@@ -40,6 +56,15 @@ export const metadata: Metadata = {
     description:
       "병원, 크린룸, 수술실, 공장 등 각 현장에 특화된 고효율 에어필터 솔루션을 제공합니다.",
   },
+};
+
+const webSiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "에버그린필터",
+  alternateName: "Evergreen Filter",
+  url: "https://evergreen-filter.vercel.app",
+  inLanguage: "ko",
 };
 
 const organizationJsonLd = {
@@ -74,6 +99,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
