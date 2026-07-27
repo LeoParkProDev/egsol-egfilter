@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ | 에버그린필터",
-  description: "자주 묻는 질문",
+  title: "자주 묻는 질문 | 주문·배송·맞춤 제작·병원 납품",
+  description:
+    "에어필터 소량 주문, 배송 기간, 커스텀 규격 제작, 세금계산서, 병원·의료시설 납품까지 — 고객님들이 가장 많이 묻는 질문과 답변을 모았습니다.",
+  keywords:
+    "에어필터 주문,필터 맞춤 제작,필터 배송,세금계산서,병원 필터 납품,정기 납품,헤파필터 규격",
+  alternates: { canonical: "/faq" },
 };
 
 const faqs = [
@@ -19,6 +23,10 @@ const faqs = [
     a: "가능합니다. 프리필터, 미듐필터, 헤파필터 모두 현장 설비 규격에 맞춰 제작해 드립니다. 단, 제작 상품은 발주 후 3~7일 정도 소요될 수 있습니다.",
   },
   {
+    q: "기존 필터 규격을 모르는데 주문할 수 있나요?",
+    a: "가능합니다. 설치된 필터의 라벨 사진이나 프레임 실측 치수(가로×세로×두께)를 카카오톡 또는 이메일로 보내주시면 규격을 확인해 당일 견적을 드립니다.",
+  },
+  {
     q: "세금계산서 발행이 가능한가요?",
     a: "네, 스마트스토어 주문 시 지출증빙용 현금영수증이나 세금계산서 발행을 선택하실 수 있습니다. 별도 계좌이체 거래 시에도 사업자등록증을 보내주시면 즉시 발행해 드립니다.",
   },
@@ -26,11 +34,33 @@ const faqs = [
     q: "정기 납품 계약을 하면 혜택이 있나요?",
     a: "정기 납품(월/분기별) 계약 시 단가 할인 혜택이 적용되며, 귀사의 규격에 맞는 재고를 항시 확보하여 결품 없이 안정적으로 공급해 드립니다.",
   },
+  {
+    q: "병원·의원에도 납품하나요?",
+    a: "네. 수술실·시술실·음압병실용 H13·H14 헤파필터를 병원 규격에 맞춰 공급하며, 치과·피부과·한의원·동물병원 등 개원가 납품 실적이 다수 있습니다. 견적서·거래명세서 등 병원 행정 서류도 함께 준비해 드립니다.",
+  },
+  {
+    q: "필터 교체 시기를 어떻게 알 수 있나요?",
+    a: "프리필터는 1~3개월, 미듐필터는 3~6개월, 헤파필터는 6~12개월이 일반적이며, 정확한 판단 기준은 차압(필터 막힘 정도)입니다. 구매 고객께는 교체 주기를 기록해 두었다가 시기가 되면 먼저 연락드립니다.",
+  },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-surface py-16 md:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-primary font-black text-sm tracking-widest uppercase">FAQ</span>

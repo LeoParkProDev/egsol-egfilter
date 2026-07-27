@@ -78,6 +78,16 @@ export default async function ProductPage({ params }: Props) {
     ],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: product.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-surface py-16 md:py-24">
       <script
@@ -87,6 +97,10 @@ export default async function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="max-w-4xl mx-auto px-6">
         <Link href="/" className="inline-flex items-center text-sm font-bold text-gray-500 hover:text-primary mb-8 transition-colors">
@@ -166,6 +180,32 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-gray-700 bg-gray-50 p-4 rounded-xl font-medium">
                   {product.replacementCycle}
                 </p>
+              </div>
+
+              <div className="mb-8">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">
+                  {product.name} 자주 묻는 질문
+                </h2>
+                <div className="space-y-3">
+                  {product.faqs.map((faq, i) => (
+                    <details
+                      key={faq.q}
+                      className="group bg-gray-50 border border-gray-100 rounded-xl"
+                      open={i === 0}
+                    >
+                      <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 px-5 py-4 font-bold text-gray-900 text-sm">
+                        {faq.q}
+                        <span
+                          aria-hidden="true"
+                          className={`shrink-0 text-lg font-light ${colors.text} transition-transform group-open:rotate-45`}
+                        >
+                          +
+                        </span>
+                      </summary>
+                      <p className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                    </details>
+                  ))}
+                </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-6">

@@ -1,0 +1,32 @@
+# 에버그린필터 (Evergreen Filter)
+
+> 병원·크린룸·공장 에어필터 전문 공급 업체. 프리필터(G2~G4), 미듐필터(F5~F9), 헤파필터(H13~H14, EN 1822), 부직포롤필터를 표준·비표준 규격 맞춤 제작으로 전국 공급한다. 기존 필터 라벨 사진 또는 실측 치수(가로×세로×두께)를 보내면 당일 견적을 제공하며, 세금계산서 발행과 정기 납품이 가능하다.
+
+주요 고객: 병원(수술실·시술실·음압병실), 치과, 피부과·성형외과, 한의원, 동물병원, 반도체·제약 클린룸, 식품 제조(HACCP), 일반 공장 공조(AHU), 도장부스.
+
+문의: egfilter@naver.com · 카카오톡 채널 https://pf.kakao.com/_zjkxab
+소량 구매: https://smartstore.naver.com/egfilter
+
+## 제품
+- [헤파필터](https://evergreen-filter.vercel.app/products/hepa-filter): H13~H14(EN 1822), 0.3μm 입자 99.97~99.995% 포집. 병원 수술실·클린룸용
+- [프리필터](https://evergreen-filter.vercel.app/products/pre-filter): G2~G4, 1차 여과용. 후단 필터 수명 연장
+- [미듐필터](https://evergreen-filter.vercel.app/products/medium-filter): F5~F9, 일반 공조·미세먼지 저감용
+- [부직포롤필터](https://evergreen-filter.vercel.app/products/roll-filter): 자유 재단형 롤 원단, 대량 사용 현장용
+
+## 병원·의료시설
+- [병원·수술실 헤파필터](https://evergreen-filter.vercel.app/medical): 수술실 H14, 안과·피부과·음압병실 전문
+- [치과 필터](https://evergreen-filter.vercel.app/medical/dental): 진료실 에어로졸·기공실 분진 대응
+- [피부과·성형외과 필터](https://evergreen-filter.vercel.app/medical/dermatology): 레이저 플룸·수술실 공기 관리
+- [한의원 필터](https://evergreen-filter.vercel.app/medical/oriental): 뜸 연기·냄새 관리
+- [동물병원 필터](https://evergreen-filter.vercel.app/medical/animal): 털·비듬·격리실 배기 관리
+
+## 가이드
+- [헤파필터 교체주기](https://evergreen-filter.vercel.app/guide/hepa-filter-replacement-cycle): 차압 기준 판단법과 환경별 권장 주기
+- [H13 vs H14 차이](https://evergreen-filter.vercel.app/guide/h13-vs-h14): EN 1822 등급 비교와 용도별 선택 기준
+- [수술실 공기 관리 기준](https://evergreen-filter.vercel.app/guide/operating-room-air-standard): 공기정화설비와 헤파필터 실무
+- [음압격리병실 필터](https://evergreen-filter.vercel.app/guide/negative-pressure-room-filter): 배기 여과 원칙과 교체 시 주의사항
+- [에어필터 등급 총정리](https://evergreen-filter.vercel.app/guide/air-filter-grade-guide): G·F·H·U 등급 체계와 현장별 조합
+
+## 자주 묻는 질문
+- [FAQ](https://evergreen-filter.vercel.app/faq): 주문·배송·맞춤 제작·세금계산서·병원 납품
+- [견적 요청](https://evergreen-filter.vercel.app/quote): 대량 구매·정기 납품·비표준 규격 제작

@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "견적요청 | 에버그린필터",
-  description: "대량 구매 및 정기 납품 견적 문의",
+  title: "견적 요청 | 대량 구매·정기 납품·맞춤 제작",
+  description:
+    "에어필터 대량 구매, 정기 납품, 비표준 규격 맞춤 제작 견적 문의. 필터 라벨 사진이나 실측 치수를 보내주시면 당일 견적을 드립니다. 세금계산서 발행.",
+  keywords:
+    "에어필터 견적,필터 대량 구매,필터 정기 납품,헤파필터 견적,맞춤 필터 제작,필터 납품 업체",
+  alternates: { canonical: "/quote" },
 };
 
 export default function QuotePage() {

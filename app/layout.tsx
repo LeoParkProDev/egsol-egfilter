@@ -42,6 +42,30 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "에버그린필터",
+  alternateName: "Evergreen Filter",
+  url: "https://evergreen-filter.vercel.app",
+  logo: "https://evergreen-filter.vercel.app/apple-icon",
+  email: "egfilter@naver.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "테헤란로70길 12",
+    addressLocality: "강남구",
+    addressRegion: "서울특별시",
+    addressCountry: "KR",
+  },
+  sameAs: ["https://smartstore.naver.com/egfilter"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: "egfilter@naver.com",
+    availableLanguage: "Korean",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +74,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         {children}
         <Footer />

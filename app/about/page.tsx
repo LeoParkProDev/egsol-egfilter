@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "회사소개",
+  title: "회사소개 | 에어필터 전문 공급 10년",
   description:
-    "에버그린필터는 병원, 크린룸, 수술실, 공장 등 청정 환경이 필요한 모든 현장에 최적화된 에어필터를 전문 공급합니다.",
+    "에버그린필터는 병원, 크린룸, 수술실, 공장 등 청정 환경이 필요한 모든 현장에 최적화된 에어필터를 전문 공급합니다. 누적 거래처 500+, 규격 맞춤 제작.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
