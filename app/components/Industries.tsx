@@ -1,13 +1,19 @@
 import Link from "next/link";
 
+// 링크는 중복 없이 서로 다른 페이지를 가리킵니다 — 같은 곳으로 두 번 보내면
+// 그만큼 다른 페이지로 가는 내부 링크를 잃습니다.
 const industries = [
-  { icon: "🏥", name: "병원·의료", href: "/medical" },
-  { icon: "🏭", name: "반도체·디스플레이", href: "/industry/cleanroom" },
-  { icon: "💊", name: "제약·바이오", href: "/industry/cleanroom" },
-  { icon: "🚗", name: "자동차 도장", href: "/industry/paint-booth" },
+  { icon: "🏥", name: "수술실", href: "/medical/operating-room" },
+  { icon: "🩺", name: "병원·의료", href: "/medical" },
+  { icon: "🧑‍🦳", name: "요양병원", href: "/medical/nursing-hospital" },
+  { icon: "👶", name: "산후조리원", href: "/medical/postpartum-care" },
+  { icon: "🏭", name: "반도체·클린룸", href: "/industry/cleanroom" },
+  { icon: "🖥️", name: "데이터센터", href: "/industry/datacenter" },
+  { icon: "🔬", name: "실험실·연구소", href: "/industry/laboratory" },
   { icon: "🍳", name: "식품 제조", href: "/industry/food-factory" },
+  { icon: "🧸", name: "어린이집·유치원", href: "/industry/daycare" },
+  { icon: "🚗", name: "자동차 도장", href: "/industry/paint-booth" },
   { icon: "🏢", name: "빌딩 공조", href: "/industry/hvac" },
-  { icon: "🏗️", name: "일반 제조", href: "/industry/hvac" },
   { icon: "🐕", name: "동물병원", href: "/medical/animal" },
 ];
 

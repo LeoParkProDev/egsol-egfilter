@@ -12,6 +12,8 @@ export interface Product {
   slug: string;
   name: string;
   nameEn: string;
+  /** 같은 제품을 부르는 다른 표기. 검색 유입용 (예: 미듐필터 ↔ 미디움필터) */
+  aliases?: string[];
   shortDesc: string;
   description: string;
   color: string;
@@ -28,6 +30,7 @@ export const products: Product[] = [
     slug: "pre-filter",
     name: "프리필터",
     nameEn: "Pre Filter",
+    aliases: ["부직포필터", "프리필타", "1차필터"],
     shortDesc:
       "1차 여과용 필터로 대형 먼지 입자를 효과적으로 제거합니다. 후단 필터의 수명을 연장시키는 경제적인 선택.",
     description:
@@ -64,6 +67,7 @@ export const products: Product[] = [
     slug: "hepa-filter",
     name: "헤파필터",
     nameEn: "HEPA Filter",
+    aliases: ["HEPA필터", "헤파필타", "고성능필터"],
     shortDesc:
       "초미세먼지 99.97% 제거. 클린룸, 정밀 제조 환경에 필수적인 고효율 에어필터입니다.",
     description:
@@ -100,10 +104,11 @@ export const products: Product[] = [
     slug: "medium-filter",
     name: "미듐필터",
     nameEn: "Medium Filter",
+    aliases: ["미디움필터", "미디엄필터", "중성능필터"],
     shortDesc:
       "중간 등급의 여과 성능. 일반 공장 환경에서 가성비 높은 공기 정화를 제공합니다.",
     description:
-      "미듐필터는 프리필터와 헤파필터 사이의 중간 효율 필터로, F5~F9 등급의 여과 성능을 제공합니다. 일반 공장, 사무실, 상업 건물의 공조 시스템에 가장 널리 사용되며, 미세먼지(PM2.5~PM10)를 효과적으로 저감합니다. 백형(Bag), 판형(Panel), V형 등 다양한 형태로 제공됩니다.",
+      "미듐필터(미디움필터)는 프리필터와 헤파필터 사이의 중간 효율 필터로, F5~F9 등급의 여과 성능을 제공합니다. 현장에서는 미듐필터·미디움필터·중성능필터가 모두 같은 제품을 가리키는 말로 쓰입니다. 일반 공장, 사무실, 상업 건물의 공조 시스템에 가장 널리 사용되며, 미세먼지(PM2.5~PM10)를 효과적으로 저감합니다. 백형(Bag), 판형(Panel), V형 등 다양한 형태로 제공됩니다.",
     color: "violet",
     href: "https://smartstore.naver.com/egfilter/category/fa2d50909bf8410b9fa379356a84f429?cp=1",
     specs: [
@@ -118,6 +123,10 @@ export const products: Product[] = [
     applications: ["일반 공장 공조", "사무실·상업 건물", "도장 부스 2차 필터", "전자 부품 제조"],
     replacementCycle: "3~6개월 (차압 관리 기준)",
     faqs: [
+      {
+        q: "미듐필터와 미디움필터는 다른 제품인가요?",
+        a: "같은 제품입니다. Medium Filter를 옮겨 적는 과정에서 미듐필터·미디움필터·미디엄필터가 혼용되고 있으며, 중성능필터라고 부르는 현장도 있습니다. 어떤 표기로 문의하셔도 동일한 F5~F9 등급 제품으로 안내해 드립니다.",
+      },
       {
         q: "미듐필터와 헤파필터는 무엇이 다른가요?",
         a: "미듐필터(F5~F9)는 PM2.5 수준의 미세먼지를 잡는 중간 효율 필터이고, 헤파필터(H13~)는 0.3μm 초미세 입자까지 잡는 고효율 필터입니다. 일반 사무·상업 공조는 미듐으로 충분한 경우가 많고, 병원·클린룸은 헤파가 필요합니다.",
@@ -136,6 +145,7 @@ export const products: Product[] = [
     slug: "roll-filter",
     name: "부직포롤필터",
     nameEn: "Non-woven Roll Filter",
+    aliases: ["부직포롤", "롤필터", "부직포 원단", "재단필터"],
     shortDesc:
       "롤 형태로 대량 사용에 최적화. 원하는 크기로 자유롭게 커팅하여 다양한 설비에 적용 가능합니다.",
     description:

@@ -34,7 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${product.name}(${product.nameEn}) | 규격·등급·교체주기`,
     description: `${product.shortDesc} ${product.applications.join(", ")} 적용. 규격 맞춤 제작, 당일 견적, 전국 배송.`,
-    keywords: `${product.name},${product.nameEn},${product.name} 가격,${product.name} 규격,${product.name} 교체주기,${product.applications.join(",")}`,
+    keywords: [
+      product.name,
+      product.nameEn,
+      `${product.name} 가격`,
+      `${product.name} 규격`,
+      `${product.name} 교체주기`,
+      // 같은 제품의 다른 표기(미듐/미디움 등)로 검색하는 유입을 놓치지 않기 위함
+      ...(product.aliases ?? []),
+      ...(product.aliases ?? []).map((a) => `${a} 가격`),
+      ...product.applications,
+    ].join(","),
     alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
       title: `${product.name}(${product.nameEn}) | 에버그린필터`,

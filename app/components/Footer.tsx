@@ -35,9 +35,12 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold text-sm mb-4">산업 분야</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/industry/paint-booth" className="hover:text-white transition-colors">도장부스 필터</Link>
               <Link href="/industry/cleanroom" className="hover:text-white transition-colors">클린룸 필터</Link>
+              <Link href="/industry/datacenter" className="hover:text-white transition-colors">데이터센터 필터</Link>
+              <Link href="/industry/laboratory" className="hover:text-white transition-colors">실험실·연구소 필터</Link>
               <Link href="/industry/food-factory" className="hover:text-white transition-colors">식품공장 필터</Link>
+              <Link href="/industry/daycare" className="hover:text-white transition-colors">어린이집·유치원 필터</Link>
+              <Link href="/industry/paint-booth" className="hover:text-white transition-colors">도장부스 필터</Link>
               <Link href="/industry/hvac" className="hover:text-white transition-colors">빌딩·공조기 필터</Link>
             </div>
           </div>
@@ -46,11 +49,14 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold text-sm mb-4">병원·의료시설</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/medical" className="hover:text-white transition-colors">수술실·음압병실 필터</Link>
+              <Link href="/medical/operating-room" className="hover:text-white transition-colors">수술실 헤파필터</Link>
+              <Link href="/medical/nursing-hospital" className="hover:text-white transition-colors">요양병원 필터</Link>
+              <Link href="/medical/postpartum-care" className="hover:text-white transition-colors">산후조리원 필터</Link>
               <Link href="/medical/dental" className="hover:text-white transition-colors">치과 필터</Link>
               <Link href="/medical/dermatology" className="hover:text-white transition-colors">피부과·성형외과 필터</Link>
               <Link href="/medical/oriental" className="hover:text-white transition-colors">한의원 필터</Link>
               <Link href="/medical/animal" className="hover:text-white transition-colors">동물병원 필터</Link>
+              <Link href="/medical" className="hover:text-white transition-colors">의료시설 전체 보기</Link>
             </div>
           </div>
 
@@ -58,9 +64,12 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold text-sm mb-4">필터 가이드</p>
             <div className="flex flex-col gap-2 text-sm">
+              <Link href="/guide/operating-room-filter-replacement" className="hover:text-white transition-colors">수술실 필터 교체</Link>
+              <Link href="/guide/laminar-flow-filter" className="hover:text-white transition-colors">층류 수술실 헤파필터</Link>
               <Link href="/guide/hepa-filter-replacement-cycle" className="hover:text-white transition-colors">헤파필터 교체주기</Link>
               <Link href="/guide/h13-vs-h14" className="hover:text-white transition-colors">H13 vs H14 차이</Link>
-              <Link href="/guide/air-filter-grade-guide" className="hover:text-white transition-colors">에어필터 등급 총정리</Link>
+              <Link href="/guide/air-filter-price" className="hover:text-white transition-colors">에어필터 가격 결정 구조</Link>
+              <Link href="/guide/custom-size-filter" className="hover:text-white transition-colors">비표준 규격 제작</Link>
               <Link href="/guide" className="hover:text-white transition-colors">가이드 전체 보기</Link>
               <a href="https://smartstore.naver.com/egfilter" target="_blank" rel="noopener noreferrer" className="mt-2 hover:text-white transition-colors">
                 네이버 스마트스토어
