@@ -25,6 +25,7 @@ export default function Footer() {
               <Link href="/products/hepa-filter" className="hover:text-white transition-colors">헤파필터</Link>
               <Link href="/products/medium-filter" className="hover:text-white transition-colors">미듐필터</Link>
               <Link href="/products/roll-filter" className="hover:text-white transition-colors">부직포롤필터</Link>
+              <Link href="/size" className="hover:text-white transition-colors">규격별 필터 찾기</Link>
               <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
               <Link href="/quote" className="hover:text-white transition-colors">견적 요청</Link>
               <Link href="/faq" className="hover:text-white transition-colors">자주 묻는 질문</Link>
@@ -54,6 +55,7 @@ export default function Footer() {
               <Link href="/medical/postpartum-care" className="hover:text-white transition-colors">산후조리원 필터</Link>
               <Link href="/medical/dental" className="hover:text-white transition-colors">치과 필터</Link>
               <Link href="/medical/dermatology" className="hover:text-white transition-colors">피부과·성형외과 필터</Link>
+              <Link href="/medical/ophthalmology" className="hover:text-white transition-colors">안과 수술실 필터</Link>
               <Link href="/medical/oriental" className="hover:text-white transition-colors">한의원 필터</Link>
               <Link href="/medical/animal" className="hover:text-white transition-colors">동물병원 필터</Link>
               <Link href="/medical" className="hover:text-white transition-colors">의료시설 전체 보기</Link>

@@ -22,6 +22,7 @@
 - [산후조리원 필터](https://evergreen-filter.vercel.app/medical/postpartum-care): 신생아실 H13·집단감염 예방
 - [치과 필터](https://evergreen-filter.vercel.app/medical/dental): 진료실 에어로졸·기공실 분진 대응
 - [피부과·성형외과 필터](https://evergreen-filter.vercel.app/medical/dermatology): 레이저 플룸·수술실 공기 관리
+- [안과 수술실 필터](https://evergreen-filter.vercel.app/medical/ophthalmology): 라식·백내장 수술실 H13~H14, 소형 수술실 비표준 규격
 - [한의원 필터](https://evergreen-filter.vercel.app/medical/oriental): 뜸 연기·냄새 관리
 - [동물병원 필터](https://evergreen-filter.vercel.app/medical/animal): 털·비듬·격리실 배기 관리
 
@@ -34,8 +35,15 @@
 - [도장부스 필터](https://evergreen-filter.vercel.app/industry/paint-booth): 천장·바닥·배기 필터 규격 재단
 - [빌딩·공조기(AHU) 필터](https://evergreen-filter.vercel.app/industry/hvac): 사무실·상가 실내공기질 관리
 
+## 규격별 카탈로그
+- [규격별 필터 찾기](https://evergreen-filter.vercel.app/size): 헤파·미듐·프리필터 표준 규격 19종 치수별 안내
+- 헤파: 610x610x150 / 610x610x292 / 610x305x150·292 / 610x762x150·292 / 610x915x150·292 / 610x1220x150·292 / 305x305x150 (각각 /size/규격 경로, 예: https://evergreen-filter.vercel.app/size/610x610x150)
+- 미듐: 594x594x75·100·292 / 594x287x292 — 공조기(AHU) 594 레일 규격, 610각 헤파와 호환되지 않음
+- 프리: 594x594x20·25·50 / 594x287x20 — G4 1차 여과 판형
+
 ## 가이드 — 등급·규격
 - [H13 vs H14 차이](https://evergreen-filter.vercel.app/guide/h13-vs-h14): EN 1822 등급 비교와 용도별 선택 기준
+- [표준형 vs 다풍량형](https://evergreen-filter.vercel.app/guide/standard-vs-high-flow): 절곡 구조 차이와 선택 기준
 - [에어필터 등급 총정리](https://evergreen-filter.vercel.app/guide/air-filter-grade-guide): G·F·H·U 등급 체계와 현장별 조합
 - [헤파필터 규격표](https://evergreen-filter.vercel.app/guide/hepa-filter-size-guide): 610×610 등 표준 사이즈와 실측 방법
 - [필터 라벨 읽는 법](https://evergreen-filter.vercel.app/guide/read-filter-label): 라벨 표기 해석과 사진 한 장으로 규격 확정하기
@@ -48,6 +56,8 @@
 
 ## 가이드 — 유지관리
 - [헤파필터 교체주기](https://evergreen-filter.vercel.app/guide/hepa-filter-replacement-cycle): 차압 기준 판단법과 환경별 권장 주기
+- [필터 방향 화살표](https://evergreen-filter.vercel.app/guide/filter-airflow-direction): 에어플로우 표시와 오설치 증상
+- [공조기 냄새 원인](https://evergreen-filter.vercel.app/guide/hvac-odor-troubleshooting): 필터 포화·곰팡이·드레인 구분법
 - [수술실 필터 교체](https://evergreen-filter.vercel.app/guide/operating-room-filter-replacement): 주기·비용 구조·무중단 일정 설계
 - [헤파필터 세척 가능 여부](https://evergreen-filter.vercel.app/guide/hepa-filter-washing): 물세척이 불가능한 이유와 비용 절감 대안
 - [필터 차압계 보는 법](https://evergreen-filter.vercel.app/guide/filter-pressure-gauge): 교체 시점 판단과 차압 급락 시 조치
@@ -57,6 +67,9 @@
 - [에어필터 가격 결정 구조](https://evergreen-filter.vercel.app/guide/air-filter-price): 단가를 만드는 5가지와 견적 비교법
 - [비표준 규격 필터 제작](https://evergreen-filter.vercel.app/guide/custom-size-filter): 실측만으로 단종·맞춤 사이즈 제작하기
 - [사업자 필터 구매](https://evergreen-filter.vercel.app/guide/b2b-filter-supply): 세금계산서·정기 납품·연간 계약
+
+## 가이드 — 법규·기준
+- [실내공기질관리법 총정리](https://evergreen-filter.vercel.app/guide/indoor-air-quality-act): 대상 시설과 취약계층 시설 유지기준
 
 ## 자주 묻는 질문
 - [FAQ](https://evergreen-filter.vercel.app/faq): 주문·배송·맞춤 제작·세금계산서·병원 납품
