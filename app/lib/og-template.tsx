@@ -1,16 +1,28 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-async function loadGoogleFont(text: string, weight: number) {
-  const url = `https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@${weight}&text=${encodeURIComponent(
-    text
-  )}`;
-  const css = await (await fetch(url)).text();
-  const resource = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/);
-  if (!resource) throw new Error("폰트 로드 실패");
-  const res = await fetch(resource[1]);
-  return res.arrayBuffer();
+// 폰트는 저장소에 번들한다 (app/lib/fonts, Noto Sans KR 한글 전체 + 라틴·기호 서브셋).
+// 예전엔 빌드 때마다 구글 폰트 서버에서 받아왔는데, Vercel 빌드 환경에서 응답이
+// 깨져 OG 이미지 프리렌더가 실패하고 배포 전체가 막힌 적이 있다. 네트워크 없이
+// 파일만 읽으므로 환경에 따라 결과가 달라지지 않는다.
+const FONT_DIR = path.join(process.cwd(), "app", "lib", "fonts");
+let fontCache: Promise<[ArrayBuffer, ArrayBuffer]> | null = null;
+
+function toArrayBuffer(buf: Buffer): ArrayBuffer {
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer;
+}
+
+function loadFonts(): Promise<[ArrayBuffer, ArrayBuffer]> {
+  if (!fontCache) {
+    fontCache = Promise.all([
+      readFile(path.join(FONT_DIR, "NotoSansKR-Black.ttf")).then(toArrayBuffer),
+      readFile(path.join(FONT_DIR, "NotoSansKR-Medium.ttf")).then(toArrayBuffer),
+    ]);
+  }
+  return fontCache;
 }
 
 export async function renderOgImage({
@@ -23,11 +35,7 @@ export async function renderOgImage({
   subtitle: string;
 }) {
   const brand = "에버그린필터";
-  const allText = tag + title + subtitle + brand + "99.995%";
-  const [bold, medium] = await Promise.all([
-    loadGoogleFont(allText, 900),
-    loadGoogleFont(allText, 500),
-  ]);
+  const [bold, medium] = await loadFonts();
 
   return new ImageResponse(
     (
