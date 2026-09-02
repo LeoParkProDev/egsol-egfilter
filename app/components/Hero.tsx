@@ -31,8 +31,7 @@ export default function Hero() {
           style={{ animationDelay: "0.1s" }}
         >
           필터 라벨 사진 한 장이면
-          <br className="hidden sm:block" /> 당일 견적,
-          <br className="hidden sm:block" /> 규격 없어도 제작
+          <br className="hidden sm:block" /> 당일 견적, 규격 없어도 제작
         </h1>
 
         {/* Subheading */}
