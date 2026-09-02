@@ -253,16 +253,8 @@ export default function MedicalPage() {
       </section>
 
       {/* ═══ PROBLEM ═══ */}
-      <section className="relative overflow-hidden bg-white py-20 md:py-28">
-        <div
-          aria-hidden="true"
-          className="hidden lg:block absolute -right-10 top-1/3 text-[17rem] xl:text-[21rem] font-black leading-none tracking-tighter text-transparent select-none pointer-events-none tabular-nums"
-          style={{ WebkitTextStroke: "1.5px #d9e0dc" }}
-        >
-          0.3μm
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-6">
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6">
           <span className="eyebrow">
             문제
           </span>
@@ -274,17 +266,14 @@ export default function MedicalPage() {
             순간부터 무관리 상태가 됩니다.
           </p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
+          <div className="rule-ink mt-10 grid gap-x-8 gap-y-9 md:grid-cols-3">
             {pains.map((p) => (
-              <div
-                key={p.who}
-                className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className="text-xs font-extrabold tracking-wide text-[#176b50]">
-                  {p.who}
-                </span>
-                <h3 className="mt-3 text-lg font-extrabold text-gray-900">{p.title}</h3>
-                <p className="mt-3 text-sm text-gray-500 leading-relaxed">{p.desc}</p>
+              <div key={p.who} className="pt-6">
+                <span className="font-mono text-xs text-gray-500">{p.who}</span>
+                <h3 className="mt-2.5 text-[19px] font-semibold leading-snug text-gray-900">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-sm leading-[1.7] text-gray-500">{p.desc}</p>
               </div>
             ))}
           </div>
