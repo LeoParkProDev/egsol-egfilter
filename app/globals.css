@@ -45,3 +45,19 @@ body {
     animation: none;
   }
 }
+
+/* ── 모바일 가독성 ─────────────────────────────────────────── */
+html { -webkit-text-size-adjust: 100%; }
+body { word-break: keep-all; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .table-scroll-hint::after {
+    content: "← 옆으로 밀어 전체 표를 보세요 →";
+    display: block; padding: 6px 12px 8px; font-size: 11px; font-weight: 700;
+    color: #6b7280; text-align: center; border-top: 1px solid #f3f4f6;
+  }
+  .table-scroll-hint th:first-child, .table-scroll-hint td:first-child {
+    position: sticky; left: 0; background: #fff; z-index: 1;
+    box-shadow: 4px 0 8px -6px rgba(0,0,0,.25);
+  }
+  .table-scroll-hint thead th:first-child { background: #f9fafb; }
+}

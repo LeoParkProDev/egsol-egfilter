@@ -7,7 +7,7 @@ export default function KakaoButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="카카오톡 상담"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#FEE500] hover:bg-[#F5DC00] rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+      className="hidden md:flex fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#FEE500] hover:bg-[#F5DC00] rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
     >
       <svg
         className="w-8 h-8"

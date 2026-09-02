@@ -77,7 +77,7 @@ export default function FAQPage() {
           </h1>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
             규격 실측부터 등급 선택, 맞춤 제작, 병원·공장 납품, 서류와 납기까지.
-            <br className="hidden md:block" />
+            <br className="hidden md:block" />{" "}
             전화로 가장 많이 여쭤보시는 순서대로 정리했습니다.
           </p>
         </header>

@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import KakaoButton from "./components/KakaoButton";
 import Analytics from "./components/Analytics";
+import MobileCtaBar from "./components/MobileCtaBar";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -99,7 +100,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
-      <body>
+      <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
@@ -112,6 +113,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <KakaoButton />
+        <MobileCtaBar />
         <Analytics />
       </body>
     </html>

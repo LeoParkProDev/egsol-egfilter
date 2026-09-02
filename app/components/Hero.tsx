@@ -18,30 +18,31 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20 text-center break-keep">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/15 rounded-lg px-5 py-2 mb-10 animate-fade-in-up">
-          <span className="w-2 h-2 bg-brand-green rounded-full" />
-          <span className="text-white/90 text-sm font-bold tracking-wide">
-            병원 수술실 · 클린룸 · 공장 공조 산업용 에어필터
+        <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/15 rounded-lg px-4 py-2 mb-8 md:mb-10 animate-fade-in-up">
+          <span className="w-2 h-2 bg-brand-green rounded-full shrink-0" />
+          <span className="text-white/90 text-xs md:text-sm font-bold tracking-wide whitespace-nowrap">
+            병원 수술실 · 클린룸 · 공장 에어필터
           </span>
         </div>
 
-        {/* Headline */}
+        {/* Headline — 모바일은 줄바꿈을 브라우저에 맡기고(text-balance) 크기를 한 단계 낮춘다 */}
         <h1
-          className="text-4xl md:text-6xl font-black text-white leading-[1.2] mb-8 animate-fade-in-up"
+          className="text-[2rem] leading-[1.25] sm:text-4xl md:text-6xl md:leading-[1.2] font-black text-white mb-6 md:mb-8 text-balance animate-fade-in-up"
           style={{ animationDelay: "0.1s" }}
         >
           필터 라벨 사진 한 장이면
-          <br />
-          당일 견적, 규격 없어도 제작
+          <br className="hidden sm:block" /> 당일 견적,
+          <br className="hidden sm:block" /> 규격 없어도 제작
         </h1>
 
         {/* Subheading */}
         <p
-          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up"
+          className="text-base md:text-xl text-white/80 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed animate-fade-in-up"
           style={{ animationDelay: "0.2s" }}
         >
-          헤파(H13·H14) · 미듐(미디움) · 부직포/프리 · 부직포롤.
-          <br />
+          <span className="whitespace-nowrap">헤파(H13·H14)</span> · <span className="whitespace-nowrap">미듐(미디움)</span> ·{" "}
+          <span className="whitespace-nowrap">부직포·프리</span> · <span className="whitespace-nowrap">부직포롤</span>
+          <br className="hidden sm:block" />{" "}
           표준 규격은 재고 출고, 비표준은 실측만으로 3~7일 맞춤 제작해 전국 납품합니다.
         </p>
 
@@ -80,7 +81,7 @@ export default function Hero() {
 
         {/* Trust stats */}
         <div
-          className="grid grid-cols-3 gap-6 max-w-lg mx-auto mt-16 animate-fade-in-up"
+          className="grid grid-cols-3 gap-3 md:gap-6 max-w-lg mx-auto mt-10 md:mt-16 animate-fade-in-up"
           style={{ animationDelay: "0.4s" }}
         >
           {[

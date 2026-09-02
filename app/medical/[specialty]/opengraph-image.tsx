@@ -20,6 +20,6 @@ export default async function OgImage({
   return renderOgImage({
     tag: data?.badge ?? "병원·의료시설 전문 필터",
     title: data ? `${data.name} 전문 헤파필터` : "병원 전문 헤파필터",
-    subtitle: "규격 맞춤 제작  |  당일 견적  |  전국 배송  |  세금계산서 발행",
+    subtitle: "규격 맞춤 제작  |  당일 견적  |  전국 배송  |  품의 서류 대응",
   });
 }

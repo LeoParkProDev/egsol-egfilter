@@ -101,7 +101,7 @@ export default async function GuideArticlePage({ params }: Props) {
       />
 
       <article className="max-w-3xl mx-auto px-6">
-        <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
+        <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-500">
           <Link href="/guide" className="hover:text-[#0b9e6e] transition-colors">
             필터 가이드
           </Link>
@@ -129,7 +129,7 @@ export default async function GuideArticlePage({ params }: Props) {
                 {section.heading}
               </h2>
               {section.body.map((p) => (
-                <p key={p.slice(0, 24)} className="mt-4 text-gray-700 leading-[1.85]">
+                <p key={p.slice(0, 24)} className="mt-4 text-[17px] md:text-base text-gray-700 leading-[1.85]">
                   {p}
                 </p>
               ))}
@@ -144,7 +144,7 @@ export default async function GuideArticlePage({ params }: Props) {
                 </ul>
               )}
               {section.table && (
-                <div className="mt-5 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
+                <div className="table-scroll-hint mt-5 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
                   <table className="w-full min-w-[560px] text-sm border-collapse">
                     <thead>
                       <tr className="bg-gray-50 text-left text-[0.7rem] uppercase tracking-[0.12em] text-gray-400">

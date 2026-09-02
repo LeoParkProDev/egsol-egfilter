@@ -144,7 +144,7 @@ export default async function SpecialtyPage({ params }: Props) {
             </Link>
           </div>
           <p className="mt-6 text-xs md:text-sm text-white/40 font-semibold">
-            10년+ 의료·클린룸 필터 경력 · 누적 거래처 500+ · 세금계산서 발행
+            10년+ 의료·클린룸 필터 경력 · 누적 거래처 500+ · 품의 서류 대응
           </p>
         </div>
       </section>
@@ -191,7 +191,7 @@ export default async function SpecialtyPage({ params }: Props) {
             드립니다.
           </p>
 
-          <div className="mt-12 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
+          <div className="table-scroll-hint mt-12 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
             <table className="w-full min-w-[640px] text-sm border-collapse">
               <thead>
                 <tr className="bg-gray-50 text-left text-[0.7rem] uppercase tracking-[0.14em] text-gray-400">

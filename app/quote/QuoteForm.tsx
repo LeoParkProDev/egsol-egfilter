@@ -233,6 +233,26 @@ export default function QuoteForm() {
         <label htmlFor="q-photo" className="block text-sm font-bold text-gray-700 mb-2">
           필터 라벨 · 실측 사진 <span className="text-gray-400 font-semibold">(선택 — 있으면 회신이 가장 빠릅니다)</span>
         </label>
+        {/* 네이티브 파일 입력은 모바일에서 작고 눈에 안 띄어 큰 버튼으로 감싼다 */}
+        <label
+          htmlFor="q-photo"
+          className={`flex cursor-pointer items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-4 py-5 text-center transition ${
+            files.length ? "border-primary/60 bg-primary/5" : "border-gray-300 bg-gray-50 hover:border-primary/50"
+          }`}
+        >
+          <svg className="h-7 w-7 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+          </svg>
+          <span className="text-left">
+            <span className="block text-base font-extrabold text-gray-900">
+              {files.length ? `사진 ${files.length}장 선택됨` : "사진 촬영 · 앨범에서 첨부"}
+            </span>
+            <span className="block text-xs text-gray-500">
+              {files.length ? files.map((f) => f.name).join(", ").slice(0, 60) : "필터 옆면 라벨을 찍어주세요"}
+            </span>
+          </span>
+        </label>
         <input
           id="q-photo"
           name="photo"
@@ -241,7 +261,7 @@ export default function QuoteForm() {
           multiple
           capture="environment"
           onChange={(e) => setFiles(Array.from(e.target.files ?? []))}
-          className="block w-full text-sm text-gray-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-sm file:font-bold file:text-primary hover:file:bg-primary/20"
+          className="sr-only"
         />
         <p className={`mt-1.5 text-xs ${tooLarge ? "text-red-600 font-bold" : "text-gray-500"}`}>
           {tooLarge
