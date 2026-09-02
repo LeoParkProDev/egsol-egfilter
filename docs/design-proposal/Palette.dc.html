@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+    a { color: #176B50; text-decoration: none; } a:hover { color: #125A43; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 1300px; background: #FAFBF9; color: #14231F; position: relative;">
+
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 24px; background: #E3F1EA; border-bottom: 1px solid #C6E0D3;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #1F7A5C;"></span>
+    <span style="font-size: 13px; font-weight: 600; color: #176B50;">A안 — 디자인 시스템 (색 · 서체 · 컴포넌트)</span>
+  </div>
+
+  <div style="padding: 56px 96px 72px; display: flex; flex-direction: column; gap: 56px;">
+
+    <!-- rationale -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px;">
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #176B50;">WHY</span>
+        <div style="font-size: 30px; line-height: 1.25; font-weight: 600; letter-spacing: -0.015em;">‘에버그린’인데 왜 파란색이었을까</div>
+      </div>
+      <div style="grid-column: span 7; font-size: 15px; line-height: 1.8; color: #2B3D36;">현재 사이트는 파랑(#0052cc) · 형광 청록(#00c2e0) · 에메랄드(#10b981) · 카카오 노랑이 서로 경쟁하고, 홈은 파랑 계열, 병원 페이지는 검정 바탕 녹색 계열로 갈립니다. A안은 상호가 말하는 ‘상록(evergreen)’ 하나를 잉크 톤으로 깔고, 액센트도 같은 녹색 한 가지로 통일합니다. 그라데이션·격자 배경·이모지·카드 그림자를 걷어내고 얇은 괘선과 모노스페이스 숫자로 ‘규격을 다루는 회사’라는 인상을 만듭니다.</div>
+    </div>
+
+    <!-- colors -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #176B50;">01</span><span style="font-size: 22px; font-weight: 600;">색 — 잉크 1 + 액센트 1</span></div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #14231F;"></div><span style="font-size: 12px; font-weight: 600;">Ink</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#14231F</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #2B3D36;"></div><span style="font-size: 12px; font-weight: 600;">Ink 2</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#2B3D36</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #5C6B66;"></div><span style="font-size: 12px; font-weight: 600;">Muted</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#5C6B66</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #D9E0DC;"></div><span style="font-size: 12px; font-weight: 600;">Line</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#D9E0DC</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #F1F4F2; border: 1px solid #D9E0DC;"></div><span style="font-size: 12px; font-weight: 600;">Surface</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#F1F4F2</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #FAFBF9; border: 1px solid #D9E0DC;"></div><span style="font-size: 12px; font-weight: 600;">Paper</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#FAFBF9</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #176B50;"></div><span style="font-size: 12px; font-weight: 600;">Evergreen</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#176B50</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #E3F1EA; border: 1px solid #C6E0D3;"></div><span style="font-size: 12px; font-weight: 600;">Evergreen Tint</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#E3F1EA</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #1F7A5C;"></div><span style="font-size: 12px; font-weight: 600;">Evergreen Line (아이콘·괘선·점)</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#1F7A5C</span></div>
+        <div style="display: flex; flex-direction: column; gap: 8px;"><div style="height: 72px; border-radius: 6px; background: #EEF1EF; border: 1px solid #D9E0DC;"></div><span style="font-size: 12px; font-weight: 600;">Hairline (행 구분선)</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66;">#EEF1EF</span></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 4px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #5C6B66;">BEFORE — 4 accents + 검정 바탕</span>
+          <div style="display: flex; gap: 8px;"><span style="width: 44px; height: 28px; border-radius: 4px; background: #0052cc;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #00c2e0;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #10b981;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #FEE500;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #06090f;"></span></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #176B50;">AFTER — 1 accent (카카오 노랑은 10px 점으로만)</span>
+          <div style="display: flex; gap: 8px;"><span style="width: 44px; height: 28px; border-radius: 4px; background: #14231F;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #176B50;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #E3F1EA; border: 1px solid #C6E0D3;"></span><span style="width: 44px; height: 28px; border-radius: 4px; background: #FAFBF9; border: 1px solid #D9E0DC;"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- type -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #176B50;">02</span><span style="font-size: 22px; font-weight: 600;">서체 — IBM Plex Sans KR + IBM Plex Mono (숫자·규격)</span></div>
+      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; border-top: 1px solid #14231F; padding-top: 20px;">
+        <div style="grid-column: span 7; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: baseline; gap: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66; width: 90px;">Display 56/600</span><span style="font-size: 56px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em;">규격 없어도 제작</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66; width: 90px;">H2 34/600</span><span style="font-size: 34px; line-height: 1.2; font-weight: 600; letter-spacing: -0.015em;">네 가지 필터, 등급으로 고릅니다</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66; width: 90px;">H3 20/600</span><span style="font-size: 20px; font-weight: 600;">진료실 급기 · 공기청정 유닛</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66; width: 90px;">Body 16/400</span><span style="font-size: 16px; line-height: 1.7; color: #2B3D36;">앞단의 저렴한 필터를 부지런히 갈수록 뒷단의 고가 필터가 오래갑니다.</span></div>
+          <div style="display: flex; align-items: baseline; gap: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6B66; width: 90px;">Mono 14/600</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;">610 × 610 × 292 · H14 · EN 1822 · 99.995 %</span></div>
+        </div>
+        <div style="grid-column: span 5; font-size: 14px; line-height: 1.8; color: #5C6B66;">굵기는 400 / 500 / 600 세 단계만 씁니다. 현재 사이트의 900(font-black) 남발이 ‘소리치는’ 인상을 만드는 주범입니다. 규격·등급·퍼센트 같은 숫자는 전부 모노스페이스로 — 표에서 자릿수가 맞아떨어지고, 제조사 카탈로그의 신뢰감이 생깁니다.</div>
+      </div>
+    </div>
+
+    <!-- components -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; align-items: baseline; gap: 12px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #176B50;">03</span><span style="font-size: 22px; font-weight: 600;">컴포넌트 — 괘선, 6px 라운드(패널·밴드는 8px), 그림자 없음</span></div>
+      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; border-top: 1px solid #14231F; padding-top: 24px;">
+        <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #5C6B66;">BUTTONS</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <span style="background: #176B50; color: #FAFBF9; font-size: 14px; font-weight: 600; padding: 12px 18px; border-radius: 6px;">Primary</span>
+            <span style="border: 1px solid #14231F; color: #14231F; font-size: 14px; font-weight: 600; padding: 11px 16px; border-radius: 6px;">Secondary</span>
+            <span style="color: #176B50; font-size: 14px; font-weight: 600;">Quiet →</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 8px; border: 1px solid #14231F; color: #14231F; font-size: 14px; font-weight: 600; padding: 11px 16px; border-radius: 6px;"><span style="width: 10px; height: 10px; border-radius: 999px; background: #FEE500; border: 1px solid #D4C000;"></span>카카오톡 상담</span>
+            <span style="font-size: 12px; color: #5C6B66;">← 노랑 버튼 대신 점 하나</span>
+          </div>
+        </div>
+        <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #5C6B66;">SIZE CHIP · EYEBROW</span>
+          <div style="border: 1px solid #D9E0DC; border-radius: 6px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; background: #FFFFFF; width: 200px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600;">610 × 610 × 150</span><span style="font-size: 12px; color: #5C6B66;">헤파 · 공조기 최종단</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #176B50;"><span style="width: 18px; height: 1px; background: #1F7A5C;"></span>02 — 규격으로 바로 찾기</div>
+          <span style="font-size: 12px; color: #5C6B66;">섹션 아이브로우는 ‘번호 + 한글’로. 영문 대문자는 표 머리·라벨 마이크로카피에만, 밑줄 바는 제거</span>
+        </div>
+        <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #5C6B66;">ICON · MARK</span>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <svg width="40" height="40" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="5" stroke="#14231F" stroke-width="1.5"/><path d="M7 6v14M10.5 6v14M14 6v14M17.5 6v14" stroke="#1F7A5C" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div style="display: flex; gap: 12px; color: #14231F;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.3-2h6l1.3 2h1.2A2.5 2.5 0 0 1 20 8.5V17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 9h16M4 14h16M9 4v16"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 7c0 6 6 6 6 6s6 0 6 6"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+            </div>
+          </div>
+          <span style="font-size: 12px; line-height: 1.6; color: #5C6B66;">‘EG’ 글자 로고 → 필터 플리츠(주름) 마크. 이모지 20종 → 1.6–2px 스트로크 라인 아이콘 한 세트.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

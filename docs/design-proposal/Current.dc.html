@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    body { margin: 0; font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; word-break: keep-all; }
+    a { color: #0052cc; text-decoration: none; } a:hover { color: #003380; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 1180px; background: #ffffff; position: relative; overflow: hidden;">
+
+  <!-- label -->
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 24px; background: #fff7ed; border-bottom: 1px solid #fed7aa;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #ea580c;"></span>
+    <span style="font-size: 13px; font-weight: 700; color: #9a3412;">현재 사이트 — evergreen-filter.vercel.app (코드 기준 재현)</span>
+  </div>
+
+  <!-- header -->
+  <div style="height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 96px; border-bottom: 1px solid #e5e7eb; background: #ffffff;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 32px; height: 32px; background: #0052cc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 900;">EG</div>
+      <span style="font-size: 18px; font-weight: 900; color: #111827;">에버그린필터</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 32px; font-size: 14px; font-weight: 700; color: #4b5563;">
+      <span>제품</span><span>병원·의료용</span><span>필터 가이드</span><span>회사소개</span><span>FAQ</span><span>견적요청</span>
+    </div>
+    <div style="background: #0052cc; color: #fff; font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 8px;">스마트스토어</div>
+  </div>
+
+  <!-- hero -->
+  <div style="position: relative; height: 640px; background: linear-gradient(135deg, #0a0f1e 0%, #0d1a33 50%, #003380 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <div style="position: absolute; inset: 0; opacity: 0.06; background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 0; width: 960px; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 8px 16px; margin-bottom: 40px;">
+        <span style="width: 8px; height: 8px; border-radius: 999px; background: #10b981;"></span>
+        <span style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 0.02em;">병원 수술실 · 클린룸 · 공장 에어필터</span>
+      </div>
+      <div style="font-size: 60px; line-height: 1.2; font-weight: 900; color: #ffffff; margin-bottom: 32px;">필터 라벨 사진 한 장이면<br>당일 견적,<br>규격 없어도 제작</div>
+      <div style="font-size: 20px; line-height: 1.6; color: rgba(255,255,255,0.8); margin-bottom: 48px; max-width: 700px;">헤파(H13·H14) · 미듐(미디움) · 부직포·프리 · 부직포롤<br>표준 규격은 재고 출고, 비표준은 실측만으로 3~7일 맞춤 제작해 전국 납품합니다.</div>
+      <div style="display: flex; gap: 16px; margin-bottom: 64px;">
+        <div style="display: flex; align-items: center; gap: 12px; background: #00c2e0; color: #0a0f1e; font-size: 18px; font-weight: 900; padding: 16px 32px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,194,224,0.25);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.8 6.2A2.3 2.3 0 0 1 5.2 7.2c-.4.1-.8.1-1.1.2C3 7.6 2.3 8.5 2.3 9.6V18a2.3 2.3 0 0 0 2.2 2.3h15a2.3 2.3 0 0 0 2.3-2.3V9.6c0-1.1-.8-2-1.8-2.2-.4-.1-.8-.1-1.1-.2a2.3 2.3 0 0 1-1.6-1l-.8-1.3a2.2 2.2 0 0 0-1.7-1 48.8 48.8 0 0 0-5.2 0 2.2 2.2 0 0 0-1.7 1z"/><circle cx="12" cy="12.8" r="4.5"/></svg>
+          사진으로 견적 받기
+        </div>
+        <div style="background: #FEE500; color: #111827; font-size: 18px; font-weight: 900; padding: 16px 32px; border-radius: 12px;">카카오톡 상담</div>
+        <div style="background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 18px; font-weight: 900; padding: 16px 32px; border-radius: 12px;">스마트스토어</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; width: 512px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><span style="font-size: 30px; font-weight: 900; color: #00c2e0;">30분</span><span style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.6);">영업일 1차 회신</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><span style="font-size: 30px; font-weight: 900; color: #00c2e0;">3~7일</span><span style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.6);">비표준 맞춤 제작</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><span style="font-size: 30px; font-weight: 900; color: #00c2e0;">500+</span><span style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.6);">누적 거래처</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- products head + industries emoji grid -->
+  <div style="padding: 72px 96px 40px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;">
+    <span style="font-size: 14px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #0052cc;">Industries</span>
+    <div style="font-size: 36px; font-weight: 900; color: #111827;">납품 분야</div>
+    <div style="font-size: 18px; color: #6b7280;">분야를 선택하시면 현장별 권장 필터 구성을 확인하실 수 있습니다</div>
+  </div>
+  <div style="padding: 0 96px 72px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+    <div style="background: #fff; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;"><span style="font-size: 30px;">🏥</span><span style="font-size: 14px; font-weight: 700; color: #374151;">수술실</span></div>
+    <div style="background: #fff; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;"><span style="font-size: 30px;">👁️</span><span style="font-size: 14px; font-weight: 700; color: #374151;">안과 수술실</span></div>
+    <div style="background: #fff; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;"><span style="font-size: 30px;">🦷</span><span style="font-size: 14px; font-weight: 700; color: #374151;">치과 진료실</span></div>
+    <div style="background: #fff; border: 1px solid #f3f4f6; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;"><span style="font-size: 30px;">🐕</span><span style="font-size: 14px; font-weight: 700; color: #374151;">동물병원</span></div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

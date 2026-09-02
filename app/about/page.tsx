@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE } from "../data/site";
 
 export const metadata: Metadata = {
   title: "회사소개 | 에어필터 전문 공급 10년",
@@ -78,7 +79,8 @@ export default function AboutPage() {
                   ["대표자", "박현수"],
                   ["사업자등록번호", "799-67-00516"],
                   ["소재지", "서울특별시 강남구 테헤란로70길 12"],
-                  ["이메일", "egfilter153@gmail.com"],
+                  ["전화", `${SITE.phone} (${SITE.hours})`],
+                  ["이메일", SITE.email],
                   ["업종", "산업용 에어필터 도·소매"],
                   ["주요 취급 품목", "프리필터, 헤파필터, 미듐필터, 부직포롤필터"],
                   ["서비스 지역", "전국 (수도권 당일/익일 배송)"],

@@ -18,7 +18,7 @@ interface SiteConfig {
 }
 
 // 0507 스마트콜 발급 후 여기만 채우면 됩니다. 예: "0507-1234-5678"
-const phone: string = "";
+const phone: string = "010-2055-3958";
 
 export const SITE: SiteConfig = {
   name: "에버그린필터",
