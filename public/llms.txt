@@ -26,8 +26,19 @@
 - [한의원 필터](https://evergreen-filter.vercel.app/medical/oriental): 뜸 연기·냄새 관리
 - [동물병원 필터](https://evergreen-filter.vercel.app/medical/animal): 털·비듬·격리실 배기 관리
 
+## 서비스 · 거래 방식
+- [서비스 전체](https://evergreen-filter.vercel.app/service): 제품이 아니라 거래 방식 6종
+- [병원·의료기관 납품](https://evergreen-filter.vercel.app/service/hospital-supply): 구매과·시설과 품의 서류, 수술 없는 시간대 사전 납품
+- [정기 납품·연간 단가](https://evergreen-filter.vercel.app/service/regular-supply): 교체 주기 기록 후 먼저 연락, 단가 1년 고정, 약정 없음
+- [비표준 맞춤 제작](https://evergreen-filter.vercel.app/service/custom-fabrication): 라벨 사진·실측 → 당일 견적 → 3~7일 제작
+- [무료 필터 실사표](https://evergreen-filter.vercel.app/service/filter-map): 설비별 규격·주기·연간 수량 표 무료 정리
+- [설비·점검업체 파트너](https://evergreen-filter.vercel.app/service/partner-program): 협력사 단가, 현장 직송, 월 정산
+- [관공서·학교 납품](https://evergreen-filter.vercel.app/service/public-procurement): 기관 구매 절차에 맞춘 서류 대응
+
 ## 산업·시설
+- [반도체 미세공정 필터](https://evergreen-filter.vercel.app/industry/semiconductor): 클린룸 FFU 헤파 정기교체 대량 발주, 무중단 교체 창구
 - [클린룸 필터](https://evergreen-filter.vercel.app/industry/cleanroom): 반도체·제약 GMP 헤파필터 H13·H14
+- [플라스틱 공장 필터](https://evergreen-filter.vercel.app/industry/plastics): 사출·압출 미스트·분진, 프리 단주기 교체
 - [데이터센터 필터](https://evergreen-filter.vercel.app/industry/datacenter): 전산실 공조·무중단 교체 일정 대응
 - [실험실·연구소 필터](https://evergreen-filter.vercel.app/industry/laboratory): 클린벤치·생물안전작업대(BSC) 헤파필터
 - [식품공장 필터](https://evergreen-filter.vercel.app/industry/food-factory): HACCP 공기질·청정구역
@@ -50,6 +61,20 @@
 
 ## 가이드 — 의료시설 기준
 - [수술실 공기 관리 기준](https://evergreen-filter.vercel.app/guide/operating-room-air-standard): 공기정화설비와 헤파필터 실무
+- [수술실 필터 교체 체크리스트](https://evergreen-filter.vercel.app/guide/operating-room-filter-replacement-checklist): 교체 전·중·후 체크리스트, 이력 대장 양식
+- [병원 구역별 공조 필터 등급표](https://evergreen-filter.vercel.app/guide/hospital-hvac-filter-grades-by-zone): 수술실·음압·신생아실·병동·외래 실무 통용 조합
+- [안과 수술실 청정도](https://evergreen-filter.vercel.app/guide/ophthalmic-operating-room-cleanliness): 백내장 안내염 리스크, 소형 수술실 비표준 규격
+- [산후조리원 신생아실 공기질](https://evergreen-filter.vercel.app/guide/postpartum-nursery-air-management): 총부유세균 항목, 급기 H13, 상담 자료화
+- [치과 진료실 에어로졸 관리](https://evergreen-filter.vercel.app/guide/dental-treatment-room-aerosol): 핸드피스 에어로졸, 진료실·기공실·대기실 3구역
+- [요양병원 감염관리와 필터](https://evergreen-filter.vercel.app/guide/nursing-hospital-infection-control-filter): 격리병실·공용부·식당 구성
+- [진료실 공기청정기 vs 공조 필터](https://evergreen-filter.vercel.app/guide/clinic-air-purifier-vs-hvac): 소규모 의원의 선택·배치 기준
+
+## 가이드 — 산업 현장
+- [도장부스 필터 구성과 교체주기](https://evergreen-filter.vercel.app/guide/paint-booth-filter-guide): 천장·바닥·배기 3구간, 부직포롤 재단
+- [반도체 클린룸 FFU 헤파 교체](https://evergreen-filter.vercel.app/guide/semiconductor-cleanroom-ffu-hepa): 575×1175/610×1220 규격 혼동, 무중단 창구
+- [플라스틱 공장 공조 여과](https://evergreen-filter.vercel.app/guide/plastics-factory-air-filtration): 미스트·분진, 프리→미듐 2단
+- [클린룸 등급(ISO 14644-1)과 필터](https://evergreen-filter.vercel.app/guide/cleanroom-class-and-filters): 등급표와 최종단 필터 조합
+- [공장 공조기 연간 필터 교체 계획](https://evergreen-filter.vercel.app/guide/factory-ahu-filter-plan): 594 규격 대량 교체, 발주 타이밍
 - [층류(라미나플로우) 수술실 헤파필터](https://evergreen-filter.vercel.app/guide/laminar-flow-filter): 규격 불일치가 층류를 무너뜨리는 이유
 - [음압격리병실 필터](https://evergreen-filter.vercel.app/guide/negative-pressure-room-filter): 배기 여과 원칙과 교체 시 주의사항
 - [의료기관 인증평가 공기질](https://evergreen-filter.vercel.app/guide/hospital-accreditation-air-quality): 필터 관리 이력 대장 준비

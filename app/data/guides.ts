@@ -30,7 +30,10 @@ export interface Guide {
   faqs: GuideFaq[];
 }
 
-export const guides: Guide[] = [
+import { medicalGuides } from "./guides-medical";
+import { industryGuides } from "./guides-industry";
+
+const coreGuides: Guide[] = [
   {
     slug: "hepa-filter-replacement-cycle",
     title: "헤파필터 교체주기 총정리 — 언제, 무엇을 보고 갈아야 하나",
@@ -1599,3 +1602,15 @@ export const guides: Guide[] = [
     ],
   },
 ];
+
+// 가이드는 core + 의료(7편) + 산업(5편)을 합쳐 노출한다.
+// 라우트·사이트맵·RSS·OG는 이 배열 하나만 본다. slug 중복은 빌드 시 아래에서 걸린다.
+export const guides: Guide[] = [...coreGuides, ...medicalGuides, ...industryGuides];
+
+{
+  const seen = new Set<string>();
+  for (const g of guides) {
+    if (seen.has(g.slug)) throw new Error(`guides: slug 중복 — ${g.slug}`);
+    seen.add(g.slug);
+  }
+}

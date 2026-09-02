@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "../data/site";
 
 export default function CTA() {
   return (
@@ -15,41 +16,50 @@ export default function CTA() {
         />
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center break-keep">
         <h2 className="text-3xl md:text-4xl font-black text-white mb-5">
-          필요한 필터, 지금 바로 주문하세요
+          규격을 몰라도 됩니다. 사진만 보내주세요
         </h2>
         <p className="text-lg text-white/80 mb-10 leading-relaxed">
-          스마트스토어에서 간편하게 주문하거나
+          쓰시던 필터 옆면 라벨(또는 실측) 사진과 수량이면 충분합니다.
           <br />
-          견적 요청서를 보내주시면 빠르게 답변드립니다
+          {SITE.replyPromise}.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://smartstore.naver.com/egfilter/products/6391368761"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 bg-white text-primary-dark font-black text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-xl"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-            </svg>
-            스마트스토어
-          </a>
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center gap-3 bg-accent hover:bg-[#00d4f5] text-surface-dark font-black text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-3 bg-accent hover:bg-[#00d4f5] text-surface-dark font-black text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-xl"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125 1.125V11.25a9 9 0 00-9-9z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
             </svg>
             견적 요청
           </Link>
+          <a
+            href={SITE.kakaoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 bg-[#FEE500] hover:brightness-95 text-gray-900 font-black text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02]"
+          >
+            카카오톡으로 사진 보내기
+          </a>
+          {SITE.phone && (
+            <a
+              href={SITE.phoneHref}
+              className="inline-flex items-center justify-center gap-3 bg-white text-primary-dark font-black text-lg px-8 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-xl"
+            >
+              📞 {SITE.phone}
+            </a>
+          )}
         </div>
 
         <p className="text-white/50 text-sm font-bold mt-8">
-          평일 09:00 ~ 18:00 · 토요일 상담 가능
+          {SITE.hours} · 소량은{" "}
+          <a href={SITE.smartstoreUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white/80">
+            스마트스토어
+          </a>
+          에서 바로 구매
         </p>
       </div>
     </section>

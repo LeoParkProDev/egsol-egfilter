@@ -4,17 +4,21 @@ import Link from "next/link";
 // 그만큼 다른 페이지로 가는 내부 링크를 잃습니다.
 const industries = [
   { icon: "🏥", name: "수술실", href: "/medical/operating-room" },
-  { icon: "🩺", name: "병원·의료", href: "/medical" },
-  { icon: "🧑‍🦳", name: "요양병원", href: "/medical/nursing-hospital" },
+  { icon: "👁️", name: "안과 수술실", href: "/medical/ophthalmology" },
+  { icon: "🦷", name: "치과 진료실", href: "/medical/dental" },
   { icon: "👶", name: "산후조리원", href: "/medical/postpartum-care" },
-  { icon: "🏭", name: "반도체·클린룸", href: "/industry/cleanroom" },
-  { icon: "🖥️", name: "데이터센터", href: "/industry/datacenter" },
-  { icon: "🔬", name: "실험실·연구소", href: "/industry/laboratory" },
-  { icon: "🍳", name: "식품 제조", href: "/industry/food-factory" },
-  { icon: "🧸", name: "어린이집·유치원", href: "/industry/daycare" },
-  { icon: "🚗", name: "자동차 도장", href: "/industry/paint-booth" },
-  { icon: "🏢", name: "빌딩 공조", href: "/industry/hvac" },
+  { icon: "🧑‍🦳", name: "요양병원", href: "/medical/nursing-hospital" },
+  { icon: "🩺", name: "병원·의료 전체", href: "/medical" },
   { icon: "🐕", name: "동물병원", href: "/medical/animal" },
+  { icon: "🔬", name: "실험실·연구소", href: "/industry/laboratory" },
+  { icon: "💾", name: "반도체 미세공정", href: "/industry/semiconductor" },
+  { icon: "🏭", name: "클린룸·GMP", href: "/industry/cleanroom" },
+  { icon: "🧴", name: "플라스틱 공장", href: "/industry/plastics" },
+  { icon: "🚗", name: "도장부스", href: "/industry/paint-booth" },
+  { icon: "🍳", name: "식품 제조", href: "/industry/food-factory" },
+  { icon: "🖥️", name: "데이터센터", href: "/industry/datacenter" },
+  { icon: "🏢", name: "빌딩 공조", href: "/industry/hvac" },
+  { icon: "🧸", name: "어린이집·유치원", href: "/industry/daycare" },
 ];
 
 export default function Industries() {

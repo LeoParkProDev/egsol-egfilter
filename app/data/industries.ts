@@ -34,7 +34,9 @@ export interface Industry {
   faqs: IndustryFaq[];
 }
 
-export const industries: Industry[] = [
+import { extraIndustries } from "./industries-extra";
+
+const coreIndustries: Industry[] = [
   {
     slug: "paint-booth",
     name: "도장부스",
@@ -595,8 +597,12 @@ export const industries: Industry[] = [
       },
       {
         q: "연구비 집행에 필요한 서류를 받을 수 있나요?",
-        a: "네. 견적서·거래명세서·세금계산서를 발행해 드리며, 대학이나 정부출연연구기관의 구매 절차에 필요한 서류를 함께 준비해 드립니다.",
+        a: "네. 견적서·거래명세서 등 대학이나 정부출연연구기관의 구매 절차에 필요한 서류를 함께 준비해 드립니다.",
       },
     ],
   },
 ];
+
+// 산업 랜딩은 core + extra(반도체 미세공정·플라스틱 공장)를 합쳐 노출한다.
+// 라우트·사이트맵·OG는 이 배열 하나만 본다.
+export const industries: Industry[] = [...coreIndustries, ...extraIndustries];

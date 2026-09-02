@@ -36,6 +36,9 @@ export default function Footer() {
               <Link href="/products/medium-filter" className="hover:text-white transition-colors">미듐필터</Link>
               <Link href="/products/roll-filter" className="hover:text-white transition-colors">부직포롤필터</Link>
               <Link href="/size" className="hover:text-white transition-colors">규격별 필터 찾기</Link>
+              <Link href="/service" className="hover:text-white transition-colors">서비스·거래 방식</Link>
+              <Link href="/service/regular-supply" className="hover:text-white transition-colors">정기 납품·연간 단가</Link>
+              <Link href="/service/partner-program" className="hover:text-white transition-colors">설비·점검업체 파트너</Link>
               <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
               <Link href="/quote" className="hover:text-white transition-colors">견적 요청</Link>
               <Link href="/faq" className="hover:text-white transition-colors">자주 묻는 질문</Link>
@@ -46,7 +49,9 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold text-sm mb-4">산업 분야</p>
             <div className="flex flex-col gap-2 text-sm">
+              <Link href="/industry/semiconductor" className="hover:text-white transition-colors">반도체 미세공정 필터</Link>
               <Link href="/industry/cleanroom" className="hover:text-white transition-colors">클린룸 필터</Link>
+              <Link href="/industry/plastics" className="hover:text-white transition-colors">플라스틱 공장 필터</Link>
               <Link href="/industry/datacenter" className="hover:text-white transition-colors">데이터센터 필터</Link>
               <Link href="/industry/laboratory" className="hover:text-white transition-colors">실험실·연구소 필터</Link>
               <Link href="/industry/food-factory" className="hover:text-white transition-colors">식품공장 필터</Link>
