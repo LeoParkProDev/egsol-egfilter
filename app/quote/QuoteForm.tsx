@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { SITE } from "../data/site";
+import { captureAttribution, getAttribution, track, type Attribution } from "../lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "shared" | "mailed" | "copied" | "error";
 
@@ -22,6 +23,16 @@ export default function QuoteForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [attr, setAttr] = useState<Attribution | null>(null);
+
+  // 유입 경로는 세션 첫 진입 때 저장된 값을 그대로 쓴다.
+  // 이 폼의 effect가 <Analytics />보다 먼저 도는 경우(트리 순서)가 있어 없으면 직접 캡처한다.
+  useEffect(() => {
+    setAttr(getAttribution() ?? captureAttribution());
+  }, []);
+
+  // 분석 툴로 나가는 값은 유입 정보뿐이다 — 이름·전화·이메일·문의 내용은 싣지 않는다.
+  const attrParams = { source: attr?.source ?? "", landing: attr?.landing ?? "" };
 
   const totalBytes = files.reduce((n, f) => n + f.size, 0);
   const tooLarge = totalBytes > MAX_TOTAL_BYTES;
@@ -47,6 +58,7 @@ export default function QuoteForm() {
       try {
         await navigator.share({ title: subject, text: body, files });
         setStatus("shared");
+        track("quote_fallback", { method: "share", ...attrParams });
         return;
       } catch {
         /* 취소 또는 미지원 — 아래로 */
@@ -60,6 +72,7 @@ export default function QuoteForm() {
     } catch {
       /* 권한 없음 — 무시 */
     }
+    track("quote_fallback", { method: copied ? "copied" : "mailto", ...attrParams });
     window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus(copied ? "copied" : "mailed");
   }
@@ -75,6 +88,12 @@ export default function QuoteForm() {
       const res = await fetch("/api/quote", { method: "POST", body: fd });
       if (res.ok) {
         setStatus("sent");
+        track("quote_submit", {
+          source: attr?.source ?? "",
+          keyword: attr?.keyword ?? "",
+          landing: attr?.landing ?? "",
+          has_photo: files.length > 0,
+        });
         return;
       }
       const data = (await res.json().catch(() => ({}))) as { code?: string };
@@ -124,6 +143,12 @@ export default function QuoteForm() {
           <input type="text" name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
+
+      {/* 유입 경로 — 메일 본문의 "유입 경로" 블록으로 들어간다 */}
+      <input type="hidden" name="source" value={attr?.source ?? ""} />
+      <input type="hidden" name="keyword" value={attr?.keyword ?? ""} />
+      <input type="hidden" name="landing" value={attr?.landing ?? ""} />
+      <input type="hidden" name="referrer" value={attr?.referrer ?? ""} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import KakaoButton from "./components/KakaoButton";
+import Analytics from "./components/Analytics";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -111,6 +112,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <KakaoButton />
+        <Analytics />
       </body>
     </html>
   );

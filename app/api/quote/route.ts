@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { SITE } from "../../data/site";
+import { buildMailText } from "../../lib/quote-mail";
 
 // nodemailer는 Node 런타임이 필요하다 (Edge 불가)
 export const runtime = "nodejs";
@@ -9,8 +10,15 @@ const MAX_FILES = 5;
 const MAX_TOTAL_BYTES = 4 * 1024 * 1024; // Vercel 서버리스 요청 본문 한도(4.5MB) 안쪽
 const ALLOWED_MIME = /^image\/(jpeg|png|webp|heic|heif|gif)$/i;
 
+const MAX_FIELD_LENGTH = 200;
+
 function str(v: FormDataEntryValue | null): string {
   return typeof v === "string" ? v.trim() : "";
+}
+
+/** 유입 경로 필드 — 화면에서 조작될 수 있으니 길이를 잘라 받는다 */
+function attr(v: FormDataEntryValue | null): string {
+  return str(v).slice(0, MAX_FIELD_LENGTH);
 }
 
 export async function POST(req: Request) {
@@ -40,6 +48,10 @@ export async function POST(req: Request) {
   const phone = str(form.get("phone"));
   const email = str(form.get("email"));
   const message = str(form.get("message"));
+  const source = attr(form.get("source"));
+  const keyword = attr(form.get("keyword"));
+  const landing = attr(form.get("landing"));
+  const referrer = attr(form.get("referrer"));
 
   if (!phone || !message) {
     return NextResponse.json({ ok: false, code: "MISSING_FIELDS" }, { status: 400 });
@@ -69,21 +81,20 @@ export async function POST(req: Request) {
 
   const ua = req.headers.get("user-agent") ?? "";
   const subject = `[견적문의] ${company || "미기재"} / ${person || "담당자"}`;
-  const text = [
-    `회사·기관: ${company || "-"}`,
-    `담당자:    ${person || "-"}`,
-    `연락처:    ${phone}`,
-    `이메일:    ${email || "-"}`,
-    "",
-    "문의 내용:",
+  const text = buildMailText({
+    company,
+    person,
+    phone,
+    email,
     message,
-    "",
-    `첨부 사진: ${files.length}장`,
-    "",
-    "— 에버그린필터 홈페이지 견적 폼",
-    `— ${new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })}`,
-    ua ? `— ${ua.slice(0, 120)}` : "",
-  ].join("\n");
+    fileCount: files.length,
+    source,
+    keyword,
+    landing,
+    referrer,
+    userAgent: ua,
+    now: new Date(),
+  });
 
   try {
     const transporter = nodemailer.createTransport({
