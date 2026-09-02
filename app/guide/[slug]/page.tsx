@@ -102,7 +102,7 @@ export default async function GuideArticlePage({ params }: Props) {
 
       <article className="max-w-3xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-500">
-          <Link href="/guide" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/guide" className="hover:text-[#176b50] transition-colors">
             필터 가이드
           </Link>
           <span className="mx-2">/</span>
@@ -111,7 +111,7 @@ export default async function GuideArticlePage({ params }: Props) {
 
         <header className="mt-6">
           <div className="flex items-center gap-3 text-xs font-extrabold">
-            <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+            <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
               {guide.category}
             </span>
             <span className="text-gray-400">읽는 시간 {guide.readTime}</span>
@@ -125,7 +125,7 @@ export default async function GuideArticlePage({ params }: Props) {
         <div className="mt-10 space-y-10">
           {guide.sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
                 {section.heading}
               </h2>
               {section.body.map((p) => (
@@ -189,7 +189,7 @@ export default async function GuideArticlePage({ params }: Props) {
 
         {/* FAQ */}
         <section className="mt-14">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             자주 묻는 질문
           </h2>
           <div className="mt-6 space-y-3">
@@ -202,7 +202,7 @@ export default async function GuideArticlePage({ params }: Props) {
                   {faq.q}
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                    className="shrink-0 text-xl font-light text-[#176b50] transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
@@ -227,13 +227,13 @@ export default async function GuideArticlePage({ params }: Props) {
               href={KAKAO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
@@ -250,7 +250,7 @@ export default async function GuideArticlePage({ params }: Props) {
                 href={`/guide/${g.slug}`}
                 className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
               >
-                <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+                <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                   {g.category}
                 </span>
                 <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -270,7 +270,7 @@ export default async function GuideArticlePage({ params }: Props) {
                 <Link
                   key={s.slug}
                   href={`/size/${s.slug}`}
-                  className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                  className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#176b50]"
                 >
                   {s.w}×{s.h}×{s.t}
                   <span className="mt-0.5 block text-xs font-semibold text-gray-400">{s.type}</span>
@@ -279,7 +279,7 @@ export default async function GuideArticlePage({ params }: Props) {
             </div>
             <p className="mt-4 text-sm text-gray-500">
               전체 규격은{" "}
-              <Link href="/size" className="font-bold text-[#0b9e6e] hover:underline">
+              <Link href="/size" className="font-bold text-[#176b50] hover:underline">
                 규격별 필터 찾기
               </Link>
               에서 확인하실 수 있고, 목록에 없는 치수는 바깥 치수(틀 끝에서 끝) 실측값만 있으면

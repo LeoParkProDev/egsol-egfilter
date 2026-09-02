@@ -60,7 +60,7 @@ export default function CasesPage() {
 
       <div className="max-w-4xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/" className="hover:text-[#176b50] transition-colors">
             홈
           </Link>
           <span className="mx-2">/</span>
@@ -68,11 +68,11 @@ export default function CasesPage() {
         </nav>
 
         <header className="mt-8 text-center">
-          <span className="text-[#0b9e6e] font-black text-sm tracking-widest uppercase">
-            Cases
+          <span className="eyebrow">
+            납품 사례
           </span>
           <h1 className="mt-4 text-3xl md:text-5xl font-black text-gray-900 leading-[1.25] text-balance">
-            어떤 현장에서 <span className="text-[#0b9e6e]">어떤 규격</span>이 나갔는지
+            어떤 현장에서 <span className="text-[#176b50]">어떤 규격</span>이 나갔는지
           </h1>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
             실제 납품 건을 문제 → 해결 → 규격 → 결과 순으로 정리했습니다.
@@ -94,7 +94,7 @@ export default function CasesPage() {
               className="scroll-mt-24 bg-white border border-gray-200 rounded-2xl p-7 md:p-9"
             >
               <div className="flex flex-wrap items-center gap-3 text-xs font-extrabold">
-                <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+                <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
                   {c.sector}
                 </span>
                 <span className="text-gray-400">{c.site}</span>
@@ -139,7 +139,7 @@ export default function CasesPage() {
                     <Link
                       key={r.href}
                       href={r.href}
-                      className="rounded-xl border border-gray-200 px-4 py-2 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                      className="rounded-xl border border-gray-200 px-4 py-2 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#176b50]"
                     >
                       {r.label}
                     </Link>
@@ -176,20 +176,20 @@ export default function CasesPage() {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
               >
                 전화 {SITE.phone}
               </a>

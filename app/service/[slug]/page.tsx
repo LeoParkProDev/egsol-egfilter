@@ -101,11 +101,11 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <article className="max-w-3xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/" className="hover:text-[#176b50] transition-colors">
             홈
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/service" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/service" className="hover:text-[#176b50] transition-colors">
             서비스
           </Link>
           <span className="mx-2">/</span>
@@ -114,14 +114,14 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         <header className="mt-6">
           <div className="flex items-center gap-3 text-xs font-extrabold">
-            <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+            <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
               {service.badge}
             </span>
             <span className="text-gray-400 tracking-wide uppercase">{service.nameEn}</span>
           </div>
           <h1 className="mt-5 text-3xl md:text-4xl font-black text-gray-900 leading-[1.3] text-balance">
             {service.heroTitle[0]}
-            <span className="text-[#0b9e6e]">{service.heroTitle[1]}</span>
+            <span className="text-[#176b50]">{service.heroTitle[1]}</span>
             {service.heroTitle[2]}
           </h1>
           <p className="mt-5 text-lg text-gray-600 leading-relaxed">{service.heroDesc}</p>
@@ -129,7 +129,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* 이런 분께 */}
         <section className="mt-12">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             이런 분께 맞습니다
           </h2>
           <ul className="mt-5 space-y-2.5">
@@ -144,7 +144,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* 진행 절차 */}
         <section className="mt-12">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             진행 절차
           </h2>
           <ol className="mt-5 space-y-3">
@@ -153,7 +153,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 key={step.title}
                 className="flex gap-4 bg-white border border-gray-200 rounded-2xl px-5 py-5 md:px-6"
               >
-                <span className="shrink-0 w-8 h-8 rounded-full bg-brand-green/10 border border-brand-green/25 text-[#0b9e6e] font-black text-sm flex items-center justify-center tabular-nums">
+                <span className="shrink-0 w-8 h-8 rounded-full bg-brand-green/10 border border-brand-green/25 text-[#176b50] font-black text-sm flex items-center justify-center tabular-nums">
                   {i + 1}
                 </span>
                 <div>
@@ -167,7 +167,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* 이렇게 달라집니다 */}
         <section className="mt-12">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             이렇게 달라집니다
           </h2>
           <div className="mt-5 grid sm:grid-cols-2 gap-4">
@@ -185,7 +185,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* 미리 말씀드리는 조건 */}
         <section className="mt-12">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             미리 말씀드리는 조건
           </h2>
           <div className="mt-5 rounded-2xl bg-gray-100 border border-gray-200 px-6 py-6">
@@ -195,7 +195,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         {/* FAQ */}
         <section className="mt-12">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             자주 묻는 질문
           </h2>
           <div className="mt-6 space-y-3">
@@ -208,7 +208,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {faq.q}
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                    className="shrink-0 text-xl font-light text-[#176b50] transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
@@ -234,20 +234,20 @@ export default async function ServiceDetailPage({ params }: Props) {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
               >
                 전화 {SITE.phone}
               </a>
@@ -273,7 +273,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
               >
                 <span className="font-bold text-gray-900 leading-snug">{r.label}</span>
-                <span className="mt-2 flex items-center gap-1.5 text-sm font-bold text-[#0b9e6e]">
+                <span className="mt-2 flex items-center gap-1.5 text-sm font-bold text-[#176b50]">
                   자세히 보기
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </span>
@@ -282,7 +282,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
           <p className="mt-6 text-sm text-gray-500">
             다른 거래 방식은{" "}
-            <Link href="/service" className="text-[#0b9e6e] font-bold hover:underline">
+            <Link href="/service" className="text-[#176b50] font-bold hover:underline">
               서비스 전체 보기
             </Link>
             에서 확인하실 수 있습니다.

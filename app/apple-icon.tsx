@@ -15,12 +15,12 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           gap: "16px",
-          backgroundColor: "#06090f",
+          backgroundColor: "#14231f",
         }}
       >
-        <div style={{ width: "100px", height: "16px", backgroundColor: "#10b981", borderRadius: "8px" }} />
-        <div style={{ width: "68px", height: "16px", backgroundColor: "#0ec98f", borderRadius: "8px" }} />
-        <div style={{ width: "100px", height: "16px", backgroundColor: "#00c2e0", borderRadius: "8px" }} />
+        <div style={{ width: "100px", height: "16px", backgroundColor: "#1f7a5c", borderRadius: "8px" }} />
+        <div style={{ width: "68px", height: "16px", backgroundColor: "#1f7a5c", borderRadius: "8px" }} />
+        <div style={{ width: "100px", height: "16px", backgroundColor: "#8fd9c0", borderRadius: "8px" }} />
       </div>
     ),
     size

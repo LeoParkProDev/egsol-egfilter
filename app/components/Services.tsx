@@ -43,37 +43,32 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-surface">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">How We Work</span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-3 mb-4">
-            낱개 구매만 있는 게 아닙니다
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            시설을 관리하시는 분께는 필터보다 <b className="text-gray-800">거래 방식</b>이 더 큰 차이를 만듭니다.
+    <section id="services" className="bg-surface py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid items-end gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
+            <span className="eyebrow">진행 방식</span>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
+              낱개 구매만 있는 게 아닙니다
+            </h2>
+          </div>
+          <p className="text-gray-500 leading-[1.7] lg:col-span-6">
+            시설을 관리하시는 분께는 필터보다{" "}
+            <b className="font-semibold text-gray-800">거래 방식</b>이 더 큰 차이를 만듭니다.
             현장에 맞는 방식을 고르세요.
           </p>
-          <div className="w-16 h-1 bg-primary rounded-full mx-auto mt-6" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="rule-ink mt-10 grid gap-x-8 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="group bg-white rounded-2xl p-7 border border-gray-200 hover:border-primary/30 hover:shadow-xl transition-all"
-            >
-              <span className="text-3xl block mb-4">{s.icon}</span>
-              <h3 className="text-lg font-black text-gray-900 group-hover:text-primary transition-colors">
+            <Link key={s.href} href={s.href} className="group pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 transition-colors group-hover:text-primary">
                 {s.title}
               </h3>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{s.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-2.5 transition-all">
+              <p className="mt-2.5 text-sm leading-[1.7] text-gray-500">{s.desc}</p>
+              <span className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                 자세히
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </span>
             </Link>
           ))}

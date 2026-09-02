@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,9 +7,19 @@ import KakaoButton from "./components/KakaoButton";
 import Analytics from "./components/Analytics";
 import MobileCtaBar from "./components/MobileCtaBar";
 
-const notoSansKR = Noto_Sans_KR({
+// A안 — 본문 IBM Plex Sans KR(400/500/600), 규격·등급 숫자는 IBM Plex Mono.
+const plexSans = IBM_Plex_Sans_KR({
   subsets: ["latin"],
-  variable: "--font-noto-sans-kr",
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-sans",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-plex-mono",
+  display: "swap",
 });
 export const metadata: Metadata = {
   title: {
@@ -99,7 +109,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
+    <html lang="ko" className={`${plexSans.variable} ${plexMono.variable} antialiased`}>
       <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <script
           type="application/ld+json"

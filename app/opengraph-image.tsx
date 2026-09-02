@@ -37,9 +37,9 @@ export default async function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px 96px",
-          backgroundColor: "#06090f",
+          backgroundColor: "#14231f",
           backgroundImage:
-            "radial-gradient(ellipse 80% 60% at 85% 0%, rgba(16,185,129,0.22) 0%, rgba(6,9,15,0) 60%), radial-gradient(ellipse 70% 50% at 0% 100%, rgba(0,194,224,0.14) 0%, rgba(6,9,15,0) 55%)",
+            "radial-gradient(ellipse 80% 60% at 85% 0%, rgba(23,107,80,0.30) 0%, rgba(20,35,31,0) 60%), radial-gradient(ellipse 70% 50% at 0% 100%, rgba(31,122,92,0.16) 0%, rgba(20,35,31,0) 55%)",
           fontFamily: "NotoSansKR",
         }}
       >
@@ -55,13 +55,13 @@ export default async function OgImage() {
               width: "14px",
               height: "14px",
               borderRadius: "50%",
-              backgroundColor: "#10b981",
-              boxShadow: "0 0 18px #10b981",
+              backgroundColor: "#1f7a5c",
+              boxShadow: "0 0 18px #1f7a5c",
             }}
           />
           <div
             style={{
-              color: "#8ff2d8",
+              color: "#8fd9c0",
               fontSize: "26px",
               fontWeight: 900,
               letterSpacing: "0.25em",
@@ -123,12 +123,12 @@ export default async function OgImage() {
               flexGrow: 1,
               margin: "0 36px",
               backgroundImage:
-                "linear-gradient(90deg, rgba(16,185,129,0) 0%, #10b981 30%, #00c2e0 80%, rgba(0,194,224,0) 100%)",
+                "linear-gradient(90deg, rgba(31,122,92,0) 0%, #1f7a5c 30%, #8fd9c0 80%, rgba(143,217,192,0) 100%)",
             }}
           />
           <div
             style={{
-              color: "#8ff2d8",
+              color: "#8fd9c0",
               fontSize: "26px",
               fontWeight: 900,
               letterSpacing: "0.1em",

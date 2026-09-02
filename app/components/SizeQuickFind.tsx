@@ -23,51 +23,52 @@ export default function SizeQuickFind() {
   );
 
   return (
-    <section id="sizes" className="py-20 bg-white border-t border-gray-100">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">Find by Size</span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-3 mb-4">규격으로 바로 찾기</h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            쓰시던 필터 옆면의 치수(가로×세로×두께)를 아시면 여기서 바로 확인하세요.
-            목록에 없는 규격은 실측만으로 3~7일 맞춤 제작합니다.
+    <section id="sizes" className="border-t border-gray-100 bg-white py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid items-end gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
+            <span className="eyebrow">규격으로 찾기</span>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
+              쓰시던 필터 옆면의 치수를 아신다면
+            </h2>
+          </div>
+          <p className="text-gray-500 leading-[1.7] lg:col-span-6">
+            가로 × 세로 × 두께(mm). 목록에 없는 규격은 실측만으로 3~7일 맞춤 제작합니다.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
           {items.map((s) => (
             <Link
               key={s.slug}
               href={`/size/${s.slug}`}
-              className="group rounded-xl border border-gray-200 bg-surface hover:bg-white px-4 py-5 text-center hover:border-primary/30 hover:shadow-md transition-all"
+              className="group rounded-md border border-gray-200 bg-white px-4 py-4 transition-colors hover:border-primary/50"
             >
-              <span className="block text-lg font-black text-gray-900 group-hover:text-primary transition-colors">
+              <span className="block font-mono text-[17px] font-semibold text-gray-900 transition-colors group-hover:text-primary">
                 {sizeLabel(s)}
               </span>
-              <span className="block mt-1 text-xs font-bold text-gray-400">
+              <span className="mt-1.5 block text-xs text-gray-500">
                 {s.type} · {s.grade.split(" ")[0]}
               </span>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm">
           <Link
             href="/size"
-            className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-bold text-gray-700 hover:border-primary/50 hover:text-primary transition"
+            className="group flex flex-col justify-center rounded-md border border-accent bg-tint px-4 py-4"
           >
-            전체 규격 23종 보기
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-          <Link
-            href="/guide/read-filter-label"
-            className="inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold text-gray-500 hover:text-primary transition"
-          >
-            규격을 모르시나요? 라벨 읽는 법 →
+            <span className="text-[15px] font-semibold text-primary">전체 규격 23종</span>
+            <span className="mt-1.5 text-xs text-primary/80">
+              목록에 없는 규격도 3~7일 제작 →
+            </span>
           </Link>
         </div>
+
+        <Link
+          href="/guide/read-filter-label"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+        >
+          규격을 모르시나요? 라벨 읽는 법 →
+        </Link>
       </div>
     </section>
   );

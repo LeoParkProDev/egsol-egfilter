@@ -15,13 +15,13 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           gap: "3px",
-          backgroundColor: "#06090f",
+          backgroundColor: "#14231f",
           borderRadius: "7px",
         }}
       >
-        <div style={{ width: "18px", height: "3px", backgroundColor: "#10b981", borderRadius: "2px" }} />
-        <div style={{ width: "12px", height: "3px", backgroundColor: "#0ec98f", borderRadius: "2px" }} />
-        <div style={{ width: "18px", height: "3px", backgroundColor: "#00c2e0", borderRadius: "2px" }} />
+        <div style={{ width: "18px", height: "3px", backgroundColor: "#1f7a5c", borderRadius: "2px" }} />
+        <div style={{ width: "12px", height: "3px", backgroundColor: "#1f7a5c", borderRadius: "2px" }} />
+        <div style={{ width: "18px", height: "3px", backgroundColor: "#8fd9c0", borderRadius: "2px" }} />
       </div>
     ),
     size

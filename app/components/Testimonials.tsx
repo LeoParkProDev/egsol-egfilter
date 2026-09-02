@@ -39,43 +39,28 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">
-            Testimonials
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-3 mb-4">
-            고객 후기
-          </h2>
-          <p className="text-gray-500 text-lg">
-            실제 구매 고객님들의 생생한 리뷰입니다
-          </p>
+    <section className="bg-white py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid items-end gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
+            <span className="eyebrow">고객 후기</span>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
+              실제 구매 고객님들의 리뷰입니다
+            </h2>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="rule-ink mt-10 grid gap-x-8 gap-y-9 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="bg-surface rounded-2xl p-8 border border-gray-100 flex flex-col justify-between"
-            >
-              <div>
-                <svg
-                  className="w-8 h-8 text-primary/20 mb-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
-                </svg>
-                <p className="text-base text-gray-700 leading-relaxed mb-6">
-                  {t.quote}
-                </p>
-              </div>
-              <div className="border-t border-gray-200 pt-4">
-                <p className="font-bold text-gray-900 text-sm">{t.author}</p>
-                <p className="text-sm text-gray-500">{t.company}</p>
-              </div>
-            </div>
+            <figure key={i} className="flex flex-col justify-between pt-6">
+              <blockquote className="text-[15px] leading-[1.75] text-gray-700">
+                “{t.quote}”
+              </blockquote>
+              <figcaption className="mt-5 border-t border-gray-100 pt-4">
+                <span className="block text-sm font-semibold text-gray-900">{t.author}</span>
+                <span className="mt-0.5 block text-[13px] text-gray-500">{t.company}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

@@ -61,7 +61,7 @@ export default function FAQPage() {
 
       <div className="max-w-3xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/" className="hover:text-[#176b50] transition-colors">
             홈
           </Link>
           <span className="mx-2">/</span>
@@ -69,11 +69,11 @@ export default function FAQPage() {
         </nav>
 
         <header className="mt-8 text-center">
-          <span className="text-[#0b9e6e] font-black text-sm tracking-widest uppercase">
-            FAQ
+          <span className="eyebrow">
+            자주 묻는 질문
           </span>
           <h1 className="mt-4 text-3xl md:text-5xl font-black text-gray-900 leading-[1.25] text-balance">
-            현장에서 <span className="text-[#0b9e6e]">실제로 받는 질문</span>만 모았습니다
+            현장에서 <span className="text-[#176b50]">실제로 받는 질문</span>만 모았습니다
           </h1>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
             규격 실측부터 등급 선택, 맞춤 제작, 병원·공장 납품, 서류와 납기까지.
@@ -95,7 +95,7 @@ export default function FAQPage() {
               <li key={group.id}>
                 <a
                   href={`#${group.id}`}
-                  className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-sm font-bold text-gray-700 hover:text-[#0b9e6e] px-3.5 py-2 rounded-full transition-colors"
+                  className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-sm font-bold text-gray-700 hover:text-[#176b50] px-3.5 py-2 rounded-md transition-colors"
                 >
                   {group.title}
                   <span className="text-xs font-extrabold text-gray-400 tabular-nums">
@@ -111,7 +111,7 @@ export default function FAQPage() {
         <div className="mt-12 space-y-12">
           {faqGroups.map((group) => (
             <section key={group.id} id={group.id} className="scroll-mt-24">
-              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
                 {group.title}
               </h2>
               <div className="mt-6 space-y-3">
@@ -124,7 +124,7 @@ export default function FAQPage() {
                       {faq.q}
                       <span
                         aria-hidden="true"
-                        className="mt-0.5 shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                        className="mt-0.5 shrink-0 text-xl font-light text-[#176b50] transition-transform group-open:rotate-45"
                       >
                         +
                       </span>
@@ -145,7 +145,7 @@ export default function FAQPage() {
               href="/guide"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 가이드
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -156,7 +156,7 @@ export default function FAQPage() {
               href="/glossary"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 용어집
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -167,7 +167,7 @@ export default function FAQPage() {
               href="/service"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 서비스
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -193,20 +193,20 @@ export default function FAQPage() {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
               >
                 전화 {SITE.phone}
               </a>

@@ -18,7 +18,7 @@ export default function QuotePage() {
     <main className="min-h-screen bg-surface py-16 md:py-24 break-keep">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">Contact</span>
+          <span className="eyebrow">견적 문의</span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 mt-4 mb-6">견적 문의</h1>
           <p className="text-lg text-gray-600">
             <b className="text-gray-900">{SITE.replyPromise}</b>
@@ -38,7 +38,7 @@ export default function QuotePage() {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-[#FEE500] hover:brightness-95 transition px-5 py-5 text-center"
+              className="rounded-2xl border border-gray-900 hover:bg-gray-50 transition px-5 py-5 text-center"
             >
               <span className="block text-xs font-bold text-gray-700">카카오톡 채널</span>
               <span className="block mt-1 text-lg font-black text-gray-900">사진 보내기</span>

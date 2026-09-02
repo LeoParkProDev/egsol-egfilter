@@ -101,7 +101,7 @@ export default async function SizePage({ params }: Props) {
 
       <article className="max-w-3xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/size" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/size" className="hover:text-[#176b50] transition-colors">
             규격별 필터
           </Link>
           <span className="mx-2">/</span>
@@ -110,7 +110,7 @@ export default async function SizePage({ params }: Props) {
 
         <header className="mt-6">
           <div className="flex items-center gap-3 text-xs font-extrabold">
-            <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+            <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
               {size.type}
             </span>
             <span className="text-gray-400">{size.grade}</span>
@@ -127,7 +127,7 @@ export default async function SizePage({ params }: Props) {
 
         {/* 규격 명세 */}
         <section className="mt-10">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             규격 명세
           </h2>
           <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 bg-white">
@@ -148,7 +148,7 @@ export default async function SizePage({ params }: Props) {
                 <tr>
                   <th className="px-4 py-3 text-left font-bold text-gray-500 bg-gray-50">필터 종류</th>
                   <td className="px-4 py-3 text-gray-700">
-                    <Link href={TYPE_HREF[size.type]} className="text-[#0b9e6e] font-bold hover:underline">
+                    <Link href={TYPE_HREF[size.type]} className="text-[#176b50] font-bold hover:underline">
                       {size.type}
                     </Link>
                   </td>
@@ -164,7 +164,7 @@ export default async function SizePage({ params }: Props) {
 
         {/* 선택 가능 사양 */}
         <section className="mt-10">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             선택 가능 사양
           </h2>
           <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 bg-white">
@@ -189,7 +189,7 @@ export default async function SizePage({ params }: Props) {
 
         {/* 주 사용처 */}
         <section className="mt-10">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             주 사용처
           </h2>
           <ul className="mt-4 space-y-2.5">
@@ -205,7 +205,7 @@ export default async function SizePage({ params }: Props) {
 
         {/* FAQ */}
         <section className="mt-10">
-          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+          <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
             자주 묻는 질문
           </h2>
           <div className="mt-4 space-y-4">
@@ -235,7 +235,7 @@ export default async function SizePage({ params }: Props) {
               href={KAKAO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl bg-[#FEE500] px-6 py-3 font-extrabold text-gray-900 hover:brightness-95 transition"
+              className="rounded-xl kakao-dot inline-flex items-center gap-2.5 border border-gray-900 px-6 py-3 font-semibold text-gray-900 hover:bg-gray-50 transition"
             >
               카카오톡으로 사진 견적
             </a>
@@ -257,7 +257,7 @@ export default async function SizePage({ params }: Props) {
                 <Link
                   key={r.slug}
                   href={`/size/${r.slug}`}
-                  className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 hover:border-brand-green/40 hover:text-[#0b9e6e] transition"
+                  className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 hover:border-brand-green/40 hover:text-[#176b50] transition"
                 >
                   {sizeLabel(r)}
                   <span className="block text-xs font-semibold text-gray-400 mt-0.5">{r.type}</span>
@@ -266,11 +266,11 @@ export default async function SizePage({ params }: Props) {
             </div>
             <p className="mt-4 text-sm text-gray-500">
               전체 규격은{" "}
-              <Link href="/size" className="text-[#0b9e6e] font-bold hover:underline">
+              <Link href="/size" className="text-[#176b50] font-bold hover:underline">
                 규격별 필터 찾기
               </Link>
               에서, 실측 방법은{" "}
-              <Link href="/guide/hepa-filter-size-guide" className="text-[#0b9e6e] font-bold hover:underline">
+              <Link href="/guide/hepa-filter-size-guide" className="text-[#176b50] font-bold hover:underline">
                 헤파필터 규격표 가이드
               </Link>
               에서 확인하세요.

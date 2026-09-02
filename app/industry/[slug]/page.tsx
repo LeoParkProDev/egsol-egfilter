@@ -75,7 +75,7 @@ export default async function IndustryPage({ params }: Props) {
   };
 
   return (
-    <main className="bg-[#06090f] break-keep">
+    <main className="bg-paper break-keep">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -86,85 +86,108 @@ export default async function IndustryPage({ params }: Props) {
       />
 
       {/* ═══ HERO ═══ */}
-      <section className="relative text-white">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 90% 60% at 50% -10%, rgba(13,36,64,0.9) 0%, transparent 60%)",
-          }}
-        />
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-16 md:pt-24 pb-16 md:pb-20 text-center">
-          <nav aria-label="breadcrumb" className="text-xs font-semibold text-white/40">
-            <Link href="/" className="hover:text-[#8ff2d8] transition-colors">
-              홈
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-white/70">{data.name} 필터</span>
-          </nav>
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-6xl items-start gap-10 px-6 pt-10 pb-16 md:pt-14 md:pb-20 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-7">
+            <nav
+              aria-label="breadcrumb"
+              className="flex items-center gap-2 text-[13px] text-gray-500"
+            >
+              <Link href="/" className="transition-colors hover:text-primary">
+                홈
+              </Link>
+              <span className="text-gray-300">/</span>
+              <span className="font-medium text-gray-900">{data.name} 필터</span>
+            </nav>
 
-          <div className="mt-6 inline-flex items-center gap-2.5 bg-brand-green/10 border border-brand-green/25 rounded-full px-5 py-2 text-sm font-bold text-[#8ff2d8]">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-green shadow-[0_0_10px_#10b981]" />
-            {data.badge}
+            <span className="eyebrow mt-6">{data.badge}</span>
+
+            <h1 className="mt-6 text-[2rem] font-semibold leading-[1.22] tracking-[-0.02em] text-gray-900 text-balance md:text-[2.75rem] md:leading-[1.2]">
+              <span className="sr-only">{data.name} 필터 — </span>
+              {data.heroTitle[0]} <span className="text-primary">{data.heroTitle[1]}</span>
+              {data.heroTitle[2]}
+            </h1>
+
+            <p className="mt-6 max-w-xl text-base leading-[1.75] text-gray-500 md:text-[17px]">
+              {data.heroDesc}
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={KAKAO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary-dark"
+              >
+                필터 사진 보내고 3분 견적
+              </a>
+              <Link
+                href="/quote"
+                className="inline-flex items-center justify-center rounded-md border border-gray-900 px-6 py-4 font-semibold text-gray-900 transition-colors hover:bg-gray-50"
+              >
+                견적서 양식으로 문의
+              </Link>
+            </div>
+            <p className="mt-6 text-[13px] text-gray-500">
+              10년+ 산업·클린룸 필터 경력 · 누적 거래처 500+ · 필요 서류 대응
+            </p>
           </div>
 
-          <h1 className="mt-8 text-3xl md:text-5xl font-black leading-[1.22] tracking-tight max-w-3xl mx-auto text-balance">
-            <span className="sr-only">{data.name} 필터 — </span>
-            {data.heroTitle[0]}{" "}
-            <span className="bg-gradient-to-r from-[#8ff2d8] to-accent bg-clip-text text-transparent">
-              {data.heroTitle[1]}
-            </span>
-            {data.heroTitle[2]}
-          </h1>
-
-          <p className="mt-7 text-base md:text-lg text-white/60 font-medium max-w-xl mx-auto leading-relaxed">
-            {data.heroDesc}
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={KAKAO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-green to-[#0ec98f] text-[#03170f] font-extrabold px-8 py-4 rounded-full shadow-[0_10px_34px_rgba(16,185,129,0.35)] transition-transform hover:-translate-y-0.5"
-            >
-              필터 사진 보내고 3분 견적
-            </a>
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/20 text-white font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
-            >
-              견적서 양식으로 문의
-            </Link>
+          {/* 권장 구성 패널 */}
+          <div className="overflow-hidden rounded-xl border border-gray-200 bg-white lg:col-span-5">
+            <div className="flex items-center justify-between gap-3 border-b border-gray-200 px-5 py-4">
+              <span className="text-sm font-semibold text-gray-900">{data.name} 권장 구성</span>
+              <span className="font-mono text-[11px] tracking-[0.06em] text-gray-500">
+                RECOMMENDED
+              </span>
+            </div>
+            {data.setups.map((row, i) => (
+              <div
+                key={row.area}
+                className={`grid grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] items-center gap-3 px-5 py-4 ${
+                  i < data.setups.length - 1 ? "border-b border-gray-100" : ""
+                }`}
+              >
+                <div>
+                  <span className="block text-sm font-semibold text-gray-900">{row.area}</span>
+                  <span className="mt-0.5 block text-xs leading-[1.5] text-gray-500">
+                    {row.note}
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span className="block font-mono text-sm font-semibold text-primary">
+                    {row.grade}
+                  </span>
+                  <span className="mt-0.5 block text-xs text-gray-500">{row.filter}</span>
+                </div>
+              </div>
+            ))}
+            <p className="border-t border-gray-200 bg-surface px-5 py-4 text-xs leading-[1.6] text-gray-500">
+              {data.setupNote}
+            </p>
           </div>
-          <p className="mt-6 text-xs md:text-sm text-white/40 font-semibold">
-            10년+ 산업·클린룸 필터 경력 · 누적 거래처 500+ · 필요 서류 대응
-          </p>
         </div>
       </section>
 
       {/* ═══ PROBLEM ═══ */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Problem
+          <span className="eyebrow">
+            문제
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900 leading-tight max-w-2xl text-balance">
             {data.painsHeading}
           </h2>
           <p className="mt-5 text-gray-500 text-lg max-w-xl">{data.painsSub}</p>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-5">
+          <div className="rule-ink mt-10 grid gap-x-8 gap-y-9 md:grid-cols-3">
             {data.pains.map((p) => (
-              <div
-                key={p.who}
-                className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className="text-xs font-extrabold tracking-wide text-[#0b9e6e]">
-                  {p.who}
-                </span>
-                <h3 className="mt-3 text-lg font-extrabold text-gray-900">{p.title}</h3>
-                <p className="mt-3 text-sm text-gray-500 leading-relaxed">{p.desc}</p>
+              <div key={p.who} className="pt-6">
+                <span className="font-mono text-xs text-gray-500">{p.who}</span>
+                <h3 className="mt-2.5 text-[19px] font-semibold leading-snug text-gray-900">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-sm leading-[1.7] text-gray-500">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -174,8 +197,8 @@ export default async function IndustryPage({ params }: Props) {
       {/* ═══ SOLUTION ═══ */}
       <section className="bg-surface py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Solution
+          <span className="eyebrow">
+            권장 구성
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900 leading-tight text-balance">
             {data.name} 권장 필터 구성
@@ -185,14 +208,14 @@ export default async function IndustryPage({ params }: Props) {
             드립니다.
           </p>
 
-          <div className="table-scroll-hint mt-12 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
-            <table className="w-full min-w-[640px] text-sm border-collapse">
+          <div className="table-scroll-hint rule-ink mt-10 overflow-x-auto">
+            <table className="w-full min-w-[640px] border-collapse text-sm">
               <thead>
-                <tr className="bg-gray-50 text-left text-[0.7rem] uppercase tracking-[0.14em] text-gray-400">
-                  <th className="px-6 py-4 font-bold">적용 부위</th>
-                  <th className="px-6 py-4 font-bold">필터 구성</th>
-                  <th className="px-6 py-4 font-bold">권장 등급</th>
-                  <th className="px-6 py-4 font-bold">비고</th>
+                <tr className="bg-surface text-left font-mono text-[11px] tracking-[0.06em] text-gray-500">
+                  <th className="px-5 py-3 font-medium">AREA</th>
+                  <th className="px-5 py-3 font-medium">FILTER</th>
+                  <th className="px-5 py-3 font-medium">GRADE</th>
+                  <th className="px-5 py-3 font-medium">NOTE</th>
                 </tr>
               </thead>
               <tbody>
@@ -201,20 +224,20 @@ export default async function IndustryPage({ params }: Props) {
                     key={row.area}
                     className={i < data.setups.length - 1 ? "border-b border-gray-100" : ""}
                   >
-                    <td className="px-6 py-4 font-bold text-gray-900">{row.area}</td>
-                    <td className="px-6 py-4 text-gray-700 font-semibold">{row.filter}</td>
-                    <td className="px-6 py-4 font-bold text-[#0b9e6e] tabular-nums">
+                    <td className="px-5 py-4 font-semibold text-gray-900">{row.area}</td>
+                    <td className="px-5 py-4 text-gray-700">{row.filter}</td>
+                    <td className="px-5 py-4 font-mono font-semibold text-primary">
                       {row.grade}
                     </td>
-                    <td className="px-6 py-4 text-gray-500">{row.note}</td>
+                    <td className="px-5 py-4 text-gray-500">{row.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="mt-8 max-w-3xl border-[1.5px] border-dashed border-brand-green/50 rounded-2xl px-8 py-6 text-gray-500">
-            <strong className="text-gray-900 font-extrabold">알아두세요.</strong>{" "}
+          <div className="mt-8 max-w-3xl rounded-md border border-gray-200 bg-white px-6 py-5 text-sm leading-[1.7] text-gray-500">
+            <strong className="font-semibold text-gray-900">알아두세요.</strong>{" "}
             {data.setupNote}
           </div>
 
@@ -222,14 +245,14 @@ export default async function IndustryPage({ params }: Props) {
             등급 기준이 궁금하시다면{" "}
             <Link
               href="/guide/air-filter-grade-guide"
-              className="font-bold text-[#0b9e6e] hover:underline"
+              className="font-bold text-[#176b50] hover:underline"
             >
               에어필터 등급 총정리
             </Link>
             와{" "}
             <Link
               href="/guide/hepa-filter-replacement-cycle"
-              className="font-bold text-[#0b9e6e] hover:underline"
+              className="font-bold text-[#176b50] hover:underline"
             >
               헤파필터 교체주기 가이드
             </Link>
@@ -241,8 +264,8 @@ export default async function IndustryPage({ params }: Props) {
       {/* ═══ FAQ ═══ */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            FAQ
+          <span className="eyebrow">
+            자주 묻는 질문
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900">
             {data.name} 필터, 자주 묻는 질문
@@ -259,7 +282,7 @@ export default async function IndustryPage({ params }: Props) {
                   {faq.q}
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                    className="shrink-0 text-xl font-light text-[#176b50] transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
@@ -285,7 +308,7 @@ export default async function IndustryPage({ params }: Props) {
                 <span className="block text-xs font-bold text-gray-400">{i.nameEn}</span>
                 <span className="mt-1 flex items-center justify-between font-extrabold text-gray-900">
                   {i.name} 필터
-                  <span className="text-[#0b9e6e] group-hover:translate-x-1 transition-transform">
+                  <span className="text-[#176b50] group-hover:translate-x-1 transition-transform">
                     →
                   </span>
                 </span>
@@ -298,7 +321,7 @@ export default async function IndustryPage({ params }: Props) {
               <span className="block text-xs font-bold text-gray-400">Medical</span>
               <span className="mt-1 flex items-center justify-between font-extrabold text-gray-900">
                 병원·의료시설 필터
-                <span className="text-[#0b9e6e] group-hover:translate-x-1 transition-transform">
+                <span className="text-[#176b50] group-hover:translate-x-1 transition-transform">
                   →
                 </span>
               </span>
@@ -324,7 +347,7 @@ export default async function IndustryPage({ params }: Props) {
                 className="group bg-surface border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
               >
                 <div className="flex items-center gap-2.5 text-[0.65rem] font-extrabold">
-                  <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-2.5 py-0.5 rounded-md">
                     {g.category}
                   </span>
                   <span className="text-gray-400">읽는 시간 {g.readTime}</span>
@@ -348,7 +371,7 @@ export default async function IndustryPage({ params }: Props) {
                   <Link
                     key={s.slug}
                     href={`/size/${s.slug}`}
-                    className="rounded-xl border border-gray-200 bg-surface px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                    className="rounded-xl border border-gray-200 bg-surface px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#176b50]"
                   >
                     {s.w}×{s.h}×{s.t}
                     <span className="mt-0.5 block text-xs font-semibold text-gray-400">
@@ -363,51 +386,46 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* ═══ FINAL CTA ═══ */}
-      <section
-        className="relative overflow-hidden text-white text-center py-24 md:py-28"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 90% at 50% 110%, rgba(16,185,129,0.18) 0%, transparent 60%), #06090f",
-        }}
-      >
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-black leading-tight text-balance">
-            지금 설비의 필터,
-            <br />
-            언제 교체했는지 <em className="not-italic text-[#8ff2d8]">기억나시나요?</em>
-          </h2>
-          <p className="mt-6 text-white/60 text-lg max-w-lg mx-auto">
-            기억나지 않는다면 그게 신호입니다. 필터 사진 한 장 보내주시면, 나머지는 저희가
-            합니다.
-          </p>
-          <div className="mt-11 flex flex-col sm:flex-row gap-3 justify-center">
+      <section className="bg-paper px-6 py-16 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 rounded-xl bg-surface-dark px-8 py-12 md:px-16 md:py-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-2xl font-semibold leading-[1.3] tracking-[-0.015em] text-paper md:text-[2rem]">
+              지금 설비의 필터, 언제 교체했는지{" "}
+              <em className="not-italic text-[#8fd9c0]">기억나시나요?</em>
+            </h2>
+            <p className="mt-3.5 leading-[1.7] text-paper/70">
+              기억나지 않는다면 그게 신호입니다. 필터 사진 한 장 보내주시면, 나머지는 저희가
+              합니다.
+            </p>
+            <p className="mt-5 text-sm text-paper/45">
+              소량 구매는{" "}
+              <a
+                href="https://smartstore.naver.com/egfilter"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper/70 underline underline-offset-2 hover:text-paper"
+              >
+                네이버 스마트스토어
+              </a>
+              에서 바로 주문 가능합니다.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
             <a
               href={KAKAO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[#3C1E1E] font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
+              className="kakao-dot inline-flex items-center justify-center gap-2.5 rounded-md bg-paper px-6 py-4 font-semibold text-gray-900 transition-colors hover:bg-white"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/20 text-white font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-md border border-paper/40 px-6 py-4 font-semibold text-paper transition-colors hover:bg-white/5"
             >
               견적서 양식으로 문의
             </Link>
           </div>
-          <p className="mt-7 text-sm text-white/40">
-            소량 구매는{" "}
-            <a
-              href="https://smartstore.naver.com/egfilter"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent font-bold hover:underline"
-            >
-              네이버 스마트스토어
-            </a>
-            에서 바로 주문 가능합니다.
-          </p>
         </div>
       </section>
     </main>

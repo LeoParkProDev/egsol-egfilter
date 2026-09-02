@@ -19,25 +19,34 @@ export default function MobileCtaBar() {
           href={SITE.kakaoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-12 items-center justify-center gap-1.5 rounded-xl bg-[#FEE500] text-[15px] font-black text-gray-900 active:brightness-95"
+          className="kakao-dot flex h-12 items-center justify-center gap-2 rounded-md border border-gray-900 text-[15px] font-semibold text-gray-900 active:bg-gray-50"
         >
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="#3C1E1E" aria-hidden="true">
-            <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.72 1.8 5.108 4.512 6.467-.144.522-.93 3.37-.964 3.586 0 0-.02.164.087.227.107.063.233.03.233.03.307-.043 3.558-2.327 4.118-2.723.328.048.665.073 1.014.073 5.523 0 10-3.463 10-7.66C22 6.463 17.523 3 12 3" />
-          </svg>
-          카톡 사진 견적
+          카톡 견적
         </a>
         <Link
           href="/quote"
-          className="flex h-12 items-center justify-center rounded-xl bg-primary text-[15px] font-black text-white active:brightness-110"
+          className="flex h-12 items-center justify-center rounded-md bg-primary text-[15px] font-semibold text-white active:brightness-110"
         >
           견적 요청
         </Link>
         {hasPhone && (
           <a
             href={SITE.phoneHref}
-            className="flex h-12 items-center justify-center rounded-xl bg-gray-900 text-[15px] font-black text-white active:brightness-110"
+            className="flex h-12 items-center justify-center gap-1.5 rounded-md bg-gray-900 text-[15px] font-semibold text-white active:brightness-110"
           >
-            📞 전화
+            <svg
+              className="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3" />
+            </svg>
+            전화
           </a>
         )}
       </div>

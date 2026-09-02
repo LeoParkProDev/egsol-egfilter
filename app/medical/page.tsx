@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AirParticles from "./AirParticles";
 import { specialties } from "../data/specialties";
 
 export const metadata: Metadata = {
@@ -173,7 +172,7 @@ const breadcrumbJsonLd = {
 
 export default function MedicalPage() {
   return (
-    <main className="bg-[#06090f] break-keep">
+    <main className="bg-paper break-keep">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -184,91 +183,69 @@ export default function MedicalPage() {
       />
 
       {/* ═══ HERO ═══ */}
-      <section className="relative text-white">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 90% 60% at 50% -10%, rgba(13,36,64,0.9) 0%, transparent 60%)",
-          }}
-        />
-        <AirParticles />
+      <section className="bg-paper">
+        <div className="mx-auto grid max-w-6xl items-start gap-10 px-6 pt-12 pb-14 md:pt-16 md:pb-16 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-7">
+            <span className="eyebrow">병원 · 안과 · 피부과 · 수술실 전문 HEPA</span>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 md:pt-28 text-center">
-          <div className="inline-flex items-center gap-2.5 bg-brand-green/10 border border-brand-green/25 rounded-full px-5 py-2 text-sm font-bold text-[#8ff2d8]">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-green shadow-[0_0_10px_#10b981]" />
-            병원 · 안과 · 피부과 · 수술실 전문 HEPA
+            <h1 className="mt-6 text-[2rem] font-semibold leading-[1.2] tracking-[-0.02em] text-gray-900 text-balance md:text-[3rem] md:leading-[1.16]">
+              <span className="sr-only">병원·수술실 헤파필터 — </span>
+              원장님 병원의 평판은 <span className="font-mono text-primary">0.3μm</span>
+              에서 갈립니다
+            </h1>
+
+            <p className="mt-6 max-w-xl text-base leading-[1.75] text-gray-500 md:text-[17px]">
+              인테리어와 장비는 눈에 보이지만, 공기는 보이지 않습니다.{" "}
+              <strong className="font-semibold text-gray-800">수술실·시술실 전문 헤파필터</strong>
+              를 병원 규격에 맞춰 제작하고, 교체 시기까지 대신 기억해 드립니다.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={KAKAO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary-dark"
+              >
+                필터 사진 보내고 3분 견적
+              </a>
+              <Link
+                href="/quote"
+                className="inline-flex items-center justify-center rounded-md border border-gray-900 px-6 py-4 font-semibold text-gray-900 transition-colors hover:bg-gray-50"
+              >
+                견적서 양식으로 문의
+              </Link>
+            </div>
+            <p className="mt-6 text-[13px] text-gray-500">
+              10년+ 의료·클린룸 필터 경력 · 누적 거래처 500+ · 품의 서류 대응
+            </p>
           </div>
 
-          <h1 className="mt-8 text-4xl md:text-6xl font-black leading-[1.18] tracking-tight max-w-3xl mx-auto text-balance">
-            <span className="sr-only">병원·수술실 헤파필터 — </span>
-            원장님 병원의 평판은{" "}
-            <span className="bg-gradient-to-r from-[#8ff2d8] to-accent bg-clip-text text-transparent tabular-nums">
-              0.3μm
-            </span>
-            에서 갈립니다
-          </h1>
-
-          <p className="mt-7 text-base md:text-lg text-white/60 font-medium max-w-xl mx-auto leading-relaxed">
-            인테리어와 장비는 눈에 보이지만, 공기는 보이지 않습니다.{" "}
-            <strong className="text-white/90 font-bold">수술실·시술실 전문 헤파필터</strong>를
-            병원 규격에 맞춰 제작하고, 교체 시기까지 대신 기억해 드립니다.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={KAKAO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-green to-[#0ec98f] text-[#03170f] font-extrabold px-8 py-4 rounded-full shadow-[0_10px_34px_rgba(16,185,129,0.35)] transition-transform hover:-translate-y-0.5"
-            >
-              필터 사진 보내고 3분 견적
-            </a>
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/20 text-white font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
-            >
-              견적서 양식으로 문의
-            </Link>
-          </div>
-          <p className="mt-6 text-xs md:text-sm text-white/40 font-semibold">
-            10년+ 의료·클린룸 필터 경력 · 누적 거래처 500+ · 품의 서류 대응
-          </p>
-        </div>
-
-        {/* H14 필터 라인 */}
-        <div
-          className="relative z-10 mt-16 md:mt-20 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, #10b981 20%, #00c2e0 80%, transparent)",
-            boxShadow: "0 0 24px rgba(16,185,129,0.35)",
-          }}
-        >
-          <span className="absolute left-1/2 -top-[11px] -translate-x-1/2 bg-[#06090f] border border-brand-green/40 text-[#8ff2d8] text-[0.65rem] font-extrabold tracking-[0.26em] px-4 py-1 rounded-full whitespace-nowrap">
-            H14 FILTRATION LAYER
-          </span>
-        </div>
-      </section>
-
-      {/* ═══ 스펙 넘버 ═══ */}
-      <section className="bg-[#06090f] pt-16 pb-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
+          {/* 여과 스펙 패널 */}
+          <div className="overflow-hidden rounded-xl border border-gray-200 bg-white lg:col-span-5">
+            <div className="flex items-center justify-between gap-3 border-b border-gray-200 px-5 py-4">
+              <span className="text-sm font-semibold text-gray-900">의료시설 여과 사양</span>
+              <span className="font-mono text-[11px] tracking-[0.06em] text-gray-500">
+                H14 FILTRATION LAYER
+              </span>
+            </div>
             {[
               { num: "99.995", unit: "%", label: "0.3μm 입자 포집 효율" },
               { num: "H13·14", unit: "", label: "EN 1822 인증 등급" },
               { num: "당일", unit: "", label: "규격 확인 시 견적 회신" },
               { num: "전국", unit: "", label: "표준·비표준 규격 배송" },
-            ].map((s) => (
-              <div key={s.label}>
-                <p className="text-4xl md:text-5xl font-extralight tracking-tight text-white tabular-nums leading-none">
+            ].map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex items-center justify-between gap-4 px-5 py-4 ${
+                  i < 3 ? "border-b border-gray-100" : ""
+                }`}
+              >
+                <span className="text-[13px] text-gray-500">{s.label}</span>
+                <span className="font-mono text-sm font-semibold text-gray-900">
                   {s.num}
-                  {s.unit && (
-                    <small className="text-[0.42em] font-medium text-[#8ff2d8]">{s.unit}</small>
-                  )}
-                </p>
-                <p className="mt-3 text-xs md:text-sm font-bold text-white/45">{s.label}</p>
+                  {s.unit && <small className="ml-0.5 text-primary">{s.unit}</small>}
+                </span>
               </div>
             ))}
           </div>
@@ -280,14 +257,14 @@ export default function MedicalPage() {
         <div
           aria-hidden="true"
           className="hidden lg:block absolute -right-10 top-1/3 text-[17rem] xl:text-[21rem] font-black leading-none tracking-tighter text-transparent select-none pointer-events-none tabular-nums"
-          style={{ WebkitTextStroke: "1.5px #e2e8f0" }}
+          style={{ WebkitTextStroke: "1.5px #d9e0dc" }}
         >
           0.3μm
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Problem
+          <span className="eyebrow">
+            문제
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900 leading-tight max-w-xl text-balance">
             개원 이후, 공조를 챙기는 사람이 아무도 없습니다
@@ -303,7 +280,7 @@ export default function MedicalPage() {
                 key={p.who}
                 className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <span className="text-xs font-extrabold tracking-wide text-[#0b9e6e]">
+                <span className="text-xs font-extrabold tracking-wide text-[#176b50]">
                   {p.who}
                 </span>
                 <h3 className="mt-3 text-lg font-extrabold text-gray-900">{p.title}</h3>
@@ -312,14 +289,14 @@ export default function MedicalPage() {
             ))}
           </div>
 
-          <blockquote className="mt-12 max-w-3xl bg-surface-dark rounded-2xl px-8 md:px-10 py-9 text-white/85 text-lg md:text-xl font-bold leading-relaxed">
+          <blockquote className="mt-12 max-w-3xl rounded-xl bg-surface-dark px-8 py-9 text-lg font-medium leading-[1.6] text-paper/85 md:px-10 md:text-xl">
             수술 잘하는 병원은 많습니다.
             <br />
-            <em className="not-italic text-[#8ff2d8]">
+            <em className="not-italic text-[#8fd9c0]">
               공기까지 관리한다고 말할 수 있는 병원
             </em>
             은 드뭅니다.
-            <span className="block mt-4 text-xs font-semibold text-white/40">
+            <span className="mt-4 block text-xs text-paper/45">
               — 이 한 줄이 원장님 병원의 차별화 포인트가 됩니다
             </span>
           </blockquote>
@@ -329,8 +306,8 @@ export default function MedicalPage() {
       {/* ═══ SOLUTION — 진료과별 ═══ */}
       <section className="bg-surface py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Solution
+          <span className="eyebrow">
+            권장 구성
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900 leading-tight text-balance">
             진료과별로 답이 다릅니다
@@ -344,16 +321,15 @@ export default function MedicalPage() {
             {segments.map((seg) => (
               <div
                 key={seg.title}
-                className="relative overflow-hidden bg-white border border-gray-200 rounded-3xl p-9 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-brand-green/45"
+                className="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-8 transition-colors hover:border-primary/45"
               >
                 <span
                   aria-hidden="true"
-                  className="absolute right-7 top-6 text-4xl font-black leading-none text-transparent select-none"
-                  style={{ WebkitTextStroke: "1.2px rgba(16,185,129,0.35)" }}
+                  className="absolute right-7 top-7 font-mono text-sm font-semibold text-gray-300"
                 >
                   {seg.grade}
                 </span>
-                <span className="inline-block text-[0.7rem] font-extrabold tracking-wider text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+                <span className="inline-block text-[0.7rem] font-extrabold tracking-wider text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
                   {seg.tag}
                 </span>
                 <h3 className="mt-5 text-2xl font-extrabold text-gray-900">{seg.title}</h3>
@@ -364,7 +340,7 @@ export default function MedicalPage() {
                   {seg.specs.map((s) => (
                     <div key={s.label} className="flex gap-4">
                       <dt className="w-22 shrink-0 text-gray-400 font-semibold">{s.label}</dt>
-                      <dd className={`font-bold ${s.hl ? "text-[#0b9e6e]" : "text-gray-800"}`}>
+                      <dd className={`font-bold ${s.hl ? "text-[#176b50]" : "text-gray-800"}`}>
                         {s.value}
                       </dd>
                     </div>
@@ -388,7 +364,7 @@ export default function MedicalPage() {
                   <span className="block text-xs font-bold text-gray-400">{s.nameEn}</span>
                   <span className="mt-1 flex items-center justify-between font-extrabold text-gray-900">
                     {s.name} 필터
-                    <span className="text-[#0b9e6e] group-hover:translate-x-1 transition-transform">
+                    <span className="text-[#176b50] group-hover:translate-x-1 transition-transform">
                       →
                     </span>
                   </span>
@@ -400,48 +376,42 @@ export default function MedicalPage() {
       </section>
 
       {/* ═══ 평판 마케팅 밴드 ═══ */}
-      <section
-        className="text-white py-20 md:py-28"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 100% at 80% 0%, rgba(16,185,129,0.14) 0%, transparent 55%), linear-gradient(160deg, #0d1a33, #06090f 70%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <section className="bg-paper px-6 py-16 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 rounded-xl bg-surface-dark px-8 py-12 md:px-16 md:py-14 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-              Reputation
+            <span className="eyebrow">
+              평판
             </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-black leading-tight text-balance">
+            <h2 className="mt-4 text-2xl font-semibold leading-[1.3] tracking-[-0.015em] text-paper text-balance md:text-[2rem]">
               필터 교체가
               <br />
               마케팅 소재가 됩니다
             </h2>
-            <p className="mt-5 text-white/60 leading-relaxed">
+            <p className="mt-4 leading-[1.75] text-paper/70">
               &ldquo;저희는 수술실 공기를{" "}
-              <strong className="text-[#8ff2d8] font-bold">H14 등급 헤파필터</strong>로
+              <strong className="font-semibold text-[#8fd9c0]">H14 등급 헤파필터</strong>로
               관리합니다&rdquo; — 블로그·인스타그램·상담 멘트에 쓸 수 있는 한 줄을 드립니다.
               교체 이력과 등급 자료를 정리해 드리니, 환자에게 보여줄 수 있는{" "}
-              <strong className="text-[#8ff2d8] font-bold">근거 있는 청정 관리 스토리</strong>가
+              <strong className="font-semibold text-[#8fd9c0]">근거 있는 청정 관리 스토리</strong>가
               생깁니다.
             </p>
           </div>
 
-          <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-7 space-y-3.5">
-            <div className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white/75">
-              <b className="text-[#ffd166] tracking-widest font-bold">★★★★★</b>
+          <div className="space-y-3 rounded-xl border border-white/10 bg-white/[0.04] p-6">
+            <div className="rounded-md border border-white/10 bg-white/5 px-5 py-4 text-sm text-paper/75">
+              <b className="tracking-widest text-[#8fd9c0]">★★★★★</b>
               <span className="block mt-1.5">
                 &ldquo;수술실 공기까지 등급 관리한다고 설명해주셔서 믿음이 갔어요. 이런 병원
                 처음이에요.&rdquo;
               </span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white/75">
-              <b className="text-[#ffd166] tracking-widest font-bold">★★★★★</b>
+            <div className="rounded-md border border-white/10 bg-white/5 px-5 py-4 text-sm text-paper/75">
+              <b className="tracking-widest text-[#8fd9c0]">★★★★★</b>
               <span className="block mt-1.5">
                 &ldquo;대기실 공기가 확실히 쾌적해요. 아이 데리고 다니기 좋아요.&rdquo;
               </span>
             </div>
-            <p className="text-center text-[0.7rem] font-semibold text-white/35 tracking-wide">
+            <p className="text-center text-[0.7rem] text-paper/40">
               환자 리뷰 예시 — 공기 관리가 리뷰 언어로 번역되는 방식
             </p>
           </div>
@@ -451,8 +421,8 @@ export default function MedicalPage() {
       {/* ═══ PROCESS ═══ */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Process
+          <span className="eyebrow">
+            진행 방식
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900 leading-tight text-balance">
             원장님 시간은 3분이면 충분합니다
@@ -464,13 +434,13 @@ export default function MedicalPage() {
           <div className="mt-14 grid md:grid-cols-3 gap-5">
             {steps.map((step, i) => (
               <div key={step.title} className="bg-white border border-gray-200 rounded-2xl p-8">
-                <span className="text-xs font-black tracking-[0.18em] text-[#0b9e6e]">
+                <span className="text-xs font-black tracking-[0.18em] text-[#176b50]">
                   0{i + 1}
                 </span>
                 <h3 className="mt-3 text-lg font-extrabold text-gray-900">{step.title}</h3>
                 <p className="mt-2.5 text-sm text-gray-500 leading-relaxed">{step.desc}</p>
-                <span className="inline-block mt-4 text-xs font-extrabold text-[#0b9e6e] bg-brand-green/10 px-3 py-1 rounded-full">
-                  ⏱ {step.time}
+                <span className="inline-block mt-4 text-xs font-extrabold text-[#176b50] bg-brand-green/10 px-3 py-1 rounded-md">
+                  {step.time}
                 </span>
               </div>
             ))}
@@ -489,8 +459,8 @@ export default function MedicalPage() {
       {/* ═══ SPEC ═══ */}
       <section className="bg-surface py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Specification
+          <span className="eyebrow">
+            사양
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900">
             의료시설용 헤파필터 사양
@@ -524,7 +494,7 @@ export default function MedicalPage() {
           <p className="mt-4 text-sm text-gray-400">
             * 가동 시간, 프리필터 유무, 외기 조건에 따라 실제 교체 주기는 달라집니다. 견적 시
             함께 안내해 드립니다.{" "}
-            <Link href="/products/hepa-filter" className="font-bold text-[#0b9e6e] hover:underline">
+            <Link href="/products/hepa-filter" className="font-bold text-[#176b50] hover:underline">
               헤파필터 제품 상세 보기 →
             </Link>
           </p>
@@ -534,8 +504,8 @@ export default function MedicalPage() {
       {/* ═══ FAQ ═══ */}
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            FAQ
+          <span className="eyebrow">
+            자주 묻는 질문
           </span>
           <h2 className="mt-4 text-3xl md:text-4xl font-black text-gray-900">자주 묻는 질문</h2>
 
@@ -550,7 +520,7 @@ export default function MedicalPage() {
                   {faq.q}
                   <span
                     aria-hidden="true"
-                    className="shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                    className="shrink-0 text-xl font-light text-[#176b50] transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
@@ -563,51 +533,46 @@ export default function MedicalPage() {
       </section>
 
       {/* ═══ FINAL CTA ═══ */}
-      <section
-        className="relative overflow-hidden text-white text-center py-24 md:py-32"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 90% at 50% 110%, rgba(16,185,129,0.18) 0%, transparent 60%), #06090f",
-        }}
-      >
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-black leading-tight text-balance">
-            지금 천장 위 필터,
-            <br />
-            언제 교체했는지 <em className="not-italic text-[#8ff2d8]">기억나시나요?</em>
-          </h2>
-          <p className="mt-6 text-white/60 text-lg max-w-lg mx-auto">
-            기억나지 않는다면 그게 신호입니다. 필터 사진 한 장 보내주시면, 나머지는 저희가
-            합니다.
-          </p>
-          <div className="mt-11 flex flex-col sm:flex-row gap-3 justify-center">
+      <section className="bg-paper px-6 py-16 md:py-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 rounded-xl bg-surface-dark px-8 py-12 md:px-16 md:py-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-2xl font-semibold leading-[1.3] tracking-[-0.015em] text-paper md:text-[2rem]">
+              지금 천장 위 필터, 언제 교체했는지{" "}
+              <em className="not-italic text-[#8fd9c0]">기억나시나요?</em>
+            </h2>
+            <p className="mt-3.5 leading-[1.7] text-paper/70">
+              기억나지 않는다면 그게 신호입니다. 필터 사진 한 장 보내주시면, 나머지는 저희가
+              합니다.
+            </p>
+            <p className="mt-5 text-sm text-paper/45">
+              소량 구매는{" "}
+              <a
+                href="https://smartstore.naver.com/egfilter"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper/70 underline underline-offset-2 hover:text-paper"
+              >
+                네이버 스마트스토어
+              </a>
+              에서 바로 주문 가능합니다.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
             <a
               href={KAKAO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[#3C1E1E] font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
+              className="kakao-dot inline-flex items-center justify-center gap-2.5 rounded-md bg-paper px-6 py-4 font-semibold text-gray-900 transition-colors hover:bg-white"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/20 text-white font-extrabold px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-md border border-paper/40 px-6 py-4 font-semibold text-paper transition-colors hover:bg-white/5"
             >
               견적서 양식으로 문의
             </Link>
           </div>
-          <p className="mt-7 text-sm text-white/40">
-            소량 구매는{" "}
-            <a
-              href="https://smartstore.naver.com/egfilter"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent font-bold hover:underline"
-            >
-              네이버 스마트스토어
-            </a>
-            에서 바로 주문 가능합니다.
-          </p>
         </div>
       </section>
     </main>

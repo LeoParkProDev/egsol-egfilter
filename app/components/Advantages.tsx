@@ -32,34 +32,30 @@ const advantages = [
 
 export default function Advantages() {
   return (
-    <section id="advantages" className="py-24 bg-surface-dark break-keep">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            Why Choose Us
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-3">
-            왜 에버그린필터인가요?
-          </h2>
-          <div className="w-16 h-1 bg-brand-green rounded-full mx-auto mt-6" />
-        </div>
+    <section id="advantages" className="bg-paper py-20 break-keep md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <span className="eyebrow">선택 이유</span>
+        <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
+          왜 에버그린필터인가요?
+        </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="rule-ink mt-10 grid gap-x-8 gap-y-10 md:grid-cols-3">
           {advantages.map((adv) => (
-            <div
-              key={adv.number}
-              className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-brand-green/30 hover:bg-white/8 transition-all"
-            >
-              <div className="flex items-start justify-between">
-                <div className="w-12 h-12 rounded-xl bg-brand-green/15 flex items-center justify-center text-brand-green">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    {adv.icon}
-                  </svg>
-                </div>
-                <span className="text-4xl font-black text-white/10">{adv.number}</span>
+            <div key={adv.number} className="pt-6">
+              <div className="flex items-center gap-3 text-primary">
+                <svg
+                  className="h-[22px] w-[22px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.6}
+                >
+                  {adv.icon}
+                </svg>
+                <span className="font-mono text-xs font-medium">{adv.number}</span>
               </div>
-              <h3 className="text-xl font-black text-white mt-6 mb-3">{adv.title}</h3>
-              <p className="text-white/60 leading-relaxed text-base">{adv.description}</p>
+              <h3 className="mt-3.5 text-xl font-semibold text-gray-900">{adv.title}</h3>
+              <p className="mt-3 text-[15px] leading-[1.7] text-gray-500">{adv.description}</p>
             </div>
           ))}
         </div>

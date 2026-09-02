@@ -15,8 +15,8 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-surface-dark text-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="text-brand-green font-black text-sm tracking-widest uppercase">
-            About Us
+          <span className="eyebrow">
+            회사 소개
           </span>
           <h1 className="text-3xl md:text-5xl font-black mt-3 mb-6">
             회사소개
@@ -48,8 +48,7 @@ export default function AboutPage() {
               <h2 className="text-2xl font-black text-gray-900 mb-2">
                 대표 인사말
               </h2>
-              <div className="w-12 h-1 bg-primary rounded-full mb-6" />
-              <div className="text-base text-gray-600 leading-loose space-y-4">
+                            <div className="text-base text-gray-600 leading-loose space-y-4">
                 <p>
                   안녕하세요, 에버그린필터 대표 박현수입니다.
                 </p>
@@ -69,8 +68,7 @@ export default function AboutPage() {
       <section className="py-20 bg-surface">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-2xl font-black text-gray-900 mb-2">회사 개요</h2>
-          <div className="w-12 h-1 bg-primary rounded-full mb-8" />
-
+          
           <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
             <table className="w-full">
               <tbody>
@@ -104,8 +102,7 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-2xl font-black text-gray-900 mb-2">주요 연혁</h2>
-          <div className="w-12 h-1 bg-primary rounded-full mb-8" />
-
+          
           <div className="space-y-6">
             {[
               { year: "2024", events: ["서비스 지역 전국 확대 및 온라인 채널 강화"] },

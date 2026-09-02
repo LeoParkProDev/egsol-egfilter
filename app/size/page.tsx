@@ -49,8 +49,8 @@ export default function SizeIndexPage() {
       />
       <div className="max-w-4xl mx-auto px-6">
         <header className="text-center">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">
-            Size Catalog
+          <span className="eyebrow">
+            규격 카탈로그
           </span>
           <h1 className="mt-3 text-3xl md:text-4xl font-black text-gray-900">
             규격별 필터 찾기
@@ -66,7 +66,7 @@ export default function SizeIndexPage() {
             const items = filterSizes.filter((s) => s.type === g.type);
             return (
               <section key={g.type}>
-                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
                   {g.type}
                 </h2>
                 <p className="mt-2 pl-4 text-sm text-gray-500">{g.desc}</p>

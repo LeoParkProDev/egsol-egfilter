@@ -113,7 +113,7 @@ export default function GlossaryPage() {
 
       <div className="max-w-3xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/" className="hover:text-[#176b50] transition-colors">
             홈
           </Link>
           <span className="mx-2">/</span>
@@ -121,11 +121,11 @@ export default function GlossaryPage() {
         </nav>
 
         <header className="mt-8 text-center">
-          <span className="text-[#0b9e6e] font-black text-sm tracking-widest uppercase">
-            Glossary
+          <span className="eyebrow">
+            필터 용어집
           </span>
           <h1 className="mt-4 text-3xl md:text-5xl font-black text-gray-900 leading-[1.25] text-balance">
-            견적서에 나오는 <span className="text-[#0b9e6e]">필터 용어</span>, 여기서
+            견적서에 나오는 <span className="text-[#176b50]">필터 용어</span>, 여기서
             찾으세요
           </h1>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
@@ -151,7 +151,7 @@ export default function GlossaryPage() {
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className="inline-flex min-w-9 items-center justify-center bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-sm font-extrabold text-gray-700 hover:text-[#0b9e6e] px-3 py-2 rounded-full transition-colors"
+                  className="inline-flex min-w-9 items-center justify-center bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-sm font-extrabold text-gray-700 hover:text-[#176b50] px-3 py-2 rounded-md transition-colors"
                 >
                   {section.key}
                 </a>
@@ -164,7 +164,7 @@ export default function GlossaryPage() {
         <div className="mt-12 space-y-12">
           {sections.map((section) => (
             <section key={section.id} id={section.id} className="scroll-mt-24">
-              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
                 {section.key}
               </h2>
 
@@ -186,7 +186,7 @@ export default function GlossaryPage() {
                       )}
                     </h3>
 
-                    <p className="mt-3 text-[0.95rem] font-bold text-[#0b9e6e] leading-relaxed">
+                    <p className="mt-3 text-[0.95rem] font-bold text-[#176b50] leading-relaxed">
                       {item.short}
                     </p>
 
@@ -211,7 +211,7 @@ export default function GlossaryPage() {
                             <a
                               key={slug}
                               href={`#${target.slug}`}
-                              className="inline-flex items-center bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-xs font-bold text-gray-600 hover:text-[#0b9e6e] px-3 py-1.5 rounded-full transition-colors"
+                              className="inline-flex items-center bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-xs font-bold text-gray-600 hover:text-[#176b50] px-3 py-1.5 rounded-md transition-colors"
                             >
                               {target.term}
                             </a>
@@ -234,7 +234,7 @@ export default function GlossaryPage() {
               href="/faq"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 자주 묻는 질문
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -245,7 +245,7 @@ export default function GlossaryPage() {
               href="/guide"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 가이드
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -256,7 +256,7 @@ export default function GlossaryPage() {
               href="/service"
               className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
             >
-              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#176b50]">
                 서비스
               </span>
               <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
@@ -282,20 +282,20 @@ export default function GlossaryPage() {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 사진 보내기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
               >
                 전화 {SITE.phone}
               </a>

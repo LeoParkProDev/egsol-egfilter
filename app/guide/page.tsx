@@ -91,7 +91,7 @@ export default function GuidePage() {
     <main className="min-h-screen bg-surface py-16 md:py-24 break-keep">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">Guide</span>
+          <span className="eyebrow">필터 가이드</span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 mt-4 mb-6">
             필터 선택 가이드
           </h1>
@@ -110,7 +110,7 @@ export default function GuidePage() {
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#176b50]"
                 >
                   {section.name}
                   <span className="text-xs font-extrabold text-gray-400">
@@ -126,7 +126,7 @@ export default function GuidePage() {
         <div className="mb-16 space-y-14">
           {sections.map((section) => (
             <section key={section.id} id={section.id} className="scroll-mt-24">
-              <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-brand-green pl-4">
+              <h2 className="text-2xl font-bold text-gray-900">
                 {section.name}
               </h2>
               <p className="mt-2 pl-4 text-sm text-gray-500">{section.desc}</p>
@@ -144,7 +144,7 @@ export default function GuidePage() {
                       {g.description}
                     </p>
                     <div className="mt-4 flex items-center gap-3 text-sm font-bold">
-                      <span className="text-[#0b9e6e] inline-flex items-center gap-1.5">
+                      <span className="text-[#176b50] inline-flex items-center gap-1.5">
                         자세히 보기
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                       </span>

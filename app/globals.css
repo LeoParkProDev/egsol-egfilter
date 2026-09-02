@@ -1,27 +1,149 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   A안 · 클린 프리시전 — 디자인 토큰
+   잉크 1 + 액센트 1(에버그린). 그라데이션·글로우·그림자 없음.
+   docs/design-proposal/Palette.dc.html 이 원본.
+   ═══════════════════════════════════════════════════════════════ */
 @theme {
-  --color-primary: #0052cc;
-  --color-primary-dark: #003380;
-  --color-accent: #00c2e0;
-  --color-brand-green: #10b981;
-  --color-surface: #f4f6f9;
-  --color-surface-dark: #0a0f1e;
+  /* 액센트 — 상호 '에버그린'의 녹색 하나만 */
+  --color-primary: #176b50;
+  --color-primary-dark: #125a43;
+  --color-accent: #1f7a5c;
+  --color-brand-green: #176b50;
+
+  /* 바탕 */
+  --color-paper: #fafbf9;
+  --color-surface: #f1f4f2;
+  --color-surface-dark: #14231f;
+
+  /* 잉크 · 괘선 */
+  --color-ink: #14231f;
+  --color-ink-2: #2b3d36;
+  --color-muted: #5c6b66;
+  --color-line: #d9e0dc;
+  --color-hairline: #eef1ef;
+
+  /* 액센트 배경 */
+  --color-tint: #e3f1ea;
+  --color-tint-line: #c6e0d3;
+
+  /* 중립 램프를 잉크 계열로 재정의 — 기존 gray-* 클래스가 전부 따라온다 */
+  --color-gray-50: #f1f4f2;
+  --color-gray-100: #eef1ef;
+  --color-gray-200: #d9e0dc;
+  --color-gray-300: #c1cbc6;
+  --color-gray-400: #8a9993;
+  --color-gray-500: #5c6b66;
+  --color-gray-600: #46564f;
+  --color-gray-700: #2b3d36;
+  --color-gray-800: #1e2e28;
+  --color-gray-900: #14231f;
+  --color-gray-950: #0d1613;
+
+  /* 제품 구분용 색도 전부 에버그린 한 가지로 (4색 경쟁 제거) */
+  --color-blue-50: #e3f1ea;
+  --color-blue-600: #176b50;
+  --color-emerald-50: #e3f1ea;
+  --color-emerald-600: #176b50;
+  --color-violet-50: #e3f1ea;
+  --color-violet-600: #176b50;
+  --color-amber-50: #e3f1ea;
+  --color-amber-600: #176b50;
+
+  --font-sans: var(--font-plex-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #fafbf9;
+  --foreground: #14231f;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-noto-sans-kr), sans-serif;
+  font-family: var(--font-plex-sans), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 규격·등급·퍼센트는 font-mono 로 명시한 곳에만 모노를 쓴다.
+   tabular-nums 에 모노를 강제하면 한글이 섞인 표 셀까지 흩어져 보인다. */
+.tabular-nums {
+  font-feature-settings: "tnum";
+}
+
+/* ── A안 규칙: 굵기 3단계(400/500/600) · 라운드 6px(패널 8px) · 그림자 없음 ── */
+@layer utilities {
+  .font-black,
+  .font-extrabold,
+  .font-bold {
+    font-weight: 600;
+  }
+
+  .rounded-3xl,
+  .rounded-2xl,
+  .rounded-xl {
+    border-radius: 8px;
+  }
+  .rounded-lg {
+    border-radius: 6px;
+  }
+
+  .shadow-2xl,
+  .shadow-xl,
+  .shadow-lg,
+  .shadow-md,
+  .shadow,
+  .shadow-sm,
+  .hover\:shadow-2xl:hover,
+  .hover\:shadow-xl:hover,
+  .hover\:shadow-lg:hover,
+  .hover\:shadow-md:hover,
+  .group:hover .group-hover\:shadow-lg {
+    box-shadow: none;
+  }
+}
+
+/* 섹션 아이브로우 — 모노 + 얇은 괘선 */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  /* 시안은 모노지만 한글이 들어가면 자간이 흩어진다. 한글 라벨이므로 산세리프 500. */
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-primary);
+}
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* 카카오 — 노란 버튼 대신 외곽선 버튼 + 10px 점 하나 */
+.kakao-dot::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #fee500;
+  border: 1px solid #d4c000;
+}
+
+/* 표·목록 상단 굵은 괘선 */
+.rule-ink {
+  border-top: 1px solid var(--color-ink);
 }
 
 /* Animations */
@@ -47,17 +169,26 @@ body {
 }
 
 /* ── 모바일 가독성 ─────────────────────────────────────────── */
-html { -webkit-text-size-adjust: 100%; }
-body { word-break: keep-all; overflow-wrap: anywhere; }
 @media (max-width: 767px) {
   .table-scroll-hint::after {
     content: "← 옆으로 밀어 전체 표를 보세요 →";
-    display: block; padding: 6px 12px 8px; font-size: 11px; font-weight: 700;
-    color: #6b7280; text-align: center; border-top: 1px solid #f3f4f6;
+    display: block;
+    padding: 6px 12px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-align: center;
+    border-top: 1px solid var(--color-hairline);
   }
-  .table-scroll-hint th:first-child, .table-scroll-hint td:first-child {
-    position: sticky; left: 0; background: #fff; z-index: 1;
-    box-shadow: 4px 0 8px -6px rgba(0,0,0,.25);
+  .table-scroll-hint th:first-child,
+  .table-scroll-hint td:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 1;
+    box-shadow: 4px 0 8px -6px rgba(20, 35, 31, 0.25);
   }
-  .table-scroll-hint thead th:first-child { background: #f9fafb; }
+  .table-scroll-hint thead th:first-child {
+    background: var(--color-surface);
+  }
 }

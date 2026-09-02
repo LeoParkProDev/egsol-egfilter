@@ -60,7 +60,7 @@ export default function ServiceHubPage() {
 
       <div className="max-w-4xl mx-auto px-6">
         <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
-          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+          <Link href="/" className="hover:text-[#176b50] transition-colors">
             홈
           </Link>
           <span className="mx-2">/</span>
@@ -68,11 +68,11 @@ export default function ServiceHubPage() {
         </nav>
 
         <header className="mt-8 text-center">
-          <span className="text-[#0b9e6e] font-black text-sm tracking-widest uppercase">
-            Service
+          <span className="eyebrow">
+            서비스
           </span>
           <h1 className="mt-4 text-3xl md:text-5xl font-black text-gray-900 leading-[1.25] text-balance">
-            필터를 <span className="text-[#0b9e6e]">어떻게 받으실지</span>부터 고르세요
+            필터를 <span className="text-[#176b50]">어떻게 받으실지</span>부터 고르세요
           </h1>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
             같은 헤파필터라도 병원 구매과와 시공업체가 필요한 방식은 다릅니다.
@@ -91,7 +91,7 @@ export default function ServiceHubPage() {
                 className="group flex flex-col bg-white border border-gray-200 rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand-green/45"
               >
                 <div className="flex items-center gap-3 text-xs font-extrabold">
-                  <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
+                  <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
                     {s.badge}
                   </span>
                   <span className="text-gray-400 tracking-wide uppercase">{s.nameEn}</span>
@@ -102,7 +102,7 @@ export default function ServiceHubPage() {
                 <p className="mt-3 text-sm text-gray-500 leading-relaxed line-clamp-3">
                   {s.heroDesc}
                 </p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0b9e6e]">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#176b50]">
                   자세히 보기
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </span>
@@ -137,20 +137,20 @@ export default function ServiceHubPage() {
               href={SITE.kakaoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center kakao-dot gap-2.5 border border-white/40 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               카카오톡으로 상담하기
             </a>
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
             >
               견적서 양식으로 문의
             </Link>
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-md transition-transform hover:-translate-y-0.5"
               >
                 전화 {SITE.phone}
               </a>

@@ -129,7 +129,6 @@ export default async function ProductPage({ params }: Props) {
         </Link>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden">
-          <div className={`absolute top-0 left-0 right-0 h-2 ${colors.bar}`} />
           
           {product.slug === "hepa-filter" && (
             <Link
@@ -137,7 +136,7 @@ export default async function ProductPage({ params }: Props) {
               className="flex items-center justify-between gap-4 bg-brand-green/10 border border-brand-green/30 rounded-2xl px-6 py-4 mb-8 group"
             >
               <span className="text-sm md:text-base font-bold text-gray-800">
-                🏥 병원·안과·피부과·수술실 용도라면 — 의료시설 전문 페이지에서 확인하세요
+                병원·안과·피부과·수술실 용도라면 — 의료시설 전문 페이지에서 확인하세요
               </span>
               <span className="shrink-0 font-black text-brand-green group-hover:translate-x-1 transition-transform">
                 →
@@ -148,7 +147,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
             <div className="flex-1">
               <div className="mb-6">
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${colors.bg} ${colors.text} mb-4`}>
+                <span className={`inline-block px-3 py-1 rounded-md text-xs font-bold ${colors.bg} ${colors.text} mb-4`}>
                   {product.nameEn}
                 </span>
                 <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
