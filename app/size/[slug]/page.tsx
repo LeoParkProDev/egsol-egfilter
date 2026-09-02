@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { filterSizes, relatedSizes } from "../../data/sizes";
+import { filterSizes, relatedSizes, sizeLabel } from "../../data/sizes";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
@@ -39,6 +39,7 @@ const TYPE_HREF: Record<string, string> = {
   헤파필터: "/products/hepa-filter",
   미듐필터: "/products/medium-filter",
   프리필터: "/products/pre-filter",
+  부직포롤: "/products/roll-filter",
 };
 
 export default async function SizePage({ params }: Props) {
@@ -133,9 +134,11 @@ export default async function SizePage({ params }: Props) {
             <table className="w-full text-sm">
               <tbody className="divide-y divide-gray-100">
                 <tr>
-                  <th className="w-36 px-4 py-3 text-left font-bold text-gray-500 bg-gray-50">치수 (mm)</th>
+                  <th className="w-36 px-4 py-3 text-left font-bold text-gray-500 bg-gray-50">
+                    {size.display ? "규격" : "치수 (mm)"}
+                  </th>
                   <td className="px-4 py-3 font-extrabold text-gray-900">
-                    {size.w} × {size.h} × {size.t}(T)
+                    {size.display ?? `${size.w} × ${size.h} × ${size.t}(T)`}
                   </td>
                 </tr>
                 <tr>
@@ -256,7 +259,7 @@ export default async function SizePage({ params }: Props) {
                   href={`/size/${r.slug}`}
                   className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 hover:border-brand-green/40 hover:text-[#0b9e6e] transition"
                 >
-                  {r.w}×{r.h}×{r.t}
+                  {sizeLabel(r)}
                   <span className="block text-xs font-semibold text-gray-400 mt-0.5">{r.type}</span>
                 </Link>
               ))}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { filterSizes } from "../data/sizes";
+import { filterSizes, sizeLabel } from "../data/sizes";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 
@@ -21,10 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-const GROUPS: { type: "헤파필터" | "미듐필터" | "프리필터"; desc: string }[] = [
+const GROUPS: { type: "헤파필터" | "미듐필터" | "프리필터" | "부직포롤"; desc: string }[] = [
   { type: "헤파필터", desc: "H13~H14 (EN 1822) · 610 계열 표준 + 세퍼레이터형" },
   { type: "미듐필터", desc: "F5~F9 (EN 779) · 공조기(AHU) 594 레일 규격" },
   { type: "프리필터", desc: "G4 (EN 779) · 1차 여과 판형, 후단 필터 보호" },
+  { type: "부직포롤", desc: "프레임 없는 원단 롤 · 도장부스·프리단 재단용, 두께 15T/20T × 폭 1000/1200mm" },
 ];
 
 export default function SizeIndexPage() {
@@ -77,7 +78,7 @@ export default function SizeIndexPage() {
                       className="rounded-xl border border-gray-200 bg-white px-4 py-4 text-center hover:border-brand-green/40 hover:shadow-sm transition"
                     >
                       <span className="block font-extrabold text-gray-900">
-                        {s.w}×{s.h}×{s.t}
+                        {sizeLabel(s)}
                       </span>
                       <span className="block mt-1 text-xs font-semibold text-gray-400">
                         {s.grade.split(" ")[0]}

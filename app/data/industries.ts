@@ -35,6 +35,7 @@ export interface Industry {
 }
 
 import { extraIndustries } from "./industries-extra";
+import { extraIndustries2 } from "./industries-extra2";
 
 const coreIndustries: Industry[] = [
   {
@@ -605,4 +606,12 @@ const coreIndustries: Industry[] = [
 
 // 산업 랜딩은 core + extra(반도체 미세공정·플라스틱 공장)를 합쳐 노출한다.
 // 라우트·사이트맵·OG는 이 배열 하나만 본다.
-export const industries: Industry[] = [...coreIndustries, ...extraIndustries];
+export const industries: Industry[] = [...coreIndustries, ...extraIndustries, ...extraIndustries2];
+
+{
+  const seen = new Set<string>();
+  for (const i of industries) {
+    if (seen.has(i.slug)) throw new Error(`industries: slug 중복 — ${i.slug}`);
+    seen.add(i.slug);
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { specialties } from "../../data/specialties";
+import { guideText, guidesFor, sizesFor } from "../../lib/related";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
@@ -41,6 +42,13 @@ export default async function SpecialtyPage({ params }: Props) {
   if (!data) notFound();
 
   const others = specialties.filter((s) => s.slug !== data.slug);
+
+  // 함께 보는 가이드·관련 규격은 진료과 keywords로 related 엔진이 고른다 (app/lib/related.ts).
+  const relatedGuideList = guidesFor(data.keywords, 4);
+  const relatedSizes = sizesFor(
+    [data.keywords, ...relatedGuideList.map(guideText)].join(" "),
+    4,
+  );
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -341,6 +349,61 @@ export default async function SpecialtyPage({ params }: Props) {
               </span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ 함께 보는 가이드 · 관련 규격 ═══ */}
+      <section className="bg-surface py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-xl font-extrabold text-gray-900">
+            이 현장 담당자가 함께 보는 가이드
+          </h2>
+          <p className="mt-2 text-sm text-gray-500">
+            같은 고민을 하는 담당자들이 실제로 많이 여는 글입니다.
+          </p>
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            {relatedGuideList.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/guide/${g.slug}`}
+                className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
+              >
+                <div className="flex items-center gap-2.5 text-[0.65rem] font-extrabold">
+                  <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-2.5 py-0.5 rounded-full">
+                    {g.category}
+                  </span>
+                  <span className="text-gray-400">읽는 시간 {g.readTime}</span>
+                </div>
+                <span className="mt-3 block font-bold text-gray-900 leading-snug">
+                  {g.title}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          {relatedSizes.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-xl font-extrabold text-gray-900">관련 규격</h2>
+              <p className="mt-2 text-sm text-gray-500">
+                이 현장에서 자주 나오는 치수입니다. 목록에 없는 치수는 바깥 치수(틀 끝에서 끝)
+                실측값이나 라벨 사진만 있으면 3~7일 맞춤 제작합니다.
+              </p>
+              <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+                {relatedSizes.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/size/${s.slug}`}
+                    className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                  >
+                    {s.w}×{s.h}×{s.t}
+                    <span className="mt-0.5 block text-xs font-semibold text-gray-400">
+                      {s.type}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

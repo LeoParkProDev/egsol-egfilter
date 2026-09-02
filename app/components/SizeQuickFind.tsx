@@ -1,16 +1,20 @@
 import Link from "next/link";
-import { filterSizes } from "../data/sizes";
+import { filterSizes, sizeLabel } from "../data/sizes";
 
 // 홈에서 바로 찾을 수 있게 노출할 규격 — 판매 데이터에서 실제로 많이 나가는 순
 const FEATURED = [
   "610x610x150",
   "610x610x292",
   "610x762x150",
+  "610x1220x150",
   "594x594x100",
   "594x594x292",
+  "594x594x75",
   "594x594x50",
-  "610x1220x150",
+  "roll-15t-1000",
+  "roll-20t-1200",
   "305x305x150",
+  "610x915x150",
 ];
 
 export default function SizeQuickFind() {
@@ -38,7 +42,7 @@ export default function SizeQuickFind() {
               className="group rounded-xl border border-gray-200 bg-surface hover:bg-white px-4 py-5 text-center hover:border-primary/30 hover:shadow-md transition-all"
             >
               <span className="block text-lg font-black text-gray-900 group-hover:text-primary transition-colors">
-                {s.w}×{s.h}×{s.t}
+                {sizeLabel(s)}
               </span>
               <span className="block mt-1 text-xs font-bold text-gray-400">
                 {s.type} · {s.grade.split(" ")[0]}
@@ -52,7 +56,7 @@ export default function SizeQuickFind() {
             href="/size"
             className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-5 py-3 font-bold text-gray-700 hover:border-primary/50 hover:text-primary transition"
           >
-            전체 규격 19종 보기
+            전체 규격 23종 보기
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>

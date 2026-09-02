@@ -34,7 +34,9 @@ export interface Specialty {
   faqs: SpecialtyFaq[];
 }
 
-export const specialties: Specialty[] = [
+import { extraSpecialties } from "./specialties-extra";
+
+const coreSpecialties: Specialty[] = [
   {
     slug: "operating-room",
     name: "수술실",
@@ -694,3 +696,15 @@ export const specialties: Specialty[] = [
     ],
   },
 ];
+
+// 진료과는 core + extra(정형외과·검진센터·투석실·정신/재활)를 합쳐 노출한다.
+// /medical 허브·라우트·사이트맵·OG는 이 배열 하나만 본다.
+export const specialties: Specialty[] = [...coreSpecialties, ...extraSpecialties];
+
+{
+  const seen = new Set<string>();
+  for (const s of specialties) {
+    if (seen.has(s.slug)) throw new Error(`specialties: slug 중복 — ${s.slug}`);
+    seen.add(s.slug);
+  }
+}

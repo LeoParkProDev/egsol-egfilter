@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { guides } from "../data/guides";
+import { guides, type Guide } from "../data/guides";
 
 export const metadata: Metadata = {
   title: "필터 가이드 | 교체주기·등급·의료시설 기준 총정리",
@@ -11,7 +11,82 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guide" },
 };
 
+// 허브에 노출할 카테고리 순서. 여기에 없는 카테고리(가이드가 늘며 새로 생긴 것)는 뒤에 자동으로 붙는다.
+const CATEGORY_ORDER = [
+  "의료시설 기준",
+  "유지관리",
+  "등급·규격",
+  "산업 현장",
+  "구매 가이드",
+  "비교",
+  "법규·기준",
+];
+
+// 카테고리별 앵커 id와 한 줄 설명. 정의가 없으면 순번 id와 기본 설명을 쓴다.
+const CATEGORY_META: Record<string, { id: string; desc: string }> = {
+  "의료시설 기준": {
+    id: "medical-standard",
+    desc: "수술실·음압병실·요양병원 — 시설 유형별로 요구되는 공기 기준과 필터 구성.",
+  },
+  유지관리: {
+    id: "maintenance",
+    desc: "언제 갈아야 하는지, 무엇을 보고 판단하는지. 교체 주기와 점검 요령.",
+  },
+  "등급·규격": {
+    id: "grade-size",
+    desc: "H13·H14, G·F·H·U 등급과 표준 치수. 쓰시는 필터의 사양을 확정하는 법.",
+  },
+  "산업 현장": {
+    id: "industry",
+    desc: "클린룸·도장부스·공장 공조 등 현장 조건에 맞춘 여과 구성.",
+  },
+  "구매 가이드": {
+    id: "purchase",
+    desc: "견적서 읽는 법, 비표준 맞춤 제작, 사업자 정기 납품 — 구매 실무.",
+  },
+  비교: {
+    id: "compare",
+    desc: "비슷해 보이는 두 선택지를 나란히 놓고 고르는 기준.",
+  },
+  "법규·기준": {
+    id: "regulation",
+    desc: "실내공기질관리법 등 시설이 지켜야 하는 법적 기준과 대응.",
+  },
+};
+
+interface GuideSectionGroup {
+  name: string;
+  id: string;
+  desc: string;
+  items: Guide[];
+}
+
+/** guides 배열 하나만 보고 카테고리별로 묶는다. 편수가 늘어도 이 함수는 그대로다. */
+function groupByCategory(): GuideSectionGroup[] {
+  const buckets = new Map<string, Guide[]>();
+  for (const guide of guides) {
+    const bucket = buckets.get(guide.category);
+    if (bucket) bucket.push(guide);
+    else buckets.set(guide.category, [guide]);
+  }
+
+  const ordered = CATEGORY_ORDER.filter((name) => buckets.has(name));
+  const rest = [...buckets.keys()].filter((name) => !CATEGORY_ORDER.includes(name));
+
+  return [...ordered, ...rest].map((name, index) => {
+    const meta = CATEGORY_META[name];
+    return {
+      name,
+      id: meta?.id ?? `guide-category-${index + 1}`,
+      desc: meta?.desc ?? "현장에서 자주 찾는 주제를 모았습니다.",
+      items: buckets.get(name) ?? [],
+    };
+  });
+}
+
 export default function GuidePage() {
+  const sections = groupByCategory();
+
   return (
     <main className="min-h-screen bg-surface py-16 md:py-24 break-keep">
       <div className="max-w-4xl mx-auto px-6">
@@ -23,36 +98,65 @@ export default function GuidePage() {
           <p className="text-lg text-gray-600">
             교체주기부터 등급 선택, 의료시설 기준까지 — 현장에서 바로 쓰는 가이드입니다.
           </p>
+          <p className="mt-3 text-sm font-semibold text-gray-400">
+            총 {guides.length}편 · 카테고리별로 나눠 두었습니다
+          </p>
         </div>
 
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">주제별 심화 가이드</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {guides.map((g) => (
-              <Link
-                key={g.slug}
-                href={`/guide/${g.slug}`}
-                className="group bg-white border border-gray-200 rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand-green/45"
-              >
-                <div className="flex items-center gap-3 text-xs font-extrabold">
-                  <span className="text-[#0b9e6e] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-full">
-                    {g.category}
+        {/* 카테고리 점프 링크 */}
+        <nav aria-label="가이드 카테고리" className="mb-12">
+          <ul className="flex flex-wrap justify-center gap-2">
+            {sections.map((section) => (
+              <li key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                >
+                  {section.name}
+                  <span className="text-xs font-extrabold text-gray-400">
+                    {section.items.length}
                   </span>
-                  <span className="text-gray-400">읽는 시간 {g.readTime}</span>
-                </div>
-                <h3 className="mt-4 text-lg font-extrabold text-gray-900 leading-snug">
-                  {g.title}
-                </h3>
-                <p className="mt-3 text-sm text-gray-500 leading-relaxed line-clamp-2">
-                  {g.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#0b9e6e]">
-                  자세히 보기
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </span>
-              </Link>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
+        </nav>
+
+        {/* 카테고리별 가이드 */}
+        <div className="mb-16 space-y-14">
+          {sections.map((section) => (
+            <section key={section.id} id={section.id} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold text-gray-900 border-l-4 border-brand-green pl-4">
+                {section.name}
+              </h2>
+              <p className="mt-2 pl-4 text-sm text-gray-500">{section.desc}</p>
+              <div className="mt-6 grid md:grid-cols-2 gap-4">
+                {section.items.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/guide/${g.slug}`}
+                    className="group bg-white border border-gray-200 rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-brand-green/45"
+                  >
+                    <h3 className="text-lg font-extrabold text-gray-900 leading-snug">
+                      {g.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-gray-500 leading-relaxed line-clamp-1">
+                      {g.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-3 text-sm font-bold">
+                      <span className="text-[#0b9e6e] inline-flex items-center gap-1.5">
+                        자세히 보기
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      </span>
+                      <span className="text-xs font-extrabold text-gray-400">
+                        읽는 시간 {g.readTime}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">

@@ -19,6 +19,10 @@ const industries = [
   { icon: "🖥️", name: "데이터센터", href: "/industry/datacenter" },
   { icon: "🏢", name: "빌딩 공조", href: "/industry/hvac" },
   { icon: "🧸", name: "어린이집·유치원", href: "/industry/daycare" },
+  { icon: "🦴", name: "정형외과 수술실", href: "/medical/orthopedics" },
+  { icon: "🩻", name: "검진센터", href: "/medical/health-checkup" },
+  { icon: "🏫", name: "학교·교육시설", href: "/industry/school" },
+  { icon: "🏨", name: "호텔·숙박", href: "/industry/hotel" },
 ];
 
 export default function Industries() {

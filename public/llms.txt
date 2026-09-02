@@ -23,6 +23,10 @@
 - [치과 필터](https://evergreen-filter.vercel.app/medical/dental): 진료실 에어로졸·기공실 분진 대응
 - [피부과·성형외과 필터](https://evergreen-filter.vercel.app/medical/dermatology): 레이저 플룸·수술실 공기 관리
 - [안과 수술실 필터](https://evergreen-filter.vercel.app/medical/ophthalmology): 라식·백내장 수술실 H13~H14, 소형 수술실 비표준 규격
+- [정형외과 수술실 필터](https://evergreen-filter.vercel.app/medical/orthopedics): 인공관절·척추 이식물 수술 = 감염 고위험도 층류 H14
+- [검진센터 필터](https://evergreen-filter.vercel.app/medical/health-checkup): 내시경실 소독가스·환기, 수검자 밀집 시간대 CO₂
+- [투석실 필터](https://evergreen-filter.vercel.app/medical/dialysis): 면역 저하 환자 장시간 체류, 급기 헤파, 24시간 가동
+- [정신병원·재활병원 필터](https://evergreen-filter.vercel.app/medical/psychiatric-rehab): 인증 의무 대상, 장기 입원 병동 공조
 - [한의원 필터](https://evergreen-filter.vercel.app/medical/oriental): 뜸 연기·냄새 관리
 - [동물병원 필터](https://evergreen-filter.vercel.app/medical/animal): 털·비듬·격리실 배기 관리
 
@@ -45,12 +49,23 @@
 - [어린이집·유치원 필터](https://evergreen-filter.vercel.app/industry/daycare): 실내공기질관리법 취약계층 시설 기준 대응
 - [도장부스 필터](https://evergreen-filter.vercel.app/industry/paint-booth): 천장·바닥·배기 필터 규격 재단
 - [빌딩·공조기(AHU) 필터](https://evergreen-filter.vercel.app/industry/hvac): 사무실·상가 실내공기질 관리
+- [학교·교육시설 필터](https://evergreen-filter.vercel.app/industry/school): 교실 환기·공기청정 유닛, 급식실, 방학 중 일괄 교체
+- [물류창고·유통센터 필터](https://evergreen-filter.vercel.app/industry/warehouse): 박스 섬유·분진, 대공간 공조, 프리 대량 소모
+- [인쇄·목공·가구 공장 필터](https://evergreen-filter.vercel.app/industry/printing-woodwork): 종이·목분 분진, 집진기 전단, 도장 라인 연계
+- [헬스장·실내체육시설 필터](https://evergreen-filter.vercel.app/industry/fitness): 고밀도 호흡, 환기량, 공기청정 유닛 필터
+- [호텔·숙박 필터](https://evergreen-filter.vercel.app/industry/hotel): 객실 FCU 대량·정기 교체, 로비·연회장 AHU
+
+## 납품 사례 · FAQ · 용어집
+- [납품 사례](https://evergreen-filter.vercel.app/cases): 병원·반도체·공장·도장부스 익명 사례 8건 (문제 → 구성 → 규격 → 결과)
+- [자주 묻는 질문](https://evergreen-filter.vercel.app/faq): 주문·규격·등급·맞춤 제작·교체·병원·산업·서류·배송 9개 그룹 50여 문항
+- [필터 용어집](https://evergreen-filter.vercel.app/glossary): HEPA·EN 1822·ISO 16890·세퍼레이터·차압·FFU·층류 등 40여 용어
 
 ## 규격별 카탈로그
-- [규격별 필터 찾기](https://evergreen-filter.vercel.app/size): 헤파·미듐·프리필터 표준 규격 19종 치수별 안내
+- [규격별 필터 찾기](https://evergreen-filter.vercel.app/size): 헤파·미듐·프리필터·부직포롤 표준 규격 23종 치수별 안내
 - 헤파: 610x610x150 / 610x610x292 / 610x305x150·292 / 610x762x150·292 / 610x915x150·292 / 610x1220x150·292 / 305x305x150 (각각 /size/규격 경로, 예: https://evergreen-filter.vercel.app/size/610x610x150)
 - 미듐: 594x594x75·100·292 / 594x287x292 — 공조기(AHU) 594 레일 규격, 610각 헤파와 호환되지 않음
 - 프리: 594x594x20·25·50 / 594x287x20 — G4 1차 여과 판형
+- 부직포롤: 15T·20T × 폭 1000·1200mm × 20m (/size/roll-15t-1000 등) — 도장부스·프리단 재단용 원단, 격월 정기 납품 다수
 
 ## 가이드 — 등급·규격
 - [H13 vs H14 차이](https://evergreen-filter.vercel.app/guide/h13-vs-h14): EN 1822 등급 비교와 용도별 선택 기준
@@ -92,6 +107,22 @@
 - [에어필터 가격 결정 구조](https://evergreen-filter.vercel.app/guide/air-filter-price): 단가를 만드는 5가지와 견적 비교법
 - [비표준 규격 필터 제작](https://evergreen-filter.vercel.app/guide/custom-size-filter): 실측만으로 단종·맞춤 사이즈 제작하기
 - [사업자 필터 구매](https://evergreen-filter.vercel.app/guide/b2b-filter-supply): 세금계산서·정기 납품·연간 계약
+
+## 가이드 — 비교
+- [알루미늄 vs 우드 프레임](https://evergreen-filter.vercel.app/guide/aluminum-vs-wood-frame): 강성·습기·재사용·1회성 현장
+- [미듐 백형 vs 판형 vs V뱅크](https://evergreen-filter.vercel.app/guide/bag-vs-panel-medium-filter): 여과면적·장착 깊이·풍량·수명
+- [헤파 두께 150 vs 292](https://evergreen-filter.vercel.app/guide/150-vs-292-thickness): 여재량·차압·수명·장착부 깊이
+- [세척형 vs 교체형 프리필터](https://evergreen-filter.vercel.app/guide/washable-vs-disposable-prefilter): 세척 한계와 총비용
+- [순정 vs 호환(맞춤 제작) 필터](https://evergreen-filter.vercel.app/guide/oem-vs-compatible-filter): 규격 동일성·등급 유지·단종 대응
+
+## 가이드 — 유지관리 (추가)
+- [필터를 갈았는데도 먼지가](https://evergreen-filter.vercel.app/guide/dust-after-filter-change): 밀착 불량·방향·바이패스·덕트 오염 진단 순서
+- [필터 곰팡이 예방](https://evergreen-filter.vercel.app/guide/filter-mold-prevention): 젖는 원인(결로·누수·드레인)과 예방 운용
+- [예비 필터 보관과 폐기](https://evergreen-filter.vercel.app/guide/filter-storage-and-disposal): 습기·압착·유효기간, 폐기는 지자체·처리업체 확인
+
+## 가이드 — 구매 (추가)
+- [연간 필터 예산 산정법](https://evergreen-filter.vercel.app/guide/annual-filter-budget): 설비 목록 → 규격·수량 → 주기 → 연간 장수 → 재고 2회분
+- [필터 견적 비교 체크리스트](https://evergreen-filter.vercel.app/guide/quote-comparison-checklist): 등급·규격 mm·프레임·여재·수량단가·납기·서류
 
 ## 가이드 — 법규·기준
 - [실내공기질관리법 총정리](https://evergreen-filter.vercel.app/guide/indoor-air-quality-act): 대상 시설과 취약계층 시설 유지기준

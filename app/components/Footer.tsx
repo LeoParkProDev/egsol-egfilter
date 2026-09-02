@@ -41,7 +41,9 @@ export default function Footer() {
               <Link href="/service/partner-program" className="hover:text-white transition-colors">설비·점검업체 파트너</Link>
               <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
               <Link href="/quote" className="hover:text-white transition-colors">견적 요청</Link>
+              <Link href="/cases" className="hover:text-white transition-colors">납품 사례</Link>
               <Link href="/faq" className="hover:text-white transition-colors">자주 묻는 질문</Link>
+              <Link href="/glossary" className="hover:text-white transition-colors">필터 용어집</Link>
             </div>
           </div>
 
@@ -58,6 +60,8 @@ export default function Footer() {
               <Link href="/industry/daycare" className="hover:text-white transition-colors">어린이집·유치원 필터</Link>
               <Link href="/industry/paint-booth" className="hover:text-white transition-colors">도장부스 필터</Link>
               <Link href="/industry/hvac" className="hover:text-white transition-colors">빌딩·공조기 필터</Link>
+              <Link href="/industry/school" className="hover:text-white transition-colors">학교·교육시설 필터</Link>
+              <Link href="/industry/hotel" className="hover:text-white transition-colors">호텔·숙박 필터</Link>
             </div>
           </div>
 
@@ -71,6 +75,8 @@ export default function Footer() {
               <Link href="/medical/dental" className="hover:text-white transition-colors">치과 필터</Link>
               <Link href="/medical/dermatology" className="hover:text-white transition-colors">피부과·성형외과 필터</Link>
               <Link href="/medical/ophthalmology" className="hover:text-white transition-colors">안과 수술실 필터</Link>
+              <Link href="/medical/orthopedics" className="hover:text-white transition-colors">정형외과 수술실 필터</Link>
+              <Link href="/medical/health-checkup" className="hover:text-white transition-colors">검진센터 필터</Link>
               <Link href="/medical/oriental" className="hover:text-white transition-colors">한의원 필터</Link>
               <Link href="/medical/animal" className="hover:text-white transition-colors">동물병원 필터</Link>
               <Link href="/medical" className="hover:text-white transition-colors">의료시설 전체 보기</Link>

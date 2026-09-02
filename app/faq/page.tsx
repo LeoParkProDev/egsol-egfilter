@@ -1,104 +1,225 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { faqGroups } from "../data/faq";
+import { SITE } from "../data/site";
+
+const BASE_URL = "https://evergreen-filter.vercel.app";
+
+const allItems = faqGroups.flatMap((g) => g.items);
 
 export const metadata: Metadata = {
-  title: "자주 묻는 질문 | 주문·배송·맞춤 제작·병원 납품",
+  title: "자주 묻는 질문 | 규격·등급·맞춤 제작·병원 납품 총정리",
   description:
-    "에어필터 소량 주문, 배송 기간, 커스텀 규격 제작, 세금계산서, 병원·의료시설 납품까지 — 고객님들이 가장 많이 묻는 질문과 답변을 모았습니다.",
+    "헤파필터 세척, 594×594와 610×610 차이, 수술실 등급 기준, 단종 필터 대체 제작, 정기 납품과 구매 품의 서류까지. 현장에서 실제로 받는 질문 50여 개를 주제별로 정리했습니다.",
   keywords:
-    "에어필터 주문,필터 맞춤 제작,필터 배송,세금계산서,병원 필터 납품,정기 납품,헤파필터 규격",
+    "에어필터 자주묻는질문,헤파필터 세척,필터 규격 실측,594 610 차이,수술실 필터 등급,단종 필터 대체,필터 맞춤 제작,정기 납품,미듐필터,미디움필터",
   alternates: { canonical: "/faq" },
-};
-
-const faqs = [
-  {
-    q: "소량 주문도 가능한가요?",
-    a: "네, 스마트스토어를 통해 1개부터 낱개 구매가 가능합니다. 필요한 수량만큼 부담 없이 주문하세요.",
+  openGraph: {
+    title: "자주 묻는 질문 | 에버그린필터",
+    description:
+      "규격 실측부터 등급 선택, 맞춤 제작, 병원·공장 납품, 서류와 납기까지 — 현장 질문 50여 개를 주제별로 정리했습니다.",
+    url: `${BASE_URL}/faq`,
+    siteName: "에버그린필터",
+    locale: "ko_KR",
+    type: "website",
   },
-  {
-    q: "배송은 얼마나 걸리나요?",
-    a: "오전 중 주문 시 대부분 당일 발송되며, 수도권 지역은 상황에 따라 당일 수납도 가능합니다. 전국 어디든 빠르고 안전하게 배송해 드립니다.",
-  },
-  {
-    q: "원하는 사이즈로 주문 제작(커스텀)이 가능한가요?",
-    a: "가능합니다. 프리필터, 미듐필터, 헤파필터 모두 현장 설비 규격에 맞춰 제작해 드립니다. 단, 제작 상품은 발주 후 3~7일 정도 소요될 수 있습니다.",
-  },
-  {
-    q: "기존 필터 규격을 모르는데 주문할 수 있나요?",
-    a: "가능합니다. 설치된 필터의 라벨 사진이나 프레임 실측 치수(가로×세로×두께)를 카카오톡 또는 이메일로 보내주시면 규격을 확인해 당일 견적을 드립니다.",
-  },
-  {
-    q: "세금계산서 발행이 가능한가요?",
-    a: "네, 스마트스토어 주문 시 지출증빙용 현금영수증이나 세금계산서 발행을 선택하실 수 있습니다. 별도 계좌이체 거래 시에도 사업자등록증을 보내주시면 즉시 발행해 드립니다.",
-  },
-  {
-    q: "정기 납품 계약을 하면 혜택이 있나요?",
-    a: "정기 납품(월/분기별) 계약 시 단가 할인 혜택이 적용되며, 귀사의 규격에 맞는 재고를 항시 확보하여 결품 없이 안정적으로 공급해 드립니다.",
-  },
-  {
-    q: "병원·의원에도 납품하나요?",
-    a: "네. 수술실·시술실·음압병실용 H13·H14 헤파필터를 병원 규격에 맞춰 공급하며, 치과·피부과·한의원·동물병원 등 개원가 납품 실적이 다수 있습니다. 견적서·거래명세서 등 병원 행정 서류도 함께 준비해 드립니다.",
-  },
-  {
-    q: "필터 교체 시기를 어떻게 알 수 있나요?",
-    a: "프리필터는 1~3개월, 미듐필터는 3~6개월, 헤파필터는 6~12개월이 일반적이며, 정확한 판단 기준은 차압(필터 막힘 정도)입니다. 구매 고객께는 교체 주기를 기록해 두었다가 시기가 되면 먼저 연락드립니다.",
-  },
-];
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
 };
 
 export default function FAQPage() {
+  const hasPhone = Boolean(SITE.phone);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: "ko",
+    mainEntity: allItems.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: "자주 묻는 질문", item: `${BASE_URL}/faq` },
+    ],
+  };
+
   return (
-    <main className="min-h-screen bg-surface py-16 md:py-24">
+    <main className="min-h-screen bg-surface py-14 md:py-20 break-keep">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-primary font-black text-sm tracking-widest uppercase">FAQ</span>
-          <h1 className="text-3xl md:text-5xl font-black text-gray-900 mt-4 mb-6">
-            자주 묻는 질문
-          </h1>
-          <p className="text-lg text-gray-600">
-            고객님들께서 많이 여쭤보시는 질문들을 모았습니다.
-          </p>
-        </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-start gap-3">
-                <span className="text-primary">Q.</span>
-                {faq.q}
-              </h3>
-              <div className="text-gray-600 leading-relaxed flex items-start gap-3">
-                <span className="text-gray-400 font-bold">A.</span>
-                <p>{faq.a}</p>
+      <div className="max-w-3xl mx-auto px-6">
+        <nav aria-label="breadcrumb" className="text-xs font-semibold text-gray-400">
+          <Link href="/" className="hover:text-[#0b9e6e] transition-colors">
+            홈
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-600">자주 묻는 질문</span>
+        </nav>
+
+        <header className="mt-8 text-center">
+          <span className="text-[#0b9e6e] font-black text-sm tracking-widest uppercase">
+            FAQ
+          </span>
+          <h1 className="mt-4 text-3xl md:text-5xl font-black text-gray-900 leading-[1.25] text-balance">
+            현장에서 <span className="text-[#0b9e6e]">실제로 받는 질문</span>만 모았습니다
+          </h1>
+          <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+            규격 실측부터 등급 선택, 맞춤 제작, 병원·공장 납품, 서류와 납기까지.
+            <br className="hidden md:block" />
+            전화로 가장 많이 여쭤보시는 순서대로 정리했습니다.
+          </p>
+        </header>
+
+        {/* 그룹 점프 링크 */}
+        <nav
+          aria-label="주제 바로가기"
+          className="mt-10 bg-white border border-gray-200 rounded-2xl px-5 py-5"
+        >
+          <p className="text-[0.7rem] font-extrabold tracking-[0.12em] uppercase text-gray-400">
+            주제 바로가기
+          </p>
+          <ul className="mt-3.5 flex flex-wrap gap-2">
+            {faqGroups.map((group) => (
+              <li key={group.id}>
+                <a
+                  href={`#${group.id}`}
+                  className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/40 text-sm font-bold text-gray-700 hover:text-[#0b9e6e] px-3.5 py-2 rounded-full transition-colors"
+                >
+                  {group.title}
+                  <span className="text-xs font-extrabold text-gray-400 tabular-nums">
+                    {group.items.length}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* 그룹별 Q&A */}
+        <div className="mt-12 space-y-12">
+          {faqGroups.map((group) => (
+            <section key={group.id} id={group.id} className="scroll-mt-24">
+              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 border-l-4 border-brand-green pl-4">
+                {group.title}
+              </h2>
+              <div className="mt-6 space-y-3">
+                {group.items.map((faq) => (
+                  <details
+                    key={faq.q}
+                    className="group bg-white border border-gray-200 rounded-2xl open:border-brand-green/45 transition-colors"
+                  >
+                    <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-start justify-between gap-4 px-6 py-5 font-bold text-gray-900 leading-snug">
+                      {faq.q}
+                      <span
+                        aria-hidden="true"
+                        className="mt-0.5 shrink-0 text-xl font-light text-[#0b9e6e] transition-transform group-open:rotate-45"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="px-6 pb-6 text-sm text-gray-500 leading-[1.85]">{faq.a}</p>
+                  </details>
+                ))}
               </div>
-            </div>
+            </section>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-4">원하시는 답변이 없으신가요?</p>
-          <a
-            href="/quote"
-            className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-xl transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            견적 문의하기
-          </a>
-        </div>
+        {/* 더 읽을거리 */}
+        <section className="mt-14">
+          <h2 className="text-lg font-extrabold text-gray-900">더 자세히 보시려면</h2>
+          <div className="mt-5 grid sm:grid-cols-3 gap-4">
+            <Link
+              href="/guide"
+              className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
+            >
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+                가이드
+              </span>
+              <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
+                교체주기·등급 선택 심화 가이드
+              </span>
+            </Link>
+            <Link
+              href="/glossary"
+              className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
+            >
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+                용어집
+              </span>
+              <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
+                차압·MPPS·ePM까지 필터 용어 정리
+              </span>
+            </Link>
+            <Link
+              href="/service"
+              className="group bg-white border border-gray-200 rounded-2xl px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/45 hover:shadow-md"
+            >
+              <span className="text-[0.65rem] font-extrabold tracking-wide text-[#0b9e6e]">
+                서비스
+              </span>
+              <span className="mt-1.5 block font-bold text-gray-900 leading-snug">
+                정기 납품·맞춤 제작 거래 방식
+              </span>
+            </Link>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="mt-14 bg-surface-dark rounded-3xl px-8 md:px-10 py-10 text-center text-white">
+          <h2 className="text-2xl font-black text-balance">
+            찾으시는 답이 없으면, 필터 사진 한 장이면 됩니다
+          </h2>
+          <p className="mt-3 text-white/60 leading-relaxed">
+            라벨 사진이나 실측 치수(필터 바깥 치수, 틀 끝에서 끝)를 보내주시면 규격·등급을
+            확인해 견적을 드립니다.
+            <br className="hidden sm:block" />
+            {SITE.replyPromise}.
+          </p>
+          <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={SITE.kakaoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-[#FEE500] text-[#3C1E1E] font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+            >
+              카카오톡으로 사진 보내기
+            </a>
+            <Link
+              href="/quote"
+              className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+            >
+              견적서 양식으로 문의
+            </Link>
+            {hasPhone && (
+              <a
+                href={SITE.phoneHref}
+                className="inline-flex items-center justify-center bg-white/5 border border-white/20 text-white font-extrabold px-7 py-3.5 rounded-full transition-transform hover:-translate-y-0.5"
+              >
+                전화 {SITE.phone}
+              </a>
+            )}
+          </div>
+          <p className="mt-6 text-sm text-white/45">
+            메일도 괜찮습니다 —{" "}
+            <a href={`mailto:${SITE.email}`} className="font-bold underline">
+              {SITE.email}
+            </a>
+            {hasPhone && <span className="ml-2">· {SITE.hours}</span>}
+          </p>
+        </section>
       </div>
     </main>
   );

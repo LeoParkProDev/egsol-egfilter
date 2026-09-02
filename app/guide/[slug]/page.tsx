@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guides } from "../../data/guides";
+import { guideText, relatedGuides, sizesFor } from "../../lib/related";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
@@ -42,7 +43,9 @@ export default async function GuideArticlePage({ params }: Props) {
   const guide = guides.find((g) => g.slug === slug);
   if (!guide) notFound();
 
-  const others = guides.filter((g) => g.slug !== guide.slug).slice(0, 4);
+  // 관련 가이드·관련 규격은 related 엔진이 본문에서 뽑아낸다 (app/lib/related.ts).
+  const others = relatedGuides(guide.slug, 4);
+  const relatedSizes = sizesFor(guideText(guide), 4);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -257,6 +260,33 @@ export default async function GuideArticlePage({ params }: Props) {
             ))}
           </div>
         </section>
+
+        {/* 관련 규격 — 본문에 등장한 치수를 규격 페이지로 연결한다 */}
+        {relatedSizes.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-lg font-extrabold text-gray-900">관련 규격</h2>
+            <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+              {relatedSizes.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/size/${s.slug}`}
+                  className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-gray-700 transition hover:border-brand-green/45 hover:text-[#0b9e6e]"
+                >
+                  {s.w}×{s.h}×{s.t}
+                  <span className="mt-0.5 block text-xs font-semibold text-gray-400">{s.type}</span>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4 text-sm text-gray-500">
+              전체 규격은{" "}
+              <Link href="/size" className="font-bold text-[#0b9e6e] hover:underline">
+                규격별 필터 찾기
+              </Link>
+              에서 확인하실 수 있고, 목록에 없는 치수는 바깥 치수(틀 끝에서 끝) 실측값만 있으면
+              3~7일 맞춤 제작합니다.
+            </p>
+          </section>
+        )}
       </article>
     </main>
   );

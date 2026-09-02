@@ -32,6 +32,7 @@ export interface Guide {
 
 import { medicalGuides } from "./guides-medical";
 import { industryGuides } from "./guides-industry";
+import { extraGuides } from "./guides-extra";
 
 const coreGuides: Guide[] = [
   {
@@ -1603,9 +1604,9 @@ const coreGuides: Guide[] = [
   },
 ];
 
-// 가이드는 core + 의료(7편) + 산업(5편)을 합쳐 노출한다.
+// 가이드는 core + 의료(7편) + 산업(5편) + 비교·유지관리·구매(10편)를 합쳐 노출한다.
 // 라우트·사이트맵·RSS·OG는 이 배열 하나만 본다. slug 중복은 빌드 시 아래에서 걸린다.
-export const guides: Guide[] = [...coreGuides, ...medicalGuides, ...industryGuides];
+export const guides: Guide[] = [...coreGuides, ...medicalGuides, ...industryGuides, ...extraGuides];
 
 {
   const seen = new Set<string>();
