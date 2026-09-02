@@ -3,9 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { specialties } from "../../data/specialties";
 import { guideText, guidesFor, sizesFor } from "../../lib/related";
+import LaminarFlow from "../../components/LaminarFlow";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
+
+// 층류 급기 단면도는 수술실 계열 진료과에만 붙인다. 치과·한의원 등에는 해당 없음.
+const LAMINAR_SPECIALTIES = new Set(["operating-room", "ophthalmology", "orthopedics"]);
 
 interface Props {
   params: Promise<{ specialty: string }>;
@@ -176,6 +180,15 @@ export default async function SpecialtyPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* 수술실 계열은 층류 급기 구조를 단면도로 먼저 보여준다 */}
+      {LAMINAR_SPECIALTIES.has(data.slug) && (
+        <section className="bg-white pt-4 pb-16 md:pb-20">
+          <div className="mx-auto max-w-3xl px-6">
+            <LaminarFlow />
+          </div>
+        </section>
+      )}
 
       {/* ═══ PROBLEM ═══ */}
       <section className="bg-white py-20 md:py-28">

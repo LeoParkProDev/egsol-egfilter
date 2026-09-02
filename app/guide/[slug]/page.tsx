@@ -1,10 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MediaSection from "../../components/MediaSection";
+import LaminarFlow from "../../components/LaminarFlow";
+import PressureCurve from "../../components/PressureCurve";
 import { notFound } from "next/navigation";
 import { guides } from "../../data/guides";
 import { guideText, relatedGuides, sizesFor } from "../../lib/related";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
+
+// 어떤 가이드에 어떤 도면을 붙일지. 글의 주제와 도면이 맞을 때만 넣는다 —
+// 아무 데나 그림을 넣으면 오히려 읽는 흐름을 끊는다.
+const DIAGRAM_FOR: Record<string, "media" | "laminar" | "pressure" | undefined> = {
+  "h13-vs-h14": "media",
+  "air-filter-grade-guide": "media",
+  "laminar-flow-filter": "laminar",
+  "operating-room-air-standard": "laminar",
+  "operating-room-filter-replacement": "laminar",
+  "hepa-filter-replacement-cycle": "pressure",
+  "filter-pressure-gauge": "pressure",
+};
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
 
 interface Props {
@@ -121,6 +136,11 @@ export default async function GuideArticlePage({ params }: Props) {
           </h1>
           <p className="mt-5 text-lg text-gray-600 leading-relaxed">{guide.intro}</p>
         </header>
+
+        {/* 글 주제에 맞는 기술 도면 — 해당하는 가이드에만 붙는다 */}
+        {DIAGRAM_FOR[guide.slug] === "media" && <MediaSection className="mt-10" />}
+        {DIAGRAM_FOR[guide.slug] === "laminar" && <LaminarFlow className="mt-10" />}
+        {DIAGRAM_FOR[guide.slug] === "pressure" && <PressureCurve className="mt-10" />}
 
         <div className="mt-10 space-y-10">
           {guide.sections.map((section) => (
