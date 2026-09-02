@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SITE } from "../data/site";
 
 const navLinks = [
   { label: "제품", href: "/products/pre-filter" },
@@ -41,6 +42,15 @@ export default function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
+          {SITE.phone && (
+            <a
+              href={SITE.phoneHref}
+              className="text-sm font-black text-gray-900 hover:text-primary transition-colors"
+              aria-label={`전화 ${SITE.phone}`}
+            >
+              📞 {SITE.phone}
+            </a>
+          )}
           <a
             href="https://smartstore.naver.com/egfilter"
             target="_blank"
@@ -96,6 +106,14 @@ export default function Header() {
               </Link>
             ))}
             <div className="border-t border-gray-100 pt-3 mt-1 flex flex-col gap-3">
+              {SITE.phone && (
+                <a
+                  href={SITE.phoneHref}
+                  className="bg-gray-900 text-white text-center font-bold py-3 rounded-lg"
+                >
+                  📞 {SITE.phone} 전화하기
+                </a>
+              )}
               <a
                 href="https://smartstore.naver.com/egfilter"
                 target="_blank"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "../data/site";
 
 export default function Footer() {
   return (
@@ -14,6 +15,15 @@ export default function Footer() {
               <p>사업자등록번호: 799-67-00516</p>
               <p>주소: 서울특별시 강남구 테헤란로70길 12</p>
               <p>이메일: egfilter@naver.com</p>
+              {SITE.phone && (
+                <p>
+                  전화:{" "}
+                  <a href={SITE.phoneHref} className="text-white hover:underline">
+                    {SITE.phone}
+                  </a>{" "}
+                  <span className="text-white/40">({SITE.hours})</span>
+                </p>
+              )}
             </div>
           </div>
 
