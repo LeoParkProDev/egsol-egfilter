@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FilterDrawing from "../../components/FilterDrawing";
+import StageDiagram, { stageOf } from "../../components/StageDiagram";
 import { notFound } from "next/navigation";
 import { filterSizes, relatedSizes, sizeLabel } from "../../data/sizes";
 
@@ -109,21 +111,24 @@ export default async function SizePage({ params }: Props) {
         </nav>
 
         <header className="mt-6">
-          <div className="flex items-center gap-3 text-xs font-extrabold">
-            <span className="text-[#176b50] bg-brand-green/10 border border-brand-green/25 px-3 py-1 rounded-md">
+          <div className="flex items-center gap-3 text-xs">
+            <span className="rounded-md border border-brand-green/25 bg-brand-green/10 px-3 py-1 font-semibold text-[#176b50]">
               {size.type}
             </span>
-            <span className="text-gray-400">{size.grade}</span>
+            <span className="font-mono text-gray-500">{size.grade}</span>
           </div>
-          <h1 className="mt-5 text-3xl md:text-4xl font-black text-gray-900 leading-[1.3]">
+          <h1 className="mt-5 text-3xl font-semibold leading-[1.25] tracking-[-0.015em] text-gray-900 md:text-4xl">
             {size.title}
           </h1>
           {size.summary.map((p) => (
-            <p key={p.slice(0, 24)} className="mt-4 text-lg text-gray-600 leading-relaxed">
+            <p key={p.slice(0, 24)} className="mt-4 text-lg leading-[1.75] text-gray-500">
               {p}
             </p>
           ))}
         </header>
+
+        {/* 규격 도면 — w/h/t 데이터로 실제 비율로 그린다 */}
+        <FilterDrawing size={size} className="mt-10" />
 
         {/* 규격 명세 */}
         <section className="mt-10">
@@ -200,7 +205,11 @@ export default async function SizePage({ params }: Props) {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-gray-700 leading-[1.85]">{size.pairing}</p>
+          <StageDiagram
+            className="mt-6"
+            highlight={stageOf(size.type)}
+            note={size.pairing}
+          />
         </section>
 
         {/* FAQ */}

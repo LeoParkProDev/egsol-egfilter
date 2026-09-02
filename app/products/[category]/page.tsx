@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { products, colorMap } from "../../data/products";
 import { guides } from "../../data/guides";
+import StageDiagram, { stageOf } from "../../components/StageDiagram";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -197,6 +198,17 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-gray-700 bg-gray-50 p-4 rounded-xl font-medium">
                   {product.replacementCycle}
                 </p>
+              </div>
+
+              {/* 이 제품이 공조 계통의 어느 단에 들어가는지 */}
+              <div className="mb-8">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">
+                  공조 계통에서의 위치
+                </h2>
+                <StageDiagram
+                  highlight={stageOf(product.name)}
+                  note="앞단의 저렴한 필터를 부지런히 갈수록 뒷단의 고가 필터가 오래갑니다. 용도에 맞는 마지막 단과, 그것을 보호하는 앞단 — 이 조합이 설계의 전부입니다."
+                />
               </div>
 
               <div className="mb-8">
