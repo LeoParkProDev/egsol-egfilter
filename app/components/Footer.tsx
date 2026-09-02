@@ -14,7 +14,7 @@ export default function Footer() {
               <p>대표: 박현수</p>
               <p>사업자등록번호: 799-67-00516</p>
               <p>주소: 서울특별시 강남구 테헤란로70길 12</p>
-              <p>이메일: egfilter@naver.com</p>
+              <p>이메일: egfilter153@gmail.com</p>
               {SITE.phone && (
                 <p>
                   전화:{" "}

@@ -74,7 +74,7 @@ const organizationJsonLd = {
   alternateName: "Evergreen Filter",
   url: "https://evergreen-filter.vercel.app",
   logo: "https://evergreen-filter.vercel.app/apple-icon",
-  email: "egfilter@naver.com",
+  email: "egfilter153@gmail.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "테헤란로70길 12",
@@ -86,7 +86,7 @@ const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: "egfilter@naver.com",
+    email: "egfilter153@gmail.com",
     availableLanguage: "Korean",
   },
 };

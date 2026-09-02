@@ -24,7 +24,7 @@ export const SITE: SiteConfig = {
   name: "에버그린필터",
   phone,
   phoneHref: phone ? `tel:${phone.replace(/[^0-9+]/g, "")}` : "",
-  email: "egfilter@naver.com",
+  email: "egfilter153@gmail.com",
   kakaoUrl: "https://pf.kakao.com/_zjkxab",
   smartstoreUrl: "https://smartstore.naver.com/egfilter",
   hours: "평일 09:00–18:00",

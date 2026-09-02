@@ -23,7 +23,7 @@ export default function Home() {
             name: "에버그린필터",
             description:
               "병원, 크린룸, 수술실, 공장, 도장부스, 관리실 특화 에어필터 전문 공급. 프리필터, 헤파필터, 미듐필터.",
-            email: "egfilter@naver.com",
+            email: "egfilter153@gmail.com",
             address: {
               "@type": "PostalAddress",
               addressLocality: "강남구",
