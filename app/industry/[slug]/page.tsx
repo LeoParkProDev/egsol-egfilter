@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { industries } from "../../data/industries";
+import Image from "next/image";
+import { INDUSTRY_PHOTOS, industries } from "../../data/industries";
 import { guideText, guidesFor, sizesFor } from "../../lib/related";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
@@ -42,6 +43,7 @@ export default async function IndustryPage({ params }: Props) {
   if (!data) notFound();
 
   const others = industries.filter((i) => i.slug !== data.slug);
+  const photo = INDUSTRY_PHOTOS[data.slug];
 
   // 함께 보는 가이드·관련 규격은 업종 keywords로 related 엔진이 고른다 (app/lib/related.ts).
   const relatedGuideList = guidesFor(data.keywords, 4);
@@ -168,6 +170,27 @@ export default async function IndustryPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* 현장 분위기 사진 — 자사 시공 현장이 아니라 납품 환경을 보여주는 맥락 이미지 */}
+      {photo && (
+        <section className="bg-paper px-6 pb-4">
+          <figure className="mx-auto max-w-6xl">
+            <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-gray-200">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 1152px) 100vw, 1152px"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-2.5 text-xs text-gray-400">
+              {data.name} 환경 예시 — 저희가 시공한 현장이 아니라 납품 환경을 보여주는
+              참고 이미지입니다. 출처 {photo.credit}.
+            </figcaption>
+          </figure>
+        </section>
+      )}
 
       {/* ═══ PROBLEM ═══ */}
       <section className="bg-white py-20 md:py-28">

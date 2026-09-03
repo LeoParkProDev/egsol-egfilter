@@ -32,7 +32,37 @@ export interface Industry {
   setups: IndustrySetup[];
   setupNote: string;
   faqs: IndustryFaq[];
+  /**
+   * 현장 분위기 사진(선택). 저희 시공 현장이 아니라 "이런 환경에 납품한다"는
+   * 맥락 이미지이므로, 캡션에 그 사실과 출처를 반드시 함께 표기한다.
+   * 출처는 Unsplash — 상업적 사용 허용, 출처 표기 의무 없음(자율 표기).
+   */
+  photo?: { src: string; alt: string; credit: string };
 }
+
+/** 업종별 맥락 사진. 파일은 public/images/ 에 있다. */
+export const INDUSTRY_PHOTOS: Record<string, Industry["photo"]> = {
+  cleanroom: {
+    src: "/images/cleanroom.jpg",
+    alt: "천장 급기 디퓨저가 보이는 클린룸 내부",
+    credit: "Unsplash",
+  },
+  semiconductor: {
+    src: "/images/semiconductor.jpg",
+    alt: "방진복을 착용하고 클린룸에서 작업하는 모습",
+    credit: "Unsplash",
+  },
+  hvac: {
+    src: "/images/hvac.jpg",
+    alt: "건물 천장에 노출된 공조 덕트",
+    credit: "Unsplash",
+  },
+  "food-factory": {
+    src: "/images/food-factory.jpg",
+    alt: "천장 덕트가 지나가는 식품 제조 라인",
+    credit: "Unsplash",
+  },
+};
 
 import { extraIndustries } from "./industries-extra";
 import { extraIndustries2 } from "./industries-extra2";
