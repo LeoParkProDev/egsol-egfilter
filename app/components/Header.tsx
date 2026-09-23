@@ -39,7 +39,7 @@ export default function Header() {
           <span className="text-lg font-semibold tracking-[-0.01em]">에버그린필터</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex 2xl:gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -51,12 +51,22 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-3 md:flex xl:gap-4">
+          {SITE.phone && (
+            <a
+              href={SITE.phoneHref}
+              data-cta-placement="header_phone"
+              className="flex min-h-11 flex-col justify-center text-right leading-tight text-gray-900 transition-colors hover:text-primary"
+            >
+              <span className="text-sm font-semibold">{SITE.phone}</span>
+              <span className="mt-1 text-xs text-gray-500">전화 상담 · {SITE.hours}</span>
+            </a>
+          )}
           <a
             href="https://smartstore.naver.com/egfilter"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+            className="hidden items-center gap-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary 2xl:inline-flex"
           >
             스마트스토어
             <svg
@@ -83,8 +93,10 @@ export default function Header() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="p-2 text-gray-700 md:hidden"
-          aria-label="메뉴 열기"
+          className="min-h-11 min-w-11 p-2 text-gray-700 xl:hidden"
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           <svg
             className="h-6 w-6"
@@ -102,39 +114,43 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
-        <nav className="border-t border-gray-100 bg-white md:hidden">
-          <div className="flex flex-col px-6 py-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-gray-100 py-3.5 text-base font-medium text-gray-800"
+      <nav
+        id="mobile-navigation"
+        hidden={!open}
+        className="border-t border-gray-100 bg-white xl:hidden"
+      >
+        <div className="flex flex-col px-6 py-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-gray-100 py-3.5 text-base font-medium text-gray-800"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="mt-4 mb-2 flex flex-col gap-2.5">
+            {SITE.phone && (
+              <a
+                href={SITE.phoneHref}
+                data-cta-placement="header_phone"
+                className="rounded-md border border-gray-900 py-3 text-center font-semibold text-gray-900"
               >
-                {link.label}
-              </Link>
-            ))}
-            <div className="mt-4 mb-2 flex flex-col gap-2.5">
-              {SITE.phone && (
-                <a
-                  href={SITE.phoneHref}
-                  className="rounded-md border border-gray-900 py-3 text-center font-semibold text-gray-900"
-                >
-                  전화 {SITE.phone}
-                </a>
-              )}
-              <Link
-                href="/quote"
-                onClick={() => setOpen(false)}
-                className="rounded-md bg-primary py-3 text-center font-semibold text-white"
-              >
-                사진으로 견적 받기
-              </Link>
-            </div>
+                <span className="block">전화 상담 · {SITE.phone}</span>
+                <span className="mt-1 block text-sm font-normal text-gray-600">{SITE.hours}</span>
+              </a>
+            )}
+            <Link
+              href="/quote"
+              onClick={() => setOpen(false)}
+              className="rounded-md bg-primary py-3 text-center font-semibold text-white"
+            >
+              사진으로 견적 받기
+            </Link>
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
     </header>
   );
 }

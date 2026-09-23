@@ -3,9 +3,9 @@ import { SITE } from "../data/site";
 import QuoteForm from "./QuoteForm";
 
 export const metadata: Metadata = {
-  title: "견적 요청 | 필터 사진 한 장으로 당일 견적·대량 구매·맞춤 제작",
+  title: "견적 요청 | 필터 사진 한 장으로 대량 구매·맞춤 제작 문의",
   description:
-    "에어필터 대량 구매, 정기 납품, 비표준 규격 맞춤 제작 견적 문의. 필터 라벨 사진이나 실측 치수를 보내주시면 영업일 기준 30분 내 1차 회신, 당일 정식 견적서를 드립니다.",
+    "에어필터 대량 구매, 정기 납품, 비표준 규격 맞춤 제작 문의. 필터 라벨 사진이나 실측 치수와 수량을 보내 견적을 요청할 수 있습니다.",
   keywords:
     "에어필터 견적,필터 대량 구매,필터 정기 납품,헤파필터 견적,맞춤 필터 제작,필터 납품 업체,필터 사진 견적",
   alternates: { canonical: "/quote" },
@@ -21,9 +21,9 @@ export default function QuotePage() {
           <span className="eyebrow">견적 문의</span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 mt-4 mb-6">견적 문의</h1>
           <p className="text-lg text-gray-600">
-            <b className="text-gray-900">{SITE.replyPromise}</b>
+            <b className="text-gray-900">전화 상담은 {SITE.hours}에 가능합니다.</b>
             <br />
-            규격을 몰라도 됩니다. 쓰시던 필터 라벨 사진 한 장이면 충분합니다.
+            그 외 시간에는 필터 라벨 사진과 수량을 남겨 견적을 요청해 주세요.
           </p>
         </div>
 
@@ -55,9 +55,10 @@ export default function QuotePage() {
             {hasPhone && (
               <a
                 href={SITE.phoneHref}
+                data-cta-placement="quote_phone"
                 className="rounded-2xl bg-primary hover:bg-primary-dark transition px-5 py-5 text-center text-white"
               >
-                <span className="block text-xs font-bold text-white/80">전화</span>
+                <span className="block text-xs font-bold text-white/80">평일 전화 상담</span>
                 <span className="block mt-1 text-lg font-black">{SITE.phone}</span>
                 <span className="block mt-1 text-xs text-white/80">{SITE.hours}</span>
               </a>

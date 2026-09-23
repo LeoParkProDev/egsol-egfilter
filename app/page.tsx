@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Products from "./components/Products";
 import SizeQuickFind from "./components/SizeQuickFind";
 import Industries from "./components/Industries";
+import BulkSupply from "./components/BulkSupply";
 import Services from "./components/Services";
 import Advantages from "./components/Advantages";
 import Testimonials from "./components/Testimonials";
@@ -15,6 +16,7 @@ export default function Home() {
       <Products />
       <SizeQuickFind />
       <Industries />
+      <BulkSupply />
       <Services />
       <Advantages />
       <Testimonials />

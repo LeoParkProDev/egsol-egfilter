@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import BulkSupply from "../../components/BulkSupply";
 import { INDUSTRY_PHOTOS, industries } from "../../data/industries";
 import { guideText, guidesFor, sizesFor } from "../../lib/related";
 
@@ -407,6 +408,8 @@ export default async function IndustryPage({ params }: Props) {
           )}
         </div>
       </section>
+
+      <BulkSupply />
 
       {/* ═══ FINAL CTA ═══ */}
       <section className="bg-paper px-6 py-16 md:py-20">

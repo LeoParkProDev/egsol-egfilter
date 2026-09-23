@@ -3,6 +3,7 @@ import Link from "next/link";
 import MediaSection from "../../components/MediaSection";
 import LaminarFlow from "../../components/LaminarFlow";
 import PressureCurve from "../../components/PressureCurve";
+import GuideInquiry from "../../components/GuideInquiry";
 import { notFound } from "next/navigation";
 import { guides } from "../../data/guides";
 import { guideText, relatedGuides, sizesFor } from "../../lib/related";
@@ -143,67 +144,73 @@ export default async function GuideArticlePage({ params }: Props) {
         {DIAGRAM_FOR[guide.slug] === "pressure" && <PressureCurve className="mt-10" />}
 
         <div className="mt-10 space-y-10">
-          {guide.sections.map((section) => (
-            <section key={section.heading}>
-              <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
-                {section.heading}
-              </h2>
-              {section.body.map((p) => (
-                <p key={p.slice(0, 24)} className="mt-4 text-[17px] md:text-base text-gray-700 leading-[1.85]">
-                  {p}
-                </p>
-              ))}
-              {section.list && (
-                <ul className="mt-4 space-y-2.5">
-                  {section.list.map((item) => (
-                    <li key={item} className="flex gap-3 text-gray-700 leading-relaxed">
-                      <span className="mt-[0.55em] w-1.5 h-1.5 shrink-0 rounded-full bg-brand-green" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {section.table && (
-                <div className="table-scroll-hint mt-5 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
-                  <table className="w-full min-w-[560px] text-sm border-collapse">
-                    <thead>
-                      <tr className="bg-gray-50 text-left text-[0.7rem] uppercase tracking-[0.12em] text-gray-400">
-                        {section.table.headers.map((h) => (
-                          <th key={h} className="px-5 py-3.5 font-bold">
-                            {h}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {section.table.rows.map((row, i) => (
-                        <tr
-                          key={row[0]}
-                          className={
-                            i < section.table!.rows.length - 1
-                              ? "border-b border-gray-100"
-                              : ""
-                          }
-                        >
-                          {row.map((cell, j) => (
-                            <td
-                              key={`${row[0]}-${j}`}
-                              className={`px-5 py-3.5 ${
-                                j === 0
-                                  ? "font-bold text-gray-900 tabular-nums"
-                                  : "text-gray-600"
-                              }`}
-                            >
-                              {cell}
-                            </td>
+          {guide.sections.map((section, index) => (
+            <div key={section.heading}>
+              <section>
+                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">
+                  {section.heading}
+                </h2>
+                {section.body.map((p) => (
+                  <p key={p.slice(0, 24)} className="mt-4 text-[17px] md:text-base text-gray-700 leading-[1.85]">
+                    {p}
+                  </p>
+                ))}
+                {section.list && (
+                  <ul className="mt-4 space-y-2.5">
+                    {section.list.map((item) => (
+                      <li key={item} className="flex gap-3 text-gray-700 leading-relaxed">
+                        <span className="mt-[0.55em] w-1.5 h-1.5 shrink-0 rounded-full bg-brand-green" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.table && (
+                  <div className="table-scroll-hint mt-5 overflow-x-auto bg-white border border-gray-200 rounded-2xl">
+                    <table className="w-full min-w-[560px] text-sm border-collapse">
+                      <thead>
+                        <tr className="bg-gray-50 text-left text-[0.7rem] uppercase tracking-[0.12em] text-gray-400">
+                          {section.table.headers.map((h) => (
+                            <th key={h} className="px-5 py-3.5 font-bold">
+                              {h}
+                            </th>
                           ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </section>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, i) => (
+                          <tr
+                            key={row[0]}
+                            className={
+                              i < section.table!.rows.length - 1
+                                ? "border-b border-gray-100"
+                                : ""
+                            }
+                          >
+                            {row.map((cell, j) => (
+                              <td
+                                key={`${row[0]}-${j}`}
+                                className={`px-5 py-3.5 ${
+                                  j === 0
+                                    ? "font-bold text-gray-900 tabular-nums"
+                                    : "text-gray-600"
+                                }`}
+                              >
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </section>
+              {index === 1 &&
+                (guide.slug === "air-filter-grade-guide" || guide.slug === "h13-vs-h14") && (
+                  <GuideInquiry guideSlug={guide.slug} />
+                )}
+            </div>
           ))}
         </div>
 
@@ -239,8 +246,8 @@ export default async function GuideArticlePage({ params }: Props) {
             글로 판단이 어려우시면, 필터 사진 한 장이면 됩니다
           </h2>
           <p className="mt-3 text-white/60">
-            기존 필터 라벨 또는 실측 사진을 보내주시면 등급·규격 확인 후 당일 견적을
-            드립니다.
+            기존 필터 라벨 또는 바깥 치수 사진을 보내주시면 등급·규격을 확인해 견적을
+            안내해 드립니다.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <a
