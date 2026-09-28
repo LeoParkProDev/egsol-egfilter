@@ -41,4 +41,13 @@ B_ALL `6473413080`의 4개 옵션은 표시 규격과 `sellerManagerCode`가 일
 - 독립 Luna high 리뷰에서 발견한 하이픈 전화번호 형태의 추적값 유출 가능성을 수정하고 회귀 검사 통과. 최종 리뷰 추가 지적 없음.
 - 검사 스크립트 실행 시 Node의 module type 추론 경고가 있으나 종료 코드는 0이다. 앱 설정은 불필요하게 변경하지 않았다.
 
-배포 상태: 검증 완료, 프로덕션 배포 및 실제 URL 검증 예정. 배포 성공과 실제 주문 증가를 혼동하지 않는다.
+배포 완료 (2026-09-28 14:02 KST):
+
+- 구현 커밋: `2a22984` — main fast-forward 및 GitHub push 완료. 기존 HTTPS 인증이 만료돼, 이미 등록된 개인 계정 SSH 인증을 확인한 뒤 사용했다. 전역 인증 설정은 바꾸지 않았다.
+- Vercel 배포: `dpl_7e9cMGRLZ3xrf55w6gkCsz3fxWBx`, Production / Ready 확인.
+- 배포 URL: https://egsol-egfilter-8vhij221g-evergreen-e254ace6.vercel.app
+- 서비스 URL: https://evergreen-filter.vercel.app/products
+- 서비스 URL에서 `check-store-seo.mjs` 전체 통과. 허브·제품군 4개·규격 23개 확인.
+- Chrome 실제 배포 페이지의 canonical, 제품군 4개 구매 링크, GA4 `G-ZC21MJRDT0` 로더 확인. 신규 이벤트 매개변수가 GA4 보고서에 나타나는 것과 스토어 내 실제 결제는 별도 검증 대상이다.
+
+배포 성공과 실제 주문 증가를 혼동하지 않는다. 맞춤 측정기준의 GA4 관리자 등록은 아직 수행하지 않았으며, 구매자 개인정보를 수집하거나 실제 주문을 시험 생성하지 않았다.
