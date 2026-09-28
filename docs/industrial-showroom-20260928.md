@@ -15,6 +15,13 @@
 - Chrome 실제 화면 320/390/768/1280px: 가로 넘침 없음. 390px 제품 구매 버튼 높이 44px.
 - 768px 전화번호·영업시간 표시, 메뉴 열기/닫기 확인.
 - 헤파 상세, 부직포롤 규격, 반도체 산업 페이지와 모바일 푸터 회귀 확인.
+- 독립 Luna high 리뷰: 모바일 SVG 설명 글씨가 작다는 지적에 별도 12px 캡션 추가. 제품 도면 번호도 01~04로 정리하고 빌드 재통과.
 
 ## 배포
-운영 배포 결과는 최종 확인 후 아래에 기록한다.
+- 코드 커밋: `7078ded` (main 푸시 완료).
+- Vercel: `dpl_7o5DrpBiSicJ7My5jcAPsjzVMJHs`, Production Ready.
+- 배포 URL: https://egsol-egfilter-q5v1xoeue-evergreen-e254ace6.vercel.app
+- 운영 별칭: https://evergreen-filter.vercel.app
+- 운영 HTTP 구매 경로 검사 및 제품 허브·4개 제품·23개 규격 SEO 검사 통과.
+- 운영 Chrome 390px: 새 H1·모바일 설명 캡션·제품 구매 버튼 4개·가로 넘침 없음 확인.
+- GA4 로더 `G-ZC21MJRDT0` 유지 확인. 실제 매출 증가나 구매 전환을 검증했다는 의미는 아님.
