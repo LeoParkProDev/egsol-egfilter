@@ -30,42 +30,54 @@ const industry = [
 
 function FieldList({ title, items }: { title: string; items: { name: string; href: string }[] }) {
   return (
-    <div>
-      <p className="rule-ink pb-3 text-[13px] font-semibold text-gray-500">{title}</p>
-      {items.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className="flex items-center justify-between gap-4 border-b border-gray-100 py-3.5 text-[15px] font-medium text-gray-900 transition-colors hover:text-primary"
-        >
-          {item.name}
-          <span className="text-primary" aria-hidden="true">
-            →
-          </span>
-        </Link>
-      ))}
+    <div className="min-w-0">
+      <div className="mb-3 flex items-center gap-3">
+        <span aria-hidden="true" className="h-px flex-1 bg-white/20" />
+        <p className="text-[11px] font-semibold tracking-[0.12em] text-emerald-300">{title}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="group flex min-h-11 min-w-0 items-center justify-between gap-2 border border-white/15 bg-white/[0.035] px-3 py-2.5 text-sm font-medium leading-snug text-slate-100 transition-colors hover:border-emerald-400/60 hover:bg-white/[0.07] hover:text-white"
+          >
+            <span className="min-w-0">{item.name}</span>
+            <span className="shrink-0 font-mono text-xs text-emerald-300" aria-hidden="true">↗</span>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function Industries() {
   return (
-    <section className="bg-surface py-20 md:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-12 lg:gap-8">
+    <section className="bg-white px-4 py-12 sm:px-6 md:py-16">
+      <div className="mx-auto max-w-6xl overflow-hidden border border-slate-700 bg-[#20282d] px-5 py-7 sm:px-8 sm:py-9 md:px-10 md:py-10">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
-          <span className="eyebrow">납품 분야</span>
-          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
-            현장마다 권장 구성이 다릅니다
+          <span className="font-mono text-[11px] font-semibold tracking-[0.16em] text-emerald-300">01 / 적용 분야</span>
+          <h2 className="mt-3 text-2xl font-semibold leading-[1.3] tracking-[-0.015em] text-white md:text-[2rem]">
+            공간에 맞는 필터를 찾아보세요
           </h2>
-          <p className="mt-5 leading-[1.7] text-gray-500">
-            분야를 고르면 공간별 오염원, 권장 등급, 교체 주기를 표 한 장으로 보여드립니다.
+          <p className="mt-4 max-w-sm text-sm leading-[1.75] text-slate-300">
+            의료와 산업 현장별 필터 안내를 살펴보고, 필요한 규격과 공급 내용을 확인해 보세요.
           </p>
+          <div aria-hidden="true" className="mt-7 hidden h-10 items-end gap-1 sm:flex">
+            <span className="h-2 w-12 border border-emerald-400/70" />
+            <span className="h-4 w-8 border border-slate-500" />
+            <span className="h-7 w-16 border border-slate-500" />
+            <span className="h-10 w-10 border border-emerald-400/40" />
+            <span className="ml-2 h-px flex-1 bg-slate-600" />
+          </div>
         </div>
         <div className="lg:col-span-4">
           <FieldList title="병원 · 의료" items={medical} />
         </div>
         <div className="lg:col-span-4">
           <FieldList title="산업 · 시설" items={industry} />
+        </div>
         </div>
       </div>
     </section>

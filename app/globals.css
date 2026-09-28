@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════
-   A안 · 클린 프리시전 — 디자인 토큰
-   잉크 1 + 액센트 1(에버그린). 그라데이션·글로우·그림자 없음.
-   docs/design-proposal/Palette.dc.html 이 원본.
+   Precision industrial palette — steel neutrals, charcoal ink,
+   and evergreen purchase actions.
    ═══════════════════════════════════════════════════════════════ */
 @theme {
   /* 액센트 — 상호 '에버그린'의 녹색 하나만 */
@@ -13,33 +12,33 @@
   --color-brand-green: #176b50;
 
   /* 바탕 */
-  --color-paper: #fafbf9;
-  --color-surface: #f1f4f2;
-  --color-surface-dark: #14231f;
+  --color-paper: #f4f5f3;
+  --color-surface: #eef1f0;
+  --color-surface-dark: #15201e;
 
   /* 잉크 · 괘선 */
-  --color-ink: #14231f;
-  --color-ink-2: #2b3d36;
-  --color-muted: #5c6b66;
-  --color-line: #d9e0dc;
-  --color-hairline: #eef1ef;
+  --color-ink: #15201e;
+  --color-ink-2: #34423f;
+  --color-muted: #5e6a67;
+  --color-line: #d5dcda;
+  --color-hairline: #e5e9e7;
 
   /* 액센트 배경 */
-  --color-tint: #e3f1ea;
-  --color-tint-line: #c6e0d3;
+  --color-tint: #e8f0ec;
+  --color-tint-line: #c9d9d1;
 
-  /* 중립 램프를 잉크 계열로 재정의 — 기존 gray-* 클래스가 전부 따라온다 */
-  --color-gray-50: #f1f4f2;
-  --color-gray-100: #eef1ef;
-  --color-gray-200: #d9e0dc;
-  --color-gray-300: #c1cbc6;
-  --color-gray-400: #8a9993;
-  --color-gray-500: #5c6b66;
-  --color-gray-600: #46564f;
-  --color-gray-700: #2b3d36;
-  --color-gray-800: #1e2e28;
-  --color-gray-900: #14231f;
-  --color-gray-950: #0d1613;
+  /* 쿨 뉴트럴 램프 — 기존 gray-* 클래스가 일관된 대비를 유지한다 */
+  --color-gray-50: #f4f5f3;
+  --color-gray-100: #eef1f0;
+  --color-gray-200: #d5dcda;
+  --color-gray-300: #c1cac7;
+  --color-gray-400: #626d6a;
+  --color-gray-500: #5e6a67;
+  --color-gray-600: #4b5754;
+  --color-gray-700: #34423f;
+  --color-gray-800: #24312e;
+  --color-gray-900: #15201e;
+  --color-gray-950: #0d1513;
 
   /* 제품 구분용 색도 전부 에버그린 한 가지로 (4색 경쟁 제거) */
   --color-blue-50: #e3f1ea;
@@ -56,13 +55,28 @@
 }
 
 :root {
-  --background: #fafbf9;
-  --foreground: #14231f;
+  --background: #f4f5f3;
+  --foreground: #15201e;
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.bg-primary:focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+
+.bg-surface-dark .text-gray-400,
+.bg-gray-900 .text-gray-400 {
+  color: var(--color-gray-300);
 }
 
 body {
@@ -80,7 +94,7 @@ body {
   font-feature-settings: "tnum";
 }
 
-/* ── A안 규칙: 굵기 3단계(400/500/600) · 라운드 6px(패널 8px) · 그림자 없음 ── */
+/* ── 정밀한 괘선과 절제된 모서리 ── */
 @layer utilities {
   .font-black,
   .font-extrabold,
@@ -91,10 +105,10 @@ body {
   .rounded-3xl,
   .rounded-2xl,
   .rounded-xl {
-    border-radius: 8px;
+    border-radius: 10px;
   }
   .rounded-lg {
-    border-radius: 6px;
+    border-radius: 8px;
   }
 
   .shadow-2xl,
@@ -163,6 +177,19 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .animate-fade-in-up {
     animation: none;
   }

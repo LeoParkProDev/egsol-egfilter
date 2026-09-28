@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { filterSizes, sizeLabel } from "../data/sizes";
 
-// 홈에서 바로 찾을 수 있게 노출할 규격 — 판매 데이터에서 실제로 많이 나가는 순
+// Keep the established home quick-find selection linked to real size records.
 const FEATURED = [
   "610x610x150",
   "610x610x292",
@@ -18,56 +18,69 @@ const FEATURED = [
 ];
 
 export default function SizeQuickFind() {
-  const items = FEATURED.map((slug) => filterSizes.find((s) => s.slug === slug)).filter(
-    (s): s is NonNullable<typeof s> => Boolean(s),
+  const items = FEATURED.map((slug) => filterSizes.find((size) => size.slug === slug)).filter(
+    (size): size is NonNullable<typeof size> => Boolean(size),
   );
 
   return (
-    <section id="sizes" className="border-t border-gray-100 bg-white py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid items-end gap-6 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-6">
-            <span className="eyebrow">규격으로 찾기</span>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.015em] text-gray-900 md:text-[2.125rem] md:leading-[1.25]">
-              쓰시던 필터 옆면의 치수를 아신다면
-            </h2>
+    <section id="sizes" className="border-t border-slate-300 bg-slate-100 py-14 md:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="overflow-hidden border border-slate-300 bg-white shadow-[0_14px_38px_rgba(15,23,42,0.08)]">
+          <div className="grid gap-4 bg-[#1b252e] px-4 py-5 text-white sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end md:px-7 md:py-6">
+            <div>
+              <span className="font-mono text-[10px] tracking-[0.19em] text-emerald-300">DIMENSION QUICK FIND</span>
+              <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] sm:text-[1.75rem]">
+                규격으로 바로 찾기
+              </h2>
+            </div>
+            <p className="text-[13px] leading-6 text-slate-300 sm:text-sm">
+              기존 필터의 가로 × 세로 × 두께(mm)를 확인해 같은 규격을 선택하세요. 프레임형 필터와 롤 원단 규격을 함께 볼 수 있습니다.
+            </p>
           </div>
-          <p className="text-gray-500 leading-[1.7] lg:col-span-6">
-            가로 × 세로 × 두께(mm). 목록에 없는 규격은 실측만으로 3~7일 맞춤 제작합니다.
-          </p>
-        </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {items.map((s) => (
+          <div className="grid grid-cols-1 gap-px bg-slate-200 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {items.map((size) => {
+              const isRoll = size.type === "부직포롤";
+              return (
+                <Link
+                  key={size.slug}
+                  href={`/size/${size.slug}`}
+                  className="group min-w-0 bg-white px-3 py-3.5 transition-colors hover:bg-slate-50 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-emerald-700 motion-reduce:transition-none sm:px-4 sm:py-4"
+                >
+                  <span className="flex min-w-0 items-center justify-between gap-2">
+                    <span className="min-w-0 break-words font-mono text-[clamp(0.72rem,3.2vw,1rem)] font-semibold leading-5 tracking-[-0.055em] text-slate-900 group-hover:text-emerald-900 [overflow-wrap:anywhere] sm:text-base sm:tracking-[-0.035em]">
+                      {sizeLabel(size)}
+                    </span>
+                    {!isRoll && (
+                      <span className="shrink-0 font-mono text-[9px] tracking-[0.08em] text-slate-400">mm</span>
+                    )}
+                  </span>
+                  <span className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] leading-4 text-slate-600 sm:text-[11px]">
+                    <span className="border border-slate-300 px-1.5 py-0.5 font-medium text-slate-700">
+                      {isRoll ? "롤 원단" : "프레임형"}
+                    </span>
+                    <span>{size.type}</span>
+                    <span aria-hidden="true" className="text-slate-400">·</span>
+                    <span className="font-mono">{size.grade.split(" ")[0]}</span>
+                  </span>
+                </Link>
+              );
+            })}
             <Link
-              key={s.slug}
-              href={`/size/${s.slug}`}
-              className="group rounded-md border border-gray-200 bg-white px-4 py-4 transition-colors hover:border-primary/50"
+              href="/size"
+              className="flex min-h-20 flex-col justify-center bg-emerald-50 px-4 py-3.5 text-emerald-950 transition-colors hover:bg-emerald-100 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-emerald-700 motion-reduce:transition-none sm:px-5"
             >
-              <span className="block font-mono text-[17px] font-semibold text-gray-900 transition-colors group-hover:text-primary">
-                {sizeLabel(s)}
-              </span>
-              <span className="mt-1.5 block text-xs text-gray-500">
-                {s.type} · {s.grade.split(" ")[0]}
-              </span>
+              <span className="font-semibold">전체 규격 보기</span>
+              <span className="mt-1 font-mono text-[11px] text-emerald-900">등록된 23종 목록 →</span>
             </Link>
-          ))}
-          <Link
-            href="/size"
-            className="group flex flex-col justify-center rounded-md border border-accent bg-tint px-4 py-4"
-          >
-            <span className="text-[15px] font-semibold text-primary">전체 규격 23종</span>
-            <span className="mt-1.5 text-xs text-primary/80">
-              목록에 없는 규격도 3~7일 제작 →
-            </span>
-          </Link>
+          </div>
         </div>
 
         <Link
           href="/guide/read-filter-label"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 px-1 text-[13px] font-semibold text-slate-700 underline decoration-slate-400 underline-offset-4 transition-colors hover:text-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 motion-reduce:transition-none"
         >
-          규격을 모르시나요? 라벨 읽는 법 →
+          규격을 모르시나요? 필터 라벨 읽는 법 <span aria-hidden="true">→</span>
         </Link>
       </div>
     </section>
