@@ -4,7 +4,7 @@
  * 원칙 두 가지.
  * 1) 분석 ID가 없어도 사이트는 그대로 동작한다 — gtag·wcs가 없으면 조용히 무시한다.
  * 2) 폼 입력값(이름·전화·이메일·문의 내용)은 어떤 분석 툴에도 보내지 않는다.
- *    분석 툴로 나가는 값은 source·keyword·landing·page 뿐이다.
+ *    분석 툴로 나가는 값은 source·keyword·landing·page와 허용된 클릭 정보뿐이다.
  *
  * classifyAnchor / resolveSource / resolveKeyword / referrerHost / naverConversionType 은
  * window에 의존하지 않는 순수 함수라 node에서 그대로 호출해 검증할 수 있다.
@@ -27,6 +27,12 @@ export interface Attribution {
 export type ClickEvent = "kakao_click" | "phone_click" | "smartstore_click";
 export type TrackEvent = "quote_submit" | "quote_fallback" | ClickEvent;
 export type TrackParams = Record<string, string | number | boolean | undefined>;
+
+export interface ClickMetadata {
+  ctaPlacement?: string;
+  productCategory?: string;
+  productCode?: string;
+}
 
 const STORAGE_KEY = "eg_attr";
 const MAX_VALUE_LENGTH = 200;
@@ -100,9 +106,88 @@ export function classifyAnchor(href: string | null | undefined): ClickEvent | nu
   const h = (href ?? "").trim();
   if (!h) return null;
   if (/^tel:/i.test(h)) return "phone_click";
-  if (h.includes("pf.kakao.com")) return "kakao_click";
-  if (h.includes("smartstore.naver.com")) return "smartstore_click";
+
+  const url = safeExternalUrl(h);
+  if (!url) return null;
+  if (url.hostname === "pf.kakao.com") return "kakao_click";
+  if (url.hostname === "smartstore.naver.com") return "smartstore_click";
   return null;
+}
+
+/** Allow only short, non-PII identifier values from the approved anchor attributes. */
+function safeIdentifier(value: string | undefined): string | undefined {
+  const normalized = value?.trim();
+  if (
+    !normalized ||
+    normalized.length > 80 ||
+    !/^[a-z0-9_-]+$/i.test(normalized) ||
+    /\d{7,}|\d(?:-?\d){8,14}/.test(normalized)
+  ) {
+    return undefined;
+  }
+  return normalized;
+}
+
+function safeExternalUrl(href: string): URL | null {
+  try {
+    const url = new URL(href);
+    if (
+      url.protocol !== "https:" ||
+      url.username ||
+      url.password ||
+      (url.port !== "" && url.port !== "443")
+    ) {
+      return null;
+    }
+    if (url.hostname !== "pf.kakao.com" && url.hostname !== "smartstore.naver.com") {
+      return null;
+    }
+    return url;
+  } catch {
+    return null;
+  }
+}
+
+function safeDestinationPath(url: URL): string | undefined {
+  const path = url.pathname;
+  if (url.hostname === "smartstore.naver.com") {
+    if (/^\/egfilter\/?$/.test(path)) return path;
+    if (/^\/egfilter\/products\/\d+\/?$/.test(path)) return path;
+    if (/^\/main\/products\/\d+\/?$/.test(path)) return path;
+    if (/^\/egfilter\/category\/[a-z0-9]+\/?$/i.test(path)) return path;
+    return undefined;
+  }
+
+  if (url.hostname === "pf.kakao.com" && /^\/_[a-z0-9_]{1,64}(?:\/chat)?\/?$/i.test(path)) {
+    return path;
+  }
+  return undefined;
+}
+
+/** Build click-only analytics fields; never forward arbitrary attributes or URL queries. */
+export function clickMetadataParams(
+  href: string | null | undefined,
+  metadata: ClickMetadata = {},
+): TrackParams {
+  const event = classifyAnchor(href);
+  if (!event) return {};
+
+  const params: TrackParams = {};
+  const ctaPlacement = safeIdentifier(metadata.ctaPlacement);
+  const productCategory = safeIdentifier(metadata.productCategory);
+  const productCode = safeIdentifier(metadata.productCode);
+  if (ctaPlacement) params.cta_placement = ctaPlacement;
+  if (productCategory) params.product_category = productCategory;
+  if (productCode) params.product_code = productCode;
+
+  if (event === "kakao_click" || event === "smartstore_click") {
+    const url = href ? safeExternalUrl(href.trim()) : null;
+    if (url) {
+      const destinationPath = safeDestinationPath(url);
+      if (destinationPath) params.destination_path = destinationPath;
+    }
+  }
+  return params;
 }
 
 /** 네이버 프리미엄 로그분석 전환 유형 — 4: 신청/예약, 5: 기타, null: 전환 아님 */

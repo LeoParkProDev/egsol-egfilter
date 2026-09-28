@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { captureAttribution, classifyAnchor, getAttribution, track } from "../lib/analytics";
+import { captureAttribution, classifyAnchor, clickMetadataParams, getAttribution, track } from "../lib/analytics";
 
 // 분석 ID는 환경변수로만 들어온다. 없으면 스크립트를 아예 주입하지 않는다.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
@@ -32,6 +32,11 @@ export default function Analytics() {
       track(event, {
         page: window.location.pathname,
         source: getAttribution()?.source ?? "",
+        ...clickMetadataParams(anchor.getAttribute("href"), {
+          ctaPlacement: anchor.dataset.ctaPlacement,
+          productCategory: anchor.dataset.productCategory,
+          productCode: anchor.dataset.productCode,
+        }),
       });
     }
 

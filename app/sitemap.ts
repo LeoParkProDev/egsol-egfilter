@@ -11,14 +11,12 @@ const BASE_URL = "https://evergreen-filter.vercel.app";
 export default function sitemap(): MetadataRoute.Sitemap {
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
     url: `${BASE_URL}/products/${product.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const specialtyPages: MetadataRoute.Sitemap = specialties.map((s) => ({
     url: `${BASE_URL}/medical/${s.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -32,21 +30,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const industryPages: MetadataRoute.Sitemap = industries.map((i) => ({
     url: `${BASE_URL}/industry/${i.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const sizePages: MetadataRoute.Sitemap = filterSizes.map((s) => ({
     url: `${BASE_URL}/size/${s.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
     url: `${BASE_URL}/service/${s.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -54,13 +49,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${BASE_URL}/medical`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -68,53 +61,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...industryPages,
     {
       url: `${BASE_URL}/size`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     ...sizePages,
     {
       url: `${BASE_URL}/service`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     ...servicePages,
     ...productPages,
+    {
+      url: `${BASE_URL}/products`,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...guidePages,
     {
       url: `${BASE_URL}/guide`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/faq`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/glossary`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${BASE_URL}/cases`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/quote`,
-      lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.7,
     },

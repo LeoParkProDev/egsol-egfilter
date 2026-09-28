@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { products } from "../data/products";
 import { SITE } from "../data/site";
 
 interface GuideInquiryProps {
@@ -20,6 +21,11 @@ const inquiryCopy = {
 
 export default function GuideInquiry({ guideSlug }: GuideInquiryProps) {
   const copy = inquiryCopy[guideSlug];
+  const recommendedSlugs =
+    guideSlug === "air-filter-grade-guide" ? ["hepa-filter", "medium-filter"] : ["hepa-filter"];
+  const recommendedProducts = recommendedSlugs
+    .map((slug) => products.find((product) => product.slug === slug))
+    .filter((product) => product !== undefined);
 
   return (
     <aside
@@ -28,14 +34,27 @@ export default function GuideInquiry({ guideSlug }: GuideInquiryProps) {
     >
       <h2 className="text-lg font-extrabold text-gray-900">{copy.title}</h2>
       <p className="mt-2 text-sm leading-relaxed text-gray-600">{copy.description}</p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        {recommendedProducts.map((product) => (
+          <a
+            key={product.slug}
+            href={product.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta-placement="guide_store"
+            data-product-category={product.slug}
+            className="inline-flex min-h-11 items-center justify-center rounded-md bg-brand-green px-5 py-3 text-center font-bold text-white transition-colors hover:bg-[#145b43]"
+          >
+            {product.name} 스마트스토어에서 보기
+          </a>
+        ))}
         <Link
           href="/quote"
           data-cta-placement="guide_inline"
           data-guide-slug={guideSlug}
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-brand-green px-5 py-3 text-center font-bold text-white transition-colors hover:bg-[#145b43]"
+          className="inline-flex min-h-11 items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-center font-bold text-gray-800 transition-colors hover:bg-gray-50"
         >
-          사진으로 견적 문의
+          규격이 다르면 사진 견적 문의
         </Link>
         {SITE.phone && (
           <a

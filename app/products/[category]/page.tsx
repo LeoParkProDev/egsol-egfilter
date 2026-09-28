@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import { products, colorMap } from "../../data/products";
 import { guides } from "../../data/guides";
 import StageDiagram, { stageOf } from "../../components/StageDiagram";
+import StorePurchase from "../../components/StorePurchase";
 import Link from "next/link";
 import { Metadata } from "next";
+import { filterSizes, sizeLabel } from "../../data/sizes";
 
 const relatedGuideSlugs: Record<string, string[]> = {
   "pre-filter": ["hepa-filter-replacement-cycle", "air-filter-grade-guide"],
@@ -33,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.name}(${product.nameEn}) | 규격·등급·교체주기`,
-    description: `${product.shortDesc} ${product.applications.join(", ")} 적용. 규격 맞춤 제작, 당일 견적, 전국 배송.`,
+    title: `${product.name}(${product.nameEn}) | 규격·옵션·구매`,
+    description: `${product.shortDesc} ${product.applications.join(", ")} 적용. 스마트스토어에서 판매 옵션과 가격을 확인하세요.`,
     keywords: [
       product.name,
       product.nameEn,
@@ -67,6 +69,13 @@ export default async function ProductPage({ params }: Props) {
   }
 
   const colors = colorMap[product.color];
+  const sizeTypes: Record<string, string> = {
+    "pre-filter": "프리필터",
+    "hepa-filter": "헤파필터",
+    "medium-filter": "미듐필터",
+    "roll-filter": "부직포롤",
+  };
+  const matchingSizes = filterSizes.filter((size) => size.type === sizeTypes[product.slug]);
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -158,6 +167,35 @@ export default async function ProductPage({ params }: Props) {
                   {product.description}
                 </p>
               </div>
+
+              <div className="mb-8">
+                <StorePurchase
+                  href={product.href}
+                  productName={product.name}
+                  productCategory={product.slug}
+                  placement="product_category_top"
+                />
+              </div>
+
+              {matchingSizes.length > 0 && (
+                <section className="mb-10" aria-labelledby="matching-sizes-heading">
+                  <h2 id="matching-sizes-heading" className="mb-3 text-sm font-bold text-gray-700">
+                    {product.name} 규격별 제품
+                  </h2>
+                  <ul className="flex flex-wrap gap-2">
+                    {matchingSizes.map((size) => (
+                      <li key={size.slug}>
+                        <Link
+                          href={`/size/${size.slug}`}
+                          className="inline-flex min-h-10 items-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-green/40 hover:text-[#176b50]"
+                        >
+                          {sizeLabel(size)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {product.tags.map((tag) => (
@@ -256,21 +294,13 @@ export default async function ProductPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a
+              <div className="pt-6">
+                <StorePurchase
                   href={product.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center bg-primary hover:bg-primary-dark text-white font-bold text-lg px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-xl"
-                >
-                  스마트스토어 구매
-                </a>
-                <a
-                  href="/quote"
-                  className="flex-1 text-center bg-white border-2 border-primary text-primary hover:bg-gray-50 font-bold text-lg px-8 py-4 rounded-xl transition-all"
-                >
-                  대량 견적 문의
-                </a>
+                  productName={product.name}
+                  productCategory={product.slug}
+                  placement="product_category_bottom"
+                />
               </div>
             </div>
           </div>

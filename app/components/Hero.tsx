@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { SITE } from "../data/site";
 
 /** 히어로 우측 스펙 패널의 행. 값은 모노스페이스로 자릿수를 맞춘다. */
 const specRows = [
-  { label: "헤파 등급", value: "H13 · H14 (EN 1822)" },
-  { label: "표준 규격", value: "610 · 594 계열 재고 출고" },
-  { label: "비표준 제작", value: "실측만으로 3 – 7 일", accent: true },
-  { label: "서류", value: "견적서 · 거래명세서 · 세금계산서" },
+  { label: "제품 종류", value: "헤파 · 미듐 · 프리 · 부직포롤" },
+  { label: "프레임형", value: "등급 · 가로 · 세로 · 두께" },
+  { label: "부직포롤", value: "두께 · 폭 · 길이" },
+  { label: "주문 전 확인", value: "옵션 · 가격 · 배송 조건", accent: true },
 ];
 
-const trustPoints = ["영업일 30분 내 1차 회신", "세금계산서 · 거래명세서", "전국 납품"];
+const trustPoints = ["제품 종류와 등급 확인", "규격·형태 확인", "옵션·가격·배송 조건은 스토어에서 확인"];
 
 export default function Hero() {
   return (
@@ -17,24 +16,23 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:py-24 lg:grid-cols-12 lg:gap-8">
         {/* 좌: 카피 + CTA */}
         <div className="lg:col-span-7">
-          <span className="eyebrow">병원 수술실 · 클린룸 · 공장 공조 에어필터</span>
+          <span className="eyebrow">병원 · 클린룸 · 공장용 에어필터</span>
 
           <h1 className="mt-7 text-[2rem] leading-[1.22] font-semibold tracking-[-0.02em] text-gray-900 sm:text-4xl md:text-[3.25rem] md:leading-[1.18] text-balance">
-            필터 라벨 사진 한 장이면
-            <br className="hidden sm:block" /> 당일 견적, 규격 없어도 제작
+            산업용 필터,
+            <br className="hidden sm:block" /> 규격 확인부터 스마트스토어 주문까지
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-[1.75] text-gray-500 md:text-lg">
-            <span className="whitespace-nowrap">헤파(H13·H14)</span> ·{" "}
-            <span className="whitespace-nowrap">미듐(미디움)</span> ·{" "}
-            <span className="whitespace-nowrap">부직포·프리</span> ·{" "}
-            <span className="whitespace-nowrap">부직포롤</span>. 표준 규격은 재고 출고,
-            비표준은 실측만으로 3~7일 맞춤 제작해 전국 납품합니다.
+            헤파 · 미듐 · 프리 · 부직포롤 제품을 살펴보세요. 프레임형은 등급과 가로·세로·두께를,
+            롤형은 두께·폭·길이를 확인하고, 옵션·가격·배송 조건은 스마트스토어에서 확인하세요.
+            규격이 맞지 않거나 사양을 모르시면 사진 견적을 이용할 수 있습니다.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/quote"
+              href="/products"
+              data-cta-placement="hero_store"
               className="inline-flex items-center justify-center gap-2.5 rounded-md bg-primary px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-primary-dark"
             >
               <svg
@@ -47,19 +45,16 @@ export default function Hero() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.3-2h6l1.3 2h1.2A2.5 2.5 0 0 1 20 8.5V17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
-                <circle cx="12" cy="12.5" r="3.5" />
+                <path d="M4 10h16v10H4zM3 10l2-6h14l2 6M8 10v10m8-10v10M9 14h6" />
               </svg>
-              사진으로 견적 받기
+              제품별 스마트스토어 둘러보기
             </Link>
-            <a
-              href={SITE.kakaoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="kakao-dot inline-flex items-center justify-center gap-2.5 rounded-md border border-gray-900 px-6 py-4 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-50"
+            <Link
+              href="/quote"
+              className="inline-flex items-center justify-center gap-2.5 rounded-md border border-gray-900 px-6 py-4 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-50"
             >
-              카카오톡 상담
-            </a>
+              규격 확인이 필요하면 사진 견적
+            </Link>
           </div>
 
           <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-gray-500">
@@ -111,7 +106,7 @@ export default function Hero() {
               FILTRATION SPEC
             </span>
             <span className="absolute bottom-3.5 right-5 font-mono text-xs font-semibold text-gray-900">
-              0.3 μm · 99.995 %
+              PRODUCT · SIZE · OPTION
             </span>
           </div>
 
@@ -141,10 +136,10 @@ export default function Hero() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-2 border-y border-gray-200 md:grid-cols-4">
           {[
-            { k: "REPLY", v: "영업일 30분 내 1차 회신" },
-            { k: "LEAD TIME", v: "비표준 3~7일 · 표준 당일 출고" },
-            { k: "DOCUMENTS", v: "견적서 · 거래명세서 · 세금계산서" },
-            { k: "CLIENTS", v: "누적 거래처 500+ · 정기 납품" },
+            { k: "PRODUCT", v: "헤파 · 미듐 · 프리 · 부직포롤" },
+            { k: "FRAME SIZE", v: "등급 · 가로 × 세로 × 두께" },
+            { k: "ROLL SIZE", v: "두께 × 폭 × 길이" },
+            { k: "STORE", v: "옵션 · 가격 · 배송 조건 확인" },
           ].map((item, i) => (
             <div
               key={item.k}

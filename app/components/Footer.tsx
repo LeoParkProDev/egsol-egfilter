@@ -31,6 +31,7 @@ export default function Footer() {
           <div>
             <p className="rule-ink mb-3 pb-3 text-[13px] font-semibold text-gray-900">제품·바로가기</p>
             <div className="flex flex-col gap-2 text-sm">
+              <Link href="/products" className="font-semibold transition-colors hover:text-primary">제품 전체 보기</Link>
               <Link href="/products/pre-filter" className="transition-colors hover:text-primary">프리필터</Link>
               <Link href="/products/hepa-filter" className="transition-colors hover:text-primary">헤파필터</Link>
               <Link href="/products/medium-filter" className="transition-colors hover:text-primary">미듐필터</Link>

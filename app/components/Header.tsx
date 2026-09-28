@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SITE } from "../data/site";
 
 const navLinks = [
-  { label: "제품", href: "/products/pre-filter" },
+  { label: "제품별 보기", href: "/products" },
   { label: "규격 찾기", href: "/size" },
   { label: "병원·의료", href: "/medical" },
   { label: "가이드", href: "/guide" },
@@ -51,7 +51,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex xl:gap-4">
+        <div className="hidden items-center gap-2 md:flex xl:gap-3">
           {SITE.phone && (
             <a
               href={SITE.phoneHref}
@@ -63,10 +63,11 @@ export default function Header() {
             </a>
           )}
           <a
-            href="https://smartstore.naver.com/egfilter"
+            href={SITE.smartstoreUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary 2xl:inline-flex"
+            data-cta-placement="header_store"
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-md bg-primary px-3 text-sm font-semibold text-white transition-colors hover:bg-primary-dark xl:px-4"
           >
             스마트스토어
             <svg
@@ -85,7 +86,7 @@ export default function Header() {
           </a>
           <Link
             href="/quote"
-            className="rounded-md bg-primary px-4.5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+            className="min-h-11 rounded-md border border-gray-300 px-3 py-2.5 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50 xl:px-4"
           >
             사진으로 견적
           </Link>
@@ -131,6 +132,15 @@ export default function Header() {
             </Link>
           ))}
           <div className="mt-4 mb-2 flex flex-col gap-2.5">
+            <a
+              href={SITE.smartstoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta-placement="header_store"
+              className="rounded-md bg-primary py-3 text-center font-semibold text-white"
+            >
+              스마트스토어에서 제품 보기
+            </a>
             {SITE.phone && (
               <a
                 href={SITE.phoneHref}

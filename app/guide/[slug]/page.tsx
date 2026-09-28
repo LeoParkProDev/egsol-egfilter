@@ -6,6 +6,7 @@ import PressureCurve from "../../components/PressureCurve";
 import GuideInquiry from "../../components/GuideInquiry";
 import { notFound } from "next/navigation";
 import { guides } from "../../data/guides";
+import { products } from "../../data/products";
 import { guideText, relatedGuides, sizesFor } from "../../lib/related";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
@@ -22,6 +23,42 @@ const DIAGRAM_FOR: Record<string, "media" | "laminar" | "pressure" | undefined> 
   "filter-pressure-gauge": "pressure",
 };
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
+
+function relevantProducts(guide: (typeof guides)[number]) {
+  if (guide.slug === "h13-vs-h14") {
+    return products.filter((product) => product.slug === "hepa-filter");
+  }
+  if (guide.slug === "air-filter-grade-guide") {
+    return products.filter((product) => ["hepa-filter", "medium-filter"].includes(product.slug));
+  }
+
+  const signals = `${guide.slug} ${guide.title} ${guide.description} ${guide.keywords}`.toLowerCase();
+  const matches = [
+    {
+      slug: "hepa-filter",
+      terms: ["헤파", "hepa", "h13", "h14", "음압병실", "음압격리병실"],
+    },
+    {
+      slug: "medium-filter",
+      terms: ["미듐", "미디움", "중성능", "medium filter", "f5", "f7", "f9"],
+    },
+    {
+      slug: "pre-filter",
+      terms: ["프리필터", "pre-filter", "1차 필터", "1차필터"],
+    },
+    {
+      slug: "roll-filter",
+      terms: ["부직포롤", "롤필터", "roll filter"],
+    },
+  ];
+
+  const relevantSlugs = new Set(
+    matches
+      .filter((match) => match.terms.some((term) => signals.includes(term)))
+      .map((match) => match.slug),
+  );
+  return products.filter((product) => relevantSlugs.has(product.slug));
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -62,6 +99,7 @@ export default async function GuideArticlePage({ params }: Props) {
   // 관련 가이드·관련 규격은 related 엔진이 본문에서 뽑아낸다 (app/lib/related.ts).
   const others = relatedGuides(guide.slug, 4);
   const relatedSizes = sizesFor(guideText(guide), 4);
+  const storeProducts = relevantProducts(guide);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -312,6 +350,30 @@ export default async function GuideArticlePage({ params }: Props) {
               에서 확인하실 수 있고, 목록에 없는 치수는 바깥 치수(틀 끝에서 끝) 실측값만 있으면
               3~7일 맞춤 제작합니다.
             </p>
+          </section>
+        )}
+
+        {storeProducts.length > 0 && (
+          <section className="mt-12 rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+            <h2 className="text-lg font-extrabold text-gray-900">관련 제품 스마트스토어에서 보기</h2>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              규격과 필터 종류가 맞는지 확인한 뒤, 옵션·가격·배송 조건은 스마트스토어에서 확인하세요.
+            </p>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              {storeProducts.map((product) => (
+                <a
+                  key={product.slug}
+                  href={product.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta-placement="guide_store"
+                  data-product-category={product.slug}
+                  className="inline-flex min-h-11 items-center justify-center rounded-md bg-brand-green px-5 py-3 text-center font-bold text-white transition-colors hover:bg-[#145b43]"
+                >
+                  {product.name} 제품 보기
+                </a>
+              ))}
+            </div>
           </section>
         )}
       </article>

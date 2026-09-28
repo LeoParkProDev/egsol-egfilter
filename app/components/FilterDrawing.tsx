@@ -314,9 +314,11 @@ function RollDrawing({ size }: { size: FilterSize }) {
 export default function FilterDrawing({
   size,
   className = "",
+  caption,
 }: {
   size: FilterSize;
   className?: string;
+  caption?: string;
 }) {
   const isRoll = size.type === "부직포롤";
 
@@ -334,8 +336,12 @@ export default function FilterDrawing({
         {isRoll ? <RollDrawing size={size} /> : <PanelDrawing size={size} />}
       </div>
       <p className="border-t border-gray-200 bg-surface px-5 py-3 text-xs leading-[1.6] text-gray-500">
-        실제 비율로 그린 도면입니다. 치수는 프레임 바깥 기준(가로 × 세로 × 두께)이며,
-        표기 없는 상세 형상은 제조 사양에 따릅니다.
+        {caption ?? (
+          <>
+            실제 비율로 그린 도면입니다. 치수는 프레임 바깥 기준(가로 × 세로 × 두께)이며,
+            표기 없는 상세 형상은 제조 사양에 따릅니다.
+          </>
+        )}
       </p>
     </figure>
   );

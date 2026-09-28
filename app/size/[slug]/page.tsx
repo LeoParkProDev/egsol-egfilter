@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FilterDrawing from "../../components/FilterDrawing";
 import StageDiagram, { stageOf } from "../../components/StageDiagram";
+import StorePurchase from "../../components/StorePurchase";
 import { notFound } from "next/navigation";
 import { filterSizes, relatedSizes, sizeLabel } from "../../data/sizes";
+import { products } from "../../data/products";
+import { storeCatalogByCode } from "../../data/store-catalog";
 
 const BASE_URL = "https://evergreen-filter.vercel.app";
 const KAKAO_URL = "https://pf.kakao.com/_zjkxab";
@@ -16,19 +19,31 @@ export function generateStaticParams() {
   return filterSizes.map((s) => ({ slug: s.slug }));
 }
 
+function getSizeSeoCopy(size: (typeof filterSizes)[number]) {
+  const label = sizeLabel(size);
+  const options = size.variants.map((variant) => variant.label).join(", ");
+
+  return {
+    title: `${label} ${size.type} | 규격·옵션·구매`,
+    description: `${label} ${size.type} · ${size.grade}. 선택 가능한 사양: ${options}. 옵션·가격·배송 조건은 스마트스토어에서 최종 확인해 주세요.`,
+  };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const size = filterSizes.find((s) => s.slug === slug);
   if (!size) return { title: "규격을 찾을 수 없습니다" };
 
+  const seoCopy = getSizeSeoCopy(size);
+
   return {
-    title: size.metaTitle,
-    description: size.metaDescription,
+    title: seoCopy.title,
+    description: seoCopy.description,
     keywords: size.keywords,
     alternates: { canonical: `/size/${size.slug}` },
     openGraph: {
-      title: `${size.metaTitle} | 에버그린필터`,
-      description: size.metaDescription,
+      title: seoCopy.title,
+      description: seoCopy.description,
       url: `${BASE_URL}/size/${size.slug}`,
       siteName: "에버그린필터",
       locale: "ko_KR",
@@ -44,26 +59,47 @@ const TYPE_HREF: Record<string, string> = {
   부직포롤: "/products/roll-filter",
 };
 
+const TYPE_PRODUCT_SLUG: Record<string, string> = {
+  헤파필터: "hepa-filter",
+  미듐필터: "medium-filter",
+  프리필터: "pre-filter",
+  부직포롤: "roll-filter",
+};
+
 export default async function SizePage({ params }: Props) {
   const { slug } = await params;
   const size = filterSizes.find((s) => s.slug === slug);
   if (!size) notFound();
 
   const related = relatedSizes(size);
+  const product = products.find((item) => item.slug === TYPE_PRODUCT_SLUG[size.type]);
+  const seoCopy = getSizeSeoCopy(size);
+  const singleVariantStoreProduct = size.variants.length === 1
+    ? storeCatalogByCode[size.variants[0].code]
+    : undefined;
+
+  const sizeProperties = size.display
+    ? [
+        { "@type": "PropertyValue", name: "두께", value: `${size.t}T` },
+        { "@type": "PropertyValue", name: "폭", value: `${size.w}mm` },
+        { "@type": "PropertyValue", name: "길이", value: `${size.h}m` },
+        { "@type": "PropertyValue", name: "등급", value: size.grade },
+      ]
+    : [
+        { "@type": "PropertyValue", name: "가로", value: `${size.w}mm` },
+        { "@type": "PropertyValue", name: "세로", value: `${size.h}mm` },
+        { "@type": "PropertyValue", name: "두께", value: `${size.t}mm` },
+        { "@type": "PropertyValue", name: "등급", value: size.grade },
+      ];
 
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: size.title,
-    description: size.metaDescription,
+    description: seoCopy.description,
     brand: { "@type": "Brand", name: "에버그린필터" },
     category: size.type,
-    additionalProperty: [
-      { "@type": "PropertyValue", name: "가로", value: `${size.w}mm` },
-      { "@type": "PropertyValue", name: "세로", value: `${size.h}mm` },
-      { "@type": "PropertyValue", name: "두께", value: `${size.t}mm` },
-      { "@type": "PropertyValue", name: "등급", value: size.grade },
-    ],
+    additionalProperty: sizeProperties,
   };
 
   const faqJsonLd = {
@@ -125,10 +161,32 @@ export default async function SizePage({ params }: Props) {
               {p}
             </p>
           ))}
+          {product && (
+            <div className="mt-7">
+              <StorePurchase
+                href={singleVariantStoreProduct?.url ?? product?.href ?? TYPE_HREF[size.type]}
+                productName={size.title}
+                productCategory={product?.slug}
+                productCode={singleVariantStoreProduct?.code}
+                optionLabel={singleVariantStoreProduct?.optionLabel}
+                placement="size_page_top"
+              />
+            </div>
+          )}
+          <p className="mt-4 text-sm leading-relaxed text-gray-600">
+            주문 전 기존 필터의 가로·세로 치수와 등급, 프레임 구조를 확인해 주세요.
+            부직포롤은 두께·폭·롤 길이를 확인하면 됩니다.
+          </p>
         </header>
 
         {/* 규격 도면 — w/h/t 데이터로 실제 비율로 그린다 */}
-        <FilterDrawing size={size} className="mt-10" />
+        <FilterDrawing
+          size={size}
+          className="mt-10"
+          caption={size.type === "부직포롤" && size.display
+            ? "원단 두께(T)·폭(mm)·길이(m), 재단 여유 확인."
+            : undefined}
+        />
 
         {/* 규격 명세 */}
         <section className="mt-10">
@@ -178,6 +236,7 @@ export default async function SizePage({ params }: Props) {
                 <tr className="bg-gray-50 text-left text-gray-500">
                   <th className="px-4 py-3 font-bold">사양</th>
                   <th className="px-4 py-3 font-bold">비고</th>
+                  <th className="px-4 py-3 font-bold">구매</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -185,6 +244,25 @@ export default async function SizePage({ params }: Props) {
                   <tr key={v.code}>
                     <td className="px-4 py-3 font-bold text-gray-800">{v.label}</td>
                     <td className="px-4 py-3 text-gray-600">{v.note}</td>
+                    <td className="px-4 py-3">
+                      <a
+                        href={storeCatalogByCode[v.code]?.url ?? product?.href ?? TYPE_HREF[size.type]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-cta-placement="size_variant"
+                        data-product-category={product?.slug}
+                        data-product-code={storeCatalogByCode[v.code]?.code}
+                        aria-label={`${v.label} 스마트스토어 옵션 확인`}
+                        className="whitespace-nowrap font-bold text-[#176b50] underline underline-offset-2"
+                      >
+                        {storeCatalogByCode[v.code] ? "해당 사양 옵션 확인" : "스토어에서 옵션 찾기"}
+                      </a>
+                      {storeCatalogByCode[v.code]?.optionLabel && (
+                        <p className="mt-1 min-w-48 text-xs leading-relaxed text-gray-500">
+                          스토어에서 선택할 옵션: {storeCatalogByCode[v.code].optionLabel}. 옵션이 자동 선택되지는 않습니다.
+                        </p>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
